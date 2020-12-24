@@ -25,18 +25,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://example.com/tags/index.html">
+<meta name="description" content="最近参考各种教程用hexo搭了一个博客，在这里记录一下遇到的各种坑。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 部署博客时踩过的各种坑">
+<meta property="og:url" content="http://example.com/2020/12/24/hexo_bugs/index.html">
 <meta property="og:site_name" content="清风如歌，与君同梦">
+<meta property="og:description" content="最近参考各种教程用hexo搭了一个博客，在这里记录一下遇到的各种坑。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-24T06:00:08.000Z">
-<meta property="article:modified_time" content="2020-12-24T11:19:07.704Z">
+<meta property="article:published_time" content="2020-12-24T14:34:37.000Z">
+<meta property="article:modified_time" content="2020-12-24T14:59:27.060Z">
 <meta property="article:author" content="David Wang">
+<meta property="article:tag" content="bugs">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/">
+<link rel="canonical" href="http://example.com/2020/12/24/hexo_bugs/">
 
 
 <script class="page-configurations">
@@ -44,12 +47,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>tags | 清风如歌，与君同梦
-</title>
+<title>Hexo 部署博客时踩过的各种坑 | 清风如歌，与君同梦</title>
   
 
 
@@ -156,7 +158,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -169,6 +171,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Deploy%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">Deploy的步骤</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -240,43 +243,137 @@
 </noscript>
 
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
   
   
 
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/24/hexo_bugs/">
 
-    
-    
-    
-    <div class="post-block" lang="zh-CN"><header class="post-header">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清风如歌，与君同梦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo 部署博客时踩过的各种坑
+        </h1>
 
-<div class="post-meta-container">
-</div>
-
-</header>
-
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-      
-      <div class="post-body"><div class="tag-cloud">
-  <div class="tag-cloud-title">
-    目前共计 1 个标签
-  </div>
-  <div class="tag-cloud-tags">
-    <a href="/tags/bugs/" style="font-size: 12px;" class="tag-cloud-0">bugs</a>
-  </div>
-</div>
 
+      <time title="创建时间：2020-12-24 22:34:37 / 修改时间：22:59:27" itemprop="dateCreated datePublished" datetime="2020-12-24T22:34:37+08:00">2020-12-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
       </div>
-      
-      
-      
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>277</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>最近参考各种教程用hexo搭了一个博客，在这里记录一下遇到的各种坑。</p>
+<a id="more"></a>
+
+<h2 id="Deploy的步骤"><a href="#Deploy的步骤" class="headerlink" title="Deploy的步骤"></a>Deploy的步骤</h2><p><strong>不要在软件内置的终端里进行提交！！（比如Vs Code）</strong><br>具体来说，过程如下 (npx 我个人需要加上）,以 powershell 为例：</p>
+<pre class="line-numbers language-powershell" data-language="powershell"><code class="language-powershell"><span class="token comment"># 1.清除缓存</span>
+$ npx hexo clean
+<span class="token comment"># 2.生成</span>
+$ npx hexo g
+<span class="token comment"># 3.部署</span>
+$ npx hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>如果 hexo 部署之后却没有在网页更新，很有可能上述步骤有遗漏或者运行失败，按照上面的步骤来。</p>
+<p>如果出现 remote: No anonymous write access. 等显示没有权限访问 github 的情况，有可能使用的终端不正确，尝试去用 git bash。</p>
+
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>David Wang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="http://example.com/2020/12/24/hexo_bugs/" title="Hexo 部署博客时踩过的各种坑">http://example.com/2020/12/24/hexo_bugs/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/bugs/" rel="tag"><i class="fa fa-tag"></i> bugs</a>
+          </div>
+
+        
+
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 
