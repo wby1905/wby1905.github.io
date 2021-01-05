@@ -2,21 +2,84 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://wby1905.github.io/2020/01/14/dl-tutorial-0/</loc>
+    <loc>https://wby1905.github.io/2020/02/07/dl-tutorial/dl-tutorial-9/</loc>
     
     <lastmod>2021-01-05</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wby1905.github.io/2020/01/16/dl-tutorial-1/</loc>
+    <loc>https://wby1905.github.io/2020/02/25/dl-tutorial/dl-tutorial-11/</loc>
     
     <lastmod>2021-01-05</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wby1905.github.io/2020/01/17/dl-tutorial-2/</loc>
+    <loc>https://wby1905.github.io/2020/02/13/dl-tutorial/dl-tutorial-10/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/02/04/dl-tutorial/dl-tutorial-8/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/02/03/dl-tutorial/dl-tutorial-7/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/02/01/dl-tutorial/dl-tutorial-6/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/01/29/dl-tutorial/dl-tutorial-5/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/01/26/dl-tutorial/dl-tutorial-4/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/01/26/dl-tutorial/dl-tutorial-3/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/01/17/dl-tutorial/dl-tutorial-2/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/01/16/dl-tutorial/dl-tutorial-1/</loc>
+    
+    <lastmod>2021-01-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/2020/01/14/dl-tutorial/dl-tutorial-0/</loc>
     
     <lastmod>2021-01-05</lastmod>
     
@@ -25,7 +88,7 @@
   <url>
     <loc>https://wby1905.github.io/2020/12/24/hexo_bugs/</loc>
     
-    <lastmod>2020-12-24</lastmod>
+    <lastmod>2021-01-05</lastmod>
     
   </url>
   
@@ -54,39 +117,29 @@
   <url>
     <loc>https://wby1905.github.io/</loc>
     <lastmod>2021-01-05</lastmod>
-    <!-- <changefreq>daily</changefreq> -->
-    <!-- <priority>1.0</priority> -->
   </url>
 
-  
-  <url>
-    <loc>https://wby1905.github.io/tags/notes/</loc>
-    <lastmod>2021-01-05</lastmod>
-    <!-- <changefreq>daily</changefreq> -->
-    <!-- <priority>0.6</priority> -->
-  </url>
   
   <url>
     <loc>https://wby1905.github.io/tags/bugs/</loc>
     <lastmod>2021-01-05</lastmod>
-    <!-- <changefreq>daily</changefreq> -->
-    <!-- <priority>0.6</priority> -->
+  </url>
+  
+  <url>
+    <loc>https://wby1905.github.io/tags/notes/</loc>
+    <lastmod>2021-01-05</lastmod>
   </url>
   
 
   
   <url>
-    <loc>https://wby1905.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/</loc>
+    <loc>https://wby1905.github.io/categories/Hexo/</loc>
     <lastmod>2021-01-05</lastmod>
-    <!-- <changefreq>daily</changefreq> -->
-    <!-- <priority>0.6</priority> -->
   </url>
   
   <url>
-    <loc>https://wby1905.github.io/categories/Hexo/</loc>
+    <loc>https://wby1905.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/</loc>
     <lastmod>2021-01-05</lastmod>
-    <!-- <changefreq>daily</changefreq> -->
-    <!-- <priority>0.6</priority> -->
   </url>
   
 </urlset>

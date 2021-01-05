@@ -30,18 +30,18 @@
 <meta name="description" content="以下内容由我的CSDN博客迁移。 在学习深度学习之前，再学习一下基本的机器学习算法。首先从logistic回归开始，再说一说sigmoid的推导等。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="逻辑回归&#x2F;logistic回归、广义线性模型与最大熵模型">
-<meta property="og:url" content="https://wby1905.github.io/2020/01/17/dl-tutorial-2/index.html">
+<meta property="og:url" content="https://wby1905.github.io/2020/01/17/dl-tutorial/dl-tutorial-2/index.html">
 <meta property="og:site_name" content="清风如歌，与君同梦">
 <meta property="og:description" content="以下内容由我的CSDN博客迁移。 在学习深度学习之前，再学习一下基本的机器学习算法。首先从logistic回归开始，再说一说sigmoid的推导等。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-01-17T12:59:19.000Z">
-<meta property="article:modified_time" content="2021-01-05T06:57:59.206Z">
+<meta property="article:modified_time" content="2021-01-05T14:18:55.646Z">
 <meta property="article:author" content="David Wang">
 <meta property="article:tag" content="notes">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://wby1905.github.io/2020/01/17/dl-tutorial-2/">
+<link rel="canonical" href="https://wby1905.github.io/2020/01/17/dl-tutorial/dl-tutorial-2/">
 
 
 <script data-pjax class="page-configurations">
@@ -141,7 +141,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
   </ul>
 </nav>
@@ -173,7 +173,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92logistic%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text"> 一、逻辑回归&#x2F;logistic回归模型的简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-logistic%E5%88%86%E5%B8%83"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 1. logistic分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BA%8C%E9%A1%B9%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.2.</span> <span class="nav-text"> 2. 二项逻辑回归模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="nav-number">1.0.3.</span> <span class="nav-text"> 3. 模型参数估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A4%9A%E9%A1%B9%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="nav-number">1.0.4.</span> <span class="nav-text"> 4. 多项逻辑回归</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%90%86%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text"> 二、逻辑回归的进一步理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E6%97%8F"><span class="nav-number">2.0.1.</span> <span class="nav-text"> 1. 指数分布族</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.0.2.</span> <span class="nav-text"> 2. 广义线性模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AF%B9%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3"><span class="nav-number">2.0.3.</span> <span class="nav-text"> 3. 对逻辑回归的深入理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%AF%B9%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%90%86%E8%A7%A3"><span class="nav-number">2.0.4.</span> <span class="nav-text"> 4. 对线性回归模型的进一步理解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text"> 三、最大熵模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9C%80%E5%A4%A7%E7%86%B5%E6%80%9D%E6%83%B3"><span class="nav-number">3.0.1.</span> <span class="nav-text"> 1. 最大熵思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.0.2.</span> <span class="nav-text"> 2. 最大熵模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%B8%8E%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.0.3.</span> <span class="nav-text"> 4. 与逻辑回归的关系</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92logistic%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-text"> 一、逻辑回归&#x2F;logistic回归模型的简单介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-logistic%E5%88%86%E5%B8%83"><span class="nav-text"> 1. logistic分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BA%8C%E9%A1%B9%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="nav-text"> 2. 二项逻辑回归模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1"><span class="nav-text"> 3. 模型参数估计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%A4%9A%E9%A1%B9%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="nav-text"> 4. 多项逻辑回归</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%90%86%E8%A7%A3"><span class="nav-text"> 二、逻辑回归的进一步理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%8C%87%E6%95%B0%E5%88%86%E5%B8%83%E6%97%8F"><span class="nav-text"> 1. 指数分布族</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B9%BF%E4%B9%89%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B"><span class="nav-text"> 2. 广义线性模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AF%B9%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3"><span class="nav-text"> 3. 对逻辑回归的深入理解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%AF%B9%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%90%86%E8%A7%A3"><span class="nav-text"> 4. 对线性回归模型的进一步理解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B"><span class="nav-text"> 三、最大熵模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9C%80%E5%A4%A7%E7%86%B5%E6%80%9D%E6%83%B3"><span class="nav-text"> 1. 最大熵思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E6%9C%80%E5%A4%A7%E7%86%B5%E6%A8%A1%E5%9E%8B"><span class="nav-text"> 2. 最大熵模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E4%B8%8E%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text"> 4. 与逻辑回归的关系</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -189,7 +189,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -256,7 +256,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/17/dl-tutorial-2/">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/17/dl-tutorial/dl-tutorial-2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
@@ -287,7 +287,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-05 14:57:59" itemprop="dateModified" datetime="2021-01-05T14:57:59+08:00">2021-01-05</time>
+        <time title="修改时间：2021-01-05 22:18:55" itemprop="dateModified" datetime="2021-01-05T22:18:55+08:00">2021-01-05</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -314,14 +314,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.1k</span>
+      <span>7.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
+      <span>7 分钟</span>
     </span>
 </div>
 
@@ -370,7 +370,10 @@
 <h2 id="二-逻辑回归的进一步理解"><a class="markdownIt-Anchor" href="#二-逻辑回归的进一步理解"></a> 二、逻辑回归的进一步理解</h2>
 <p>逻辑回归和线性回归本质上是广义线性模型，下面我们从指数分布族开始介绍。</p>
 <h4 id="1-指数分布族"><a class="markdownIt-Anchor" href="#1-指数分布族"></a> 1. 指数分布族</h4>
-<p>概率密度函数满足或能转化为$$P(y; \eta)=b(y)\exp(\eta T(y)-a(\eta))$$ 称为指数分布族。</p>
+<p>概率密度函数满足或能转化为</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>y</mi><mo separator="true">;</mo><mi>η</mi><mo stretchy="false">)</mo><mo>=</mo><mi>b</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>η</mi><mi>T</mi><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo>−</mo><mi>a</mi><mo stretchy="false">(</mo><mi>η</mi><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(y; \eta)=b(y)\exp(\eta T(y)-a(\eta)) 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mpunct">;</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">a</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></p>
+<p>称为指数分布族。</p>
 <p>其中：</p>
 <ul>
 <li>y:  y可以是标量或者是向量；既可以是离散值也可以是连续值</li>
@@ -524,7 +527,7 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wby1905.github.io/2020/01/17/dl-tutorial-2/" title="逻辑回归&#x2F;logistic回归、广义线性模型与最大熵模型">https://wby1905.github.io/2020/01/17/dl-tutorial-2/</a>
+      <a href="https://wby1905.github.io/2020/01/17/dl-tutorial/dl-tutorial-2/" title="逻辑回归&#x2F;logistic回归、广义线性模型与最大熵模型">https://wby1905.github.io/2020/01/17/dl-tutorial/dl-tutorial-2/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -540,13 +543,13 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/01/16/dl-tutorial-1/" rel="prev" title="机器学习基本概念、统计学基本概念简单介绍">
+                <a href="/2020/01/16/dl-tutorial/dl-tutorial-1/" rel="prev" title="机器学习基本概念、统计学基本概念简单介绍">
                   <i class="fa fa-chevron-left"></i> 机器学习基本概念、统计学基本概念简单介绍
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/12/24/hexo_bugs/" rel="next" title="Hexo 部署博客时踩过的各种坑">
-                  Hexo 部署博客时踩过的各种坑 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/01/26/dl-tutorial/dl-tutorial-3/" rel="next" title="支持向量机以及核方法">
+                  支持向量机以及核方法 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -606,13 +609,13 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">22k</span>
+    <span title="站点总字数">101k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20 分钟</span>
+    <span title="站点阅读时长">1:32</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -713,44 +716,16 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'all'
-      },
-      options: {
-        renderActions: {
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              const target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    const script = document.createElement('script');
-    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
-    script.defer = true;
-    document.head.appendChild(script);
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.typesetClear();
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+  <script src="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.css">
 
 
 
 <script>
 NexT.utils.loadComments('#lv-container', () => {
   window.livereOptions = {
-    refer: "2020/01/17/dl-tutorial-2/"
+    refer: "2020/01/17/dl-tutorial/dl-tutorial-2/"
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];

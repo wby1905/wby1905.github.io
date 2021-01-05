@@ -30,20 +30,20 @@
 <meta name="description" content="以下内容由我的CSDN博客迁移。 正值假期，决定恶补机器学习、深度学习及相关领域（顺便开个博客）。首先学习一下数学基础以及数值计算的方法（主要参考《深度学习》）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器学习数学基础以及数值计算数值优化方法">
-<meta property="og:url" content="https://wby1905.github.io/2020/01/14/dl-tutorial-0/index.html">
+<meta property="og:url" content="https://wby1905.github.io/2020/01/14/dl-tutorial/dl-tutorial-0/index.html">
 <meta property="og:site_name" content="清风如歌，与君同梦">
 <meta property="og:description" content="以下内容由我的CSDN博客迁移。 正值假期，决定恶补机器学习、深度学习及相关领域（顺便开个博客）。首先学习一下数学基础以及数值计算的方法（主要参考《深度学习》）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2020011400155645.png#pic_center">
 <meta property="article:published_time" content="2020-01-14T13:31:43.000Z">
-<meta property="article:modified_time" content="2021-01-05T07:07:33.172Z">
+<meta property="article:modified_time" content="2021-01-05T14:18:54.164Z">
 <meta property="article:author" content="David Wang">
 <meta property="article:tag" content="notes">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020011400155645.png#pic_center">
 
 
-<link rel="canonical" href="https://wby1905.github.io/2020/01/14/dl-tutorial-0/">
+<link rel="canonical" href="https://wby1905.github.io/2020/01/14/dl-tutorial/dl-tutorial-0/">
 
 
 <script data-pjax class="page-configurations">
@@ -143,7 +143,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
   </ul>
 </nav>
@@ -175,7 +175,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text"> 一、数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text"> 1.线性代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="nav-number">1.2.</span> <span class="nav-text"> 2.概率论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E4%BF%A1%E6%81%AF%E8%AE%BA"><span class="nav-number">1.3.</span> <span class="nav-text"> 3.信息论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-number">2.</span> <span class="nav-text"> 二、数值计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%BA%A2%E5%87%BA"><span class="nav-number">2.1.</span> <span class="nav-text"> 1. 溢出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%97%85%E6%80%81%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text"> 2. 病态条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text"> 3. 基于梯度的优化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4jacobian%E5%92%8Chessian%E7%9F%A9%E9%98%B5"><span class="nav-number">2.4.</span> <span class="nav-text"> 4.Jacobian和Hessian矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96"><span class="nav-number">2.5.</span> <span class="nav-text"> 5. 约束优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 6. 拉格朗日对偶性</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="nav-text"> 一、数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-text"> 1.线性代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="nav-text"> 2.概率论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E4%BF%A1%E6%81%AF%E8%AE%BA"><span class="nav-text"> 3.信息论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-text"> 二、数值计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%BA%A2%E5%87%BA"><span class="nav-text"> 1. 溢出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%97%85%E6%80%81%E6%9D%A1%E4%BB%B6"><span class="nav-text"> 2. 病态条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-text"> 3. 基于梯度的优化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4jacobian%E5%92%8Chessian%E7%9F%A9%E9%98%B5"><span class="nav-text"> 4.Jacobian和Hessian矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96"><span class="nav-text"> 5. 约束优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7"><span class="nav-text"> 6. 拉格朗日对偶性</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,7 +191,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -258,7 +258,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/14/dl-tutorial-0/">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/14/dl-tutorial/dl-tutorial-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
@@ -289,7 +289,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-05 15:07:33" itemprop="dateModified" datetime="2021-01-05T15:07:33+08:00">2021-01-05</time>
+        <time title="修改时间：2021-01-05 22:18:54" itemprop="dateModified" datetime="2021-01-05T22:18:54+08:00">2021-01-05</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -625,7 +625,7 @@ eg(组件的分布取决于一个范畴分布）:</p>
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wby1905.github.io/2020/01/14/dl-tutorial-0/" title="机器学习数学基础以及数值计算数值优化方法">https://wby1905.github.io/2020/01/14/dl-tutorial-0/</a>
+      <a href="https://wby1905.github.io/2020/01/14/dl-tutorial/dl-tutorial-0/" title="机器学习数学基础以及数值计算数值优化方法">https://wby1905.github.io/2020/01/14/dl-tutorial/dl-tutorial-0/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -643,7 +643,7 @@ eg(组件的分布取决于一个范畴分布）:</p>
             <div class="post-nav-item">
             </div>
             <div class="post-nav-item">
-                <a href="/2020/01/16/dl-tutorial-1/" rel="next" title="机器学习基本概念、统计学基本概念简单介绍">
+                <a href="/2020/01/16/dl-tutorial/dl-tutorial-1/" rel="next" title="机器学习基本概念、统计学基本概念简单介绍">
                   机器学习基本概念、统计学基本概念简单介绍 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -704,13 +704,13 @@ eg(组件的分布取决于一个范畴分布）:</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">22k</span>
+    <span title="站点总字数">101k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20 分钟</span>
+    <span title="站点阅读时长">1:32</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -811,44 +811,16 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'all'
-      },
-      options: {
-        renderActions: {
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              const target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    const script = document.createElement('script');
-    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
-    script.defer = true;
-    document.head.appendChild(script);
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.typesetClear();
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+  <script src="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.css">
 
 
 
 <script>
 NexT.utils.loadComments('#lv-container', () => {
   window.livereOptions = {
-    refer: "2020/01/14/dl-tutorial-0/"
+    refer: "2020/01/14/dl-tutorial/dl-tutorial-0/"
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];

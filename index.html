@@ -136,7 +136,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
   </ul>
 </nav>
@@ -183,7 +183,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -272,10 +272,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-12-24 22:34:37 / 修改时间：22:59:27" itemprop="dateCreated datePublished" datetime="2020-12-24T22:34:37+08:00">2020-12-24</time>
+      <time title="创建时间：2020-12-24 22:34:37" itemprop="dateCreated datePublished" datetime="2020-12-24T22:34:37+08:00">2020-12-24</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-05 22:02:52" itemprop="dateModified" datetime="2021-01-05T22:02:52+08:00">2021-01-05</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -294,7 +300,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>277</span>
+      <span>898</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -346,7 +352,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/17/dl-tutorial-2/">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/02/25/dl-tutorial/dl-tutorial-11/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
@@ -359,7 +365,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/01/17/dl-tutorial-2/" class="post-title-link" itemprop="url">逻辑回归/logistic回归、广义线性模型与最大熵模型</a>
+          <a href="/2020/02/25/dl-tutorial/dl-tutorial-11/" class="post-title-link" itemprop="url">GAN的综述（2020.3）</a>
         </h2>
 
         <div class="post-meta-container">
@@ -370,14 +376,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2020-01-17 20:59:19" itemprop="dateCreated datePublished" datetime="2020-01-17T20:59:19+08:00">2020-01-17</time>
+      <time title="创建时间：2020-02-25 19:58:00" itemprop="dateCreated datePublished" datetime="2020-02-25T19:58:00+08:00">2020-02-25</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-05 14:57:59" itemprop="dateModified" datetime="2021-01-05T14:57:59+08:00">2021-01-05</time>
+        <time title="修改时间：2021-01-05 22:56:00" itemprop="dateModified" datetime="2021-01-05T22:56:00+08:00">2021-01-05</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -397,14 +403,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>7.1k</span>
+      <span>15k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
+      <span>14 分钟</span>
     </span>
 </div>
 
@@ -415,11 +421,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/103980807">CSDN博客</a>迁移。</p>
-<p>在学习深度学习之前，再学习一下基本的机器学习算法。首先从logistic回归开始，再说一说sigmoid的推导等。</p>
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104415994">CSDN博客</a>迁移。</p>
+<p>上一节我们学习了 GAN 的基本概念, 这一节我们将过去几年的 GAN 经典算法思想都介绍一下。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/01/17/dl-tutorial-2/#more" rel="contents">
+              <a class="btn" href="/2020/02/25/dl-tutorial/dl-tutorial-11/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -450,7 +456,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/16/dl-tutorial-1/">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/02/13/dl-tutorial/dl-tutorial-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
@@ -463,7 +469,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/01/16/dl-tutorial-1/" class="post-title-link" itemprop="url">机器学习基本概念、统计学基本概念简单介绍</a>
+          <a href="/2020/02/13/dl-tutorial/dl-tutorial-10/" class="post-title-link" itemprop="url">GAN的基本概念</a>
         </h2>
 
         <div class="post-meta-container">
@@ -474,14 +480,222 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2020-01-16 00:34:07" itemprop="dateCreated datePublished" datetime="2020-01-16T00:34:07+08:00">2020-01-16</time>
+      <time title="创建时间：2020-02-13 18:42:20" itemprop="dateCreated datePublished" datetime="2020-02-13T18:42:20+08:00">2020-02-13</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-05 15:04:54" itemprop="dateModified" datetime="2021-01-05T15:04:54+08:00">2021-01-05</time>
+        <time title="修改时间：2021-01-05 22:41:15" itemprop="dateModified" datetime="2021-01-05T22:41:15+08:00">2021-01-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/" itemprop="url" rel="index"><span itemprop="name">深度学习/DL</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104184329">CSDN博客</a>迁移。</p>
+<p>之前学习了基本的深度学习与神经网络模型，让我们开始学习一些进阶的东西。个人对于生成对抗网络很感兴趣，就学习它吧。（主要参考李宏毅的GAN教程，以及其他一些博客）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/13/dl-tutorial/dl-tutorial-10/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/02/07/dl-tutorial/dl-tutorial-9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清风如歌，与君同梦">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/07/dl-tutorial/dl-tutorial-9/" class="post-title-link" itemprop="url">循环神经网络</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-07 20:54:41" itemprop="dateCreated datePublished" datetime="2020-02-07T20:54:41+08:00">2020-02-07</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-05 22:59:00" itemprop="dateModified" datetime="2021-01-05T22:59:00+08:00">2021-01-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/" itemprop="url" rel="index"><span itemprop="name">深度学习/DL</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104184329">CSDN博客</a>迁移。</p>
+<p>为了处理一维序列数据，我们转向神经网络框架中另一强大的特化，循环神经网络。（主要参考《深度学习》和cousera上吴恩达的课程）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/07/dl-tutorial/dl-tutorial-9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/02/04/dl-tutorial/dl-tutorial-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清风如歌，与君同梦">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/04/dl-tutorial/dl-tutorial-8/" class="post-title-link" itemprop="url">卷积网络</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-04 16:20:07" itemprop="dateCreated datePublished" datetime="2020-02-04T16:20:07+08:00">2020-02-04</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-05 22:24:17" itemprop="dateModified" datetime="2021-01-05T22:24:17+08:00">2021-01-05</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -519,11 +733,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/103980807">CSDN博客</a>迁移。<br />
-这里主要介绍一下机器学习基本概念、统计学基本概念（参考《统计学习方法》，《深度学习》等）</p>
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104132012">CSDN博客</a>迁移。</p>
+<p>学习了基本的神经网络结构，以及如何进行正则化和优化之后，我们接下来转向特化的神经网络家族，允许其扩展到能够处理很大规模的数据和具有特殊结构的数据。（主要参考《深度学习》和cousera上吴恩达的课程）</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/01/16/dl-tutorial-1/#more" rel="contents">
+              <a class="btn" href="/2020/02/04/dl-tutorial/dl-tutorial-8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -554,7 +768,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/14/dl-tutorial-0/">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/02/03/dl-tutorial/dl-tutorial-7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
@@ -567,7 +781,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/01/14/dl-tutorial-0/" class="post-title-link" itemprop="url">机器学习数学基础以及数值计算数值优化方法</a>
+          <a href="/2020/02/03/dl-tutorial/dl-tutorial-7/" class="post-title-link" itemprop="url">深度模型中的优化</a>
         </h2>
 
         <div class="post-meta-container">
@@ -578,14 +792,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2020-01-14 21:31:43" itemprop="dateCreated datePublished" datetime="2020-01-14T21:31:43+08:00">2020-01-14</time>
+      <time title="创建时间：2020-02-03 10:25:18" itemprop="dateCreated datePublished" datetime="2020-02-03T10:25:18+08:00">2020-02-03</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-05 15:07:33" itemprop="dateModified" datetime="2021-01-05T15:07:33+08:00">2021-01-05</time>
+        <time title="修改时间：2021-01-05 22:18:56" itemprop="dateModified" datetime="2021-01-05T22:18:56+08:00">2021-01-05</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -605,14 +819,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>8.9k</span>
+      <span>12k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span>11 分钟</span>
     </span>
 </div>
 
@@ -623,11 +837,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/103957470">CSDN博客</a>迁移。</p>
-<p>正值假期，决定恶补机器学习、深度学习及相关领域（顺便开个博客）。首先学习一下数学基础以及数值计算的方法（主要参考《深度学习》）</p>
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104132012">CSDN博客</a>迁移。</p>
+<p>介绍了神经网络的基本构件和正则化策略之后，学习一下深度模型中的优化。先说一说传统的纯优化与机器学习中的优化的异同，再介绍一下神经网络中优化的挑战，最后说说基本的优化算法。（参考《深度学习》第8章）</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2020/01/14/dl-tutorial-0/#more" rel="contents">
+              <a class="btn" href="/2020/02/03/dl-tutorial/dl-tutorial-7/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -650,6 +864,425 @@
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/02/01/dl-tutorial/dl-tutorial-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清风如歌，与君同梦">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/01/dl-tutorial/dl-tutorial-6/" class="post-title-link" itemprop="url">深度学习中的正则化</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-01 10:59:27" itemprop="dateCreated datePublished" datetime="2020-02-01T10:59:27+08:00">2020-02-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-05 22:18:56" itemprop="dateModified" datetime="2021-01-05T22:18:56+08:00">2021-01-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/" itemprop="url" rel="index"><span itemprop="name">深度学习/DL</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104106476">CSDN博客</a>迁移。</p>
+<p>上一节我们说了神经网络设计的基本组件和过程，下面我们再学习一下正则化策略。(主要参考《深度学习》)</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/01/dl-tutorial/dl-tutorial-6/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/29/dl-tutorial/dl-tutorial-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清风如歌，与君同梦">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/01/29/dl-tutorial/dl-tutorial-5/" class="post-title-link" itemprop="url">深度前馈网络、神经网络概述</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-29 00:51:18" itemprop="dateCreated datePublished" datetime="2020-01-29T00:51:18+08:00">2020-01-29</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-05 22:18:56" itemprop="dateModified" datetime="2021-01-05T22:18:56+08:00">2021-01-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/" itemprop="url" rel="index"><span itemprop="name">深度学习/DL</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>9 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104089701">CSDN博客</a>迁移。</p>
+<p>让我们学习一下深度学习最基本的深度前馈网络（主要参考《深度学习》）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/29/dl-tutorial/dl-tutorial-5/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/26/dl-tutorial/dl-tutorial-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清风如歌，与君同梦">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/01/26/dl-tutorial/dl-tutorial-4/" class="post-title-link" itemprop="url">从传统机器学习走向深度学习</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-26 17:48:53" itemprop="dateCreated datePublished" datetime="2020-01-26T17:48:53+08:00">2020-01-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-05 22:18:56" itemprop="dateModified" datetime="2021-01-05T22:18:56+08:00">2021-01-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/" itemprop="url" rel="index"><span itemprop="name">深度学习/DL</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104086723">CSDN博客</a>迁移。</p>
+<p>前面介绍了有关机器学习的基本概念和经典算法，现在让我们了解一下为什么深度学习会崛起。（主要参考《深度学习》）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/26/dl-tutorial/dl-tutorial-4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2020/01/26/dl-tutorial/dl-tutorial-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清风如歌，与君同梦">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/01/26/dl-tutorial/dl-tutorial-3/" class="post-title-link" itemprop="url">支持向量机以及核方法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-26 00:42:03" itemprop="dateCreated datePublished" datetime="2020-01-26T00:42:03+08:00">2020-01-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-05 22:18:55" itemprop="dateModified" datetime="2021-01-05T22:18:55+08:00">2021-01-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/" itemprop="url" rel="index"><span itemprop="name">深度学习/DL</span></a>
+        </span>
+    </span>
+
+  
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>13k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>12 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以下内容由我的<a target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104057587">CSDN博客</a>迁移。</p>
+<p>有关支持向量机的理解在网上已经有很多了，我在这里写一下我的学习笔记。（主要参考《统计学习方法》以及部分博客）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/01/26/dl-tutorial/dl-tutorial-3/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 <script>
@@ -693,13 +1326,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">22k</span>
+    <span title="站点总字数">101k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">20 分钟</span>
+    <span title="站点阅读时长">1:32</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -800,37 +1433,9 @@ document.addEventListener('pjax:success', () => {
 
     <div class="pjax">
 
-  <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'all'
-      },
-      options: {
-        renderActions: {
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              const target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    const script = document.createElement('script');
-    script.src = '//cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-mml-chtml.js';
-    script.defer = true;
-    document.head.appendChild(script);
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.typesetClear();
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+  <script src="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.css">
 
 
 
