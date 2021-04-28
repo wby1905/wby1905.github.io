@@ -27,16 +27,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="David Wang">
-<meta property="og:url" content="https://wby1905.github.io/archives/2020/index.html">
+<meta name="description" content="如果 Unity 启动过程中提示有compilation errors 进入安全模式，查看控制台报错 ## 控制台报错没有错误信息： 查看Unity日志文件 位于 &quot;C:.log&quot; 搜索error 文件缺失： unity 打开项目Fatal error!显示无权访问d3dcompiler_47.dll https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_29245693&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity使用时遇到的问题">
+<meta property="og:url" content="https://wby1905.github.io/2021/04/28/Unity/Unity%E4%BD%BF%E7%94%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="David Wang">
+<meta property="og:description" content="如果 Unity 启动过程中提示有compilation errors 进入安全模式，查看控制台报错 ## 控制台报错没有错误信息： 查看Unity日志文件 位于 &quot;C:.log&quot; 搜索error 文件缺失： unity 打开项目Fatal error!显示无权访问d3dcompiler_47.dll https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_29245693&#x2F;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-28T05:36:27.000Z">
+<meta property="article:modified_time" content="2021-04-28T05:48:21.518Z">
 <meta property="article:author" content="David Wang">
+<meta property="article:tag" content="Issue">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://wby1905.github.io/archives/2020/">
+<link rel="canonical" href="https://wby1905.github.io/2021/04/28/Unity/Unity%E4%BD%BF%E7%94%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
 
 
 <script data-pjax class="page-configurations">
@@ -44,11 +49,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>归档 | David Wang</title>
+<title>Unity使用时遇到的问题 | David Wang</title>
   
 
 
@@ -155,7 +160,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -168,6 +173,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C-unity-%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%8F%90%E7%A4%BA%E6%9C%89compilation-errors"><span class="nav-text">如果 Unity 启动过程中提示有compilation errors</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%BC%BA%E5%A4%B1"><span class="nav-text">文件缺失：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unity-%E6%89%93%E5%BC%80%E9%A1%B9%E7%9B%AEfatal-error%E6%98%BE%E7%A4%BA%E6%97%A0%E6%9D%83%E8%AE%BF%E9%97%AEd3dcompiler_47.dll"><span class="nav-text">unity 打开项目Fatal error!显示无权访问d3dcompiler_47.dll</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E9%94%99%E8%AF%AF"><span class="nav-text">编译错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unity-%E6%8F%90%E7%A4%BAthe-script-dont-inherit-a-native-class-that-can-manage-a-script-%E6%88%96-no-monobehaviour-scripts-in-the-file-or-their-names-dont-match-the-file-name"><span class="nav-text">unity 提示The script don‘t inherit a native class that can manage a script 或 no Monobehaviour scripts in the file, or their names don&#39;t match the file name</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -239,233 +245,151 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 14 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2021/04/28/Unity/Unity%E4%BD%BF%E7%94%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="David Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Unity使用时遇到的问题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+
+      <time title="创建时间：2021-04-28 13:36:27 / 修改时间：13:48:21" itemprop="dateCreated datePublished" datetime="2021-04-28T13:36:27+08:00">2021-04-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>524</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="如果-unity-启动过程中提示有compilation-errors">如果 Unity 启动过程中提示有compilation errors</h1>
+<p>进入安全模式，查看控制台报错 ## 控制台报错没有错误信息： 查看Unity日志文件 位于 &quot;C:.log&quot; 搜索error</p>
+<h1 id="文件缺失">文件缺失：</h1>
+<h2 id="unity-打开项目fatal-error显示无权访问d3dcompiler_47.dll">unity 打开项目Fatal error!显示无权访问d3dcompiler_47.dll</h2>
+<p>https://blog.csdn.net/qq_29245693/article/details/115576107 下载对应dll文件放在System32对应文件夹中</p>
+<h1 id="编译错误">编译错误</h1>
+<h2 id="unity-提示the-script-dont-inherit-a-native-class-that-can-manage-a-script-或-no-monobehaviour-scripts-in-the-file-or-their-names-dont-match-the-file-name">unity 提示The script don‘t inherit a native class that can manage a script 或 no Monobehaviour scripts in the file, or their names don't match the file name</h2>
+<p><strong>注意c#和java一样public类的名字需要和文件名相同</strong>。</p>
+<p>另外注意需要基于 Unity 已有类实现否则 Unity 编译不出来</p>
+<p>最后命名空间不要引入 Unity 无法识别的空间。这时会报 &gt; unity 3D error CS0234: The type or namespace name `***' does not exist in the namespace</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-12-24T22:34:37+08:00"
-              content="2020-12-24">
-          12-24
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/24/hexo_bugs/" itemprop="url">
-            <span itemprop="name">Hexo 部署博客时踩过的各种坑</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          
 
-      
-    </header>
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>David Wang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wby1905.github.io/2021/04/28/Unity/Unity%E4%BD%BF%E7%94%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" title="Unity使用时遇到的问题">https://wby1905.github.io/2021/04/28/Unity/Unity使用时遇到的问题/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Issue/" rel="tag"><i class="fa fa-tag"></i> Issue</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/12/24/hexo_bugs/" rel="prev" title="Hexo 部署博客时踩过的各种坑">
+                  <i class="fa fa-chevron-left"></i> Hexo 部署博客时踩过的各种坑
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-02-25T19:58:00+08:00"
-              content="2020-02-25">
-          02-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/02/25/dl-tutorial/dl-tutorial-11/" itemprop="url">
-            <span itemprop="name">GAN的综述（2020.3）</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-02-13T18:42:20+08:00"
-              content="2020-02-13">
-          02-13
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/02/13/dl-tutorial/dl-tutorial-10/" itemprop="url">
-            <span itemprop="name">GAN的基本概念</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-02-07T20:54:41+08:00"
-              content="2020-02-07">
-          02-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/02/07/dl-tutorial/dl-tutorial-9/" itemprop="url">
-            <span itemprop="name">循环神经网络</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-02-04T16:20:07+08:00"
-              content="2020-02-04">
-          02-04
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/02/04/dl-tutorial/dl-tutorial-8/" itemprop="url">
-            <span itemprop="name">卷积网络</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-02-03T10:25:18+08:00"
-              content="2020-02-03">
-          02-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/02/03/dl-tutorial/dl-tutorial-7/" itemprop="url">
-            <span itemprop="name">深度模型中的优化</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-02-01T10:59:27+08:00"
-              content="2020-02-01">
-          02-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/02/01/dl-tutorial/dl-tutorial-6/" itemprop="url">
-            <span itemprop="name">深度学习中的正则化</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-01-29T00:51:18+08:00"
-              content="2020-01-29">
-          01-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/01/29/dl-tutorial/dl-tutorial-5/" itemprop="url">
-            <span itemprop="name">深度前馈网络、神经网络概述</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-01-26T17:48:53+08:00"
-              content="2020-01-26">
-          01-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/01/26/dl-tutorial/dl-tutorial-4/" itemprop="url">
-            <span itemprop="name">从传统机器学习走向深度学习</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-01-26T00:42:03+08:00"
-              content="2020-01-26">
-          01-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/01/26/dl-tutorial/dl-tutorial-3/" itemprop="url">
-            <span itemprop="name">支持向量机以及核方法</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
+
+
+
+
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MjI2OS8yODc0OA"></div>
   </div>
   
-  
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
-
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -621,6 +545,21 @@ document.addEventListener('pjax:success', () => {
 
 
 
+<script>
+NexT.utils.loadComments('#lv-container', () => {
+  window.livereOptions = {
+    refer: "2021/04/28/Unity/Unity使用时遇到的问题/"
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
     </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body>
