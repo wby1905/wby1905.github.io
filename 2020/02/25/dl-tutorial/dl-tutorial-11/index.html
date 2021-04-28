@@ -27,12 +27,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="以下内容由我的CSDN博客迁移。 上一节我们学习了 GAN 的基本概念, 这一节我们将过去几年的 GAN 经典算法思想都介绍一下。">
+<meta name="description" content="以下内容由我的CSDN博客迁移。 上一节我们学习了 GAN 的基本概念, 这一节我们将过去几年的 GAN 经典算法思想都介绍一下。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GAN的综述（2020.3）">
 <meta property="og:url" content="https://wby1905.github.io/2020/02/25/dl-tutorial/dl-tutorial-11/index.html">
 <meta property="og:site_name" content="清风如歌，与君同梦">
-<meta property="og:description" content="以下内容由我的CSDN博客迁移。 上一节我们学习了 GAN 的基本概念, 这一节我们将过去几年的 GAN 经典算法思想都介绍一下。">
+<meta property="og:description" content="以下内容由我的CSDN博客迁移。 上一节我们学习了 GAN 的基本概念, 这一节我们将过去几年的 GAN 经典算法思想都介绍一下。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200221001047632.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200221002914690.png">
@@ -115,9 +115,9 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200224231832871.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200224234343656.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
 <meta property="article:published_time" content="2020-02-25T11:58:00.000Z">
-<meta property="article:modified_time" content="2021-01-05T14:56:00.374Z">
+<meta property="article:modified_time" content="2021-04-28T05:25:21.406Z">
 <meta property="article:author" content="David Wang">
-<meta property="article:tag" content="notes">
+<meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200221001047632.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
 
@@ -220,8 +220,8 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">3</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a></li>
         <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a></li>
         <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
   </ul>
@@ -254,7 +254,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-gan%E7%9A%84%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%87%8A"><span class="nav-text"> 一、GAN的数学解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-fgan"><span class="nav-text"> 二、 fGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-conditional-gan"><span class="nav-text"> 三、Conditional GAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-infogan"><span class="nav-text"> 四、infoGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94-%E6%97%A0%E7%9B%91%E7%9D%A3-gan"><span class="nav-text"> 五、无监督 GAN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E8%BD%AC%E6%8D%A2"><span class="nav-text"> 直接转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E6%98%A0%E5%B0%84"><span class="nav-text"> 重映射</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD-wgan"><span class="nav-text"> 六、WGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83-wgan"><span class="nav-text"> 七、WGAN++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB-%E7%94%9F%E6%88%90%E6%A0%B7%E6%9C%AC%E7%9A%84%E8%AF%84%E4%BC%B0"><span class="nav-text"> 八、生成样本的评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D-%E6%9B%B4%E5%A4%A7%E6%9B%B4%E5%A5%BD-stylegan"><span class="nav-text"> 九、更大，更好—— StyleGAN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%98%A0%E5%B0%84%E7%BD%91%E7%BB%9C"><span class="nav-text"> 1. 映射网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-adainadaptive-instance-normalization"><span class="nav-text"> 2. AdaIN（Adaptive Instance Normalization）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%88%A0%E9%99%A4%E4%BC%A0%E7%BB%9F%E8%BE%93%E5%85%A5"><span class="nav-text"> 3. 删除传统输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E9%9A%8F%E6%9C%BA%E5%8F%98%E5%8C%96"><span class="nav-text"> 4. 随机变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-style-mixing"><span class="nav-text"> 5. Style Mixing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81-%E5%9B%BE%E5%83%8F%E7%BF%BB%E8%AF%91gauganspade"><span class="nav-text"> 十、图像翻译——GauGAN（SPADE）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80-%E5%8D%95%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0-singan"><span class="nav-text"> 十一、单样本学习—— SinGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C-gan-%E7%9A%84%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="nav-text"> 十二、GAN 的下一步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-gan-%E6%98%AF%E5%90%A6%E4%BC%9A%E8%A2%AB%E5%8F%96%E4%BB%A3"><span class="nav-text"> 1. GAN 是否会被取代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-gan-%E7%BB%99%E6%8C%87%E5%AE%9A%E5%88%86%E5%B8%83%E5%BB%BA%E6%A8%A1%E6%9C%89%E5%A4%9A%E9%9A%BE"><span class="nav-text"> 2. GAN 给指定分布建模有多难</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-gan%E5%8F%AA%E8%83%BD%E5%90%88%E6%88%90%E5%9B%BE%E5%83%8F%E5%90%97"><span class="nav-text"> 3. GAN只能合成图像吗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-gan-%E7%9A%84%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98"><span class="nav-text"> 4. GAN 的收敛问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-gan-%E7%9A%84%E8%AF%84%E4%BC%B0%E9%97%AE%E9%A2%98"><span class="nav-text"> 5. GAN 的评估问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-gan-%E7%9A%84%E8%AE%AD%E7%BB%83%E5%A6%82%E4%BD%95%E6%8C%89%E6%89%B9%E7%9A%84%E5%A4%A7%E5%B0%8F%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%B1%95"><span class="nav-text"> 6. GAN 的训练如何按批的大小进行扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E5%88%A4%E5%88%AB%E5%99%A8%E7%9A%84%E5%AF%B9%E6%8A%97%E9%B2%81%E6%A3%92%E6%80%A7%E4%BC%9A%E6%80%8E%E6%A0%B7%E5%BD%B1%E5%93%8D-gan-%E7%9A%84%E8%AE%AD%E7%BB%83"><span class="nav-text"> 7. 判别器的对抗鲁棒性会怎样影响 GAN 的训练。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E5%8F%8A%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB"><span class="nav-text"> 参考文献及推荐阅读</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80gan%E7%9A%84%E6%95%B0%E5%AD%A6%E8%A7%A3%E9%87%8A"><span class="nav-text">一、GAN的数学解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-fgan"><span class="nav-text">二、 fGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89conditional-gan"><span class="nav-text">三、Conditional GAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9Binfogan"><span class="nav-text">四、infoGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E6%97%A0%E7%9B%91%E7%9D%A3-gan"><span class="nav-text">五、无监督 GAN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E8%BD%AC%E6%8D%A2"><span class="nav-text">直接转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%87%8D%E6%98%A0%E5%B0%84"><span class="nav-text">重映射</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%ADwgan"><span class="nav-text">六、WGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83wgan"><span class="nav-text">七、WGAN++</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E7%94%9F%E6%88%90%E6%A0%B7%E6%9C%AC%E7%9A%84%E8%AF%84%E4%BC%B0"><span class="nav-text">八、生成样本的评估</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E6%9B%B4%E5%A4%A7%E6%9B%B4%E5%A5%BD-stylegan"><span class="nav-text">九、更大，更好—— StyleGAN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%A0%E5%B0%84%E7%BD%91%E7%BB%9C"><span class="nav-text">1. 映射网络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#adainadaptive-instance-normalization"><span class="nav-text">2. AdaIN（Adaptive Instance Normalization）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E4%BC%A0%E7%BB%9F%E8%BE%93%E5%85%A5"><span class="nav-text">3. 删除传统输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%8F%E6%9C%BA%E5%8F%98%E5%8C%96"><span class="nav-text">4. 随机变化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#style-mixing"><span class="nav-text">5. Style Mixing</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%BE%E5%83%8F%E7%BF%BB%E8%AF%91gauganspade"><span class="nav-text">十、图像翻译——GauGAN（SPADE）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E5%8D%95%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0-singan"><span class="nav-text">十一、单样本学习—— SinGAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8Cgan-%E7%9A%84%E4%B8%8B%E4%B8%80%E6%AD%A5"><span class="nav-text">十二、GAN 的下一步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gan-%E6%98%AF%E5%90%A6%E4%BC%9A%E8%A2%AB%E5%8F%96%E4%BB%A3"><span class="nav-text">1. GAN 是否会被取代</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gan-%E7%BB%99%E6%8C%87%E5%AE%9A%E5%88%86%E5%B8%83%E5%BB%BA%E6%A8%A1%E6%9C%89%E5%A4%9A%E9%9A%BE"><span class="nav-text">2. GAN 给指定分布建模有多难</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gan%E5%8F%AA%E8%83%BD%E5%90%88%E6%88%90%E5%9B%BE%E5%83%8F%E5%90%97"><span class="nav-text">3. GAN只能合成图像吗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gan-%E7%9A%84%E6%94%B6%E6%95%9B%E9%97%AE%E9%A2%98"><span class="nav-text">4. GAN 的收敛问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gan-%E7%9A%84%E8%AF%84%E4%BC%B0%E9%97%AE%E9%A2%98"><span class="nav-text">5. GAN 的评估问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gan-%E7%9A%84%E8%AE%AD%E7%BB%83%E5%A6%82%E4%BD%95%E6%8C%89%E6%89%B9%E7%9A%84%E5%A4%A7%E5%B0%8F%E8%BF%9B%E8%A1%8C%E6%89%A9%E5%B1%95"><span class="nav-text">6. GAN 的训练如何按批的大小进行扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E5%88%AB%E5%99%A8%E7%9A%84%E5%AF%B9%E6%8A%97%E9%B2%81%E6%A3%92%E6%80%A7%E4%BC%9A%E6%80%8E%E6%A0%B7%E5%BD%B1%E5%93%8D-gan-%E7%9A%84%E8%AE%AD%E7%BB%83"><span class="nav-text">7. 判别器的对抗鲁棒性会怎样影响 GAN 的训练。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E5%8F%8A%E6%8E%A8%E8%8D%90%E9%98%85%E8%AF%BB"><span class="nav-text">参考文献及推荐阅读</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -277,13 +277,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -368,7 +368,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-01-05 22:56:00" itemprop="dateModified" datetime="2021-01-05T22:56:00+08:00">2021-01-05</time>
+        <time title="修改时间：2021-04-28 13:25:21" itemprop="dateModified" datetime="2021-04-28T13:25:21+08:00">2021-04-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -376,7 +376,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-DL/" itemprop="url" rel="index"><span itemprop="name">深度学习/DL</span></a>
+          <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
     </span>
 
@@ -395,14 +395,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>15k</span>
+      <span>14k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>14 分钟</span>
+      <span>13 分钟</span>
     </span>
 </div>
 
@@ -414,189 +414,169 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>以下内容由我的<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDUvYXJ0aWNsZS9kZXRhaWxzLzEwNDQxNTk5NA==">CSDN博客<i class="fa fa-external-link-alt"></i></span>迁移。</p>
-<p>上一节我们学习了 GAN 的基本概念, 这一节我们将过去几年的 GAN 经典算法思想都介绍一下。</p>
-<a id="more"></a>
-<h2 id="一-gan的数学解释"><a class="markdownIt-Anchor" href="#一-gan的数学解释"></a> 一、GAN的数学解释</h2>
-<p>上一节我们学习了 GAN  的基本算法，现在让我们看看 GAN 背后的数学思想。</p>
+<p>上一节我们学习了 GAN 的基本概念, 这一节我们将过去几年的 GAN 经典算法思想都介绍一下。 <a id="more"></a></p>
+<h2 id="一gan的数学解释">一、GAN的数学解释</h2>
+<p>上一节我们学习了 GAN 的基本算法，现在让我们看看 GAN 背后的数学思想。</p>
 <ul>
 <li><strong>生成器</strong></li>
 </ul>
-<p>生成器实际上产生了一个生成数据分布<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>G</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_G(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">G</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>。它的目标就是使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mi>G</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_G(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">G</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>d</mi><mi>a</mi><mi>t</mi><mi>a</mi></mrow></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P_{data}(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>之间的差距尽可能小。</p>
-<img src='https://img-blog.csdnimg.cn/20200221001047632.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400>
+<p>生成器实际上产生了一个生成数据分布<span class="math inline">\(P_G(x)\)</span>。它的目标就是使得<span class="math inline">\(P_G(x)\)</span>与<span class="math inline">\(P_{data}(x)\)</span>之间的差距尽可能小。</p>
+<p><img src='https://img-blog.csdnimg.cn/20200221001047632.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400></p>
 <ul>
 <li><strong>判别器</strong></li>
 </ul>
 <p>判别器可以产生一个分值，用来描述生成分布与真实分布之间的差异，此时这个分值由目标函数定义，例如最原始的 GAN 使用二类交叉熵损失来描述。我们的目标就是最大化这一差异。</p>
-<img src='https://img-blog.csdnimg.cn/20200221002914690.png' width=400>
-<p>事实上，这里的目标函数相当于衡量两个分布之间的<strong>JS散度</strong>。我们之前提到过有KL散度，也说了KL散度的不对称性，而JS散度就是两个相对的KL散度的平均。<br />
-数学证明如下：<br />
-首先我们解出判别器在生成器固定时的最大值。</p>
-<img src='https://img-blog.csdnimg.cn/20200221003424143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400>
-<img src='https://img-blog.csdnimg.cn/20200221003523159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400>
-<p>之后代入<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mo><mi>max</mi><mo>⁡</mo></mo><mi>D</mi></msub><mi>V</mi><mo stretchy="false">(</mo><mi>G</mi><mo separator="true">,</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\max_DV(G, D)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathdefault">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span>, 可以看到：</p>
-<img src='https://img-blog.csdnimg.cn/20200221003726394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400>
-得证。
-<p>由于我们最终目的是要使得生成分布与真实分布尽可能小，因此我们最终的优化问题为</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>G</mi><mo>∗</mo></msup><mo>=</mo><munder><mo><mi mathvariant="normal">arg min</mi><mo>⁡</mo></mo><mi>G</mi></munder><munder><mo><mi>max</mi><mo>⁡</mo></mo><mi>D</mi></munder><mi>V</mi><mo stretchy="false">(</mo><mi>G</mi><mo separator="true">,</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">G^*=\argmin_G\max_DV(G, D)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.738696em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.738696em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.688771em;vertical-align:-0.938771em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.66786em;"><span style="top:-2.161229em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">G</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop"><span class="mop"><span class="mord mathrm">a</span><span class="mord mathrm">r</span><span class="mord mathrm" style="margin-right:0.01389em;">g</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathrm">m</span><span class="mord mathrm">i</span><span class="mord mathrm">n</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.938771em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.43055999999999983em;"><span style="top:-2.055669em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">D</span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.7443310000000001em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathdefault">G</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></span></p>
+<p><img src='https://img-blog.csdnimg.cn/20200221002914690.png' width=400></p>
+<p>事实上，这里的目标函数相当于衡量两个分布之间的<strong>JS散度</strong>。我们之前提到过有KL散度，也说了KL散度的不对称性，而JS散度就是两个相对的KL散度的平均。 数学证明如下： 首先我们解出判别器在生成器固定时的最大值。</p>
+<p><img src='https://img-blog.csdnimg.cn/20200221003424143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400></p>
+<p><img src='https://img-blog.csdnimg.cn/20200221003523159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400></p>
+<p>之后代入<span class="math inline">\(\max_DV(G, D)\)</span>, 可以看到：</p>
+<p><img src='https://img-blog.csdnimg.cn/20200221003726394.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400> 得证。</p>
+<p>由于我们最终目的是要使得生成分布与真实分布尽可能小，因此我们最终的优化问题为 <span class="math display">\[G^*=\argmin_G\max_DV(G, D)\]</span></p>
 <p>这里判别器与目标函数充当了描述差异的函数，因此我们<strong>不能在每次循环时过多的更新生成器，而可以多更新几次判别器。</strong> 这是因为如果更新生成器过多，它的生成分布就与更新前的生成分布差异很大，这使得判别器产生的数值并不能很好描述差异性。对于 GAN 的一个重要假设就是生成器的每次小更新产生的新分布与之前的分布差异不太多，从而使得描述的差异仍有效。</p>
-<h2 id="二-fgan"><a class="markdownIt-Anchor" href="#二-fgan"></a> 二、 fGAN</h2>
+<h2 id="二-fgan">二、 fGAN</h2>
 <p>上节阐述了原始的 GAN 衡量的是 JS 散度，那么有没有其他的衡量差异的选择呢？另外为什么判别器可以表示某一散度的度量呢？本节将回答这一问题。</p>
 <p>在概率统计中，f散度是一个函数，这个函数用来衡量两个概率密度p和q的区别。</p>
 <p>p和q是同一个空间中的两个概率密度函数，它们之间的f散度可以用如下方程表示：</p>
-<img src='https://img-blog.csdnimg.cn/20200221005432505.png' width=250>
-<p>其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>为凸函数且<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">f(1) = 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 因此当两个分布相同时，它们的 f 散度就是 0 。并且由于凸函数的性质，f 散度保证它的最小值就是0。<br />
-我们不难发现一些常见的散度都可以被表示：</p>
-<img src='https://img-blog.csdnimg.cn/20200221005800943.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400>
+<p><img src='https://img-blog.csdnimg.cn/20200221005432505.png' width=250></p>
+<p>其中<span class="math inline">\(f\)</span>为凸函数且<span class="math inline">\(f(1) = 0\)</span> 因此当两个分布相同时，它们的 f 散度就是 0 。并且由于凸函数的性质，f 散度保证它的最小值就是0。 我们不难发现一些常见的散度都可以被表示：</p>
+<p><img src='https://img-blog.csdnimg.cn/20200221005800943.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400></p>
 <p>这里给出了一些常见的散度与其相应的 f 函数：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200221010438177.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221010438177.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>那么生成器与损失函数为什么能够表示某一散度呢？</p>
-<p>这里我们引入<strong>共轭</strong>的概念，每个凸函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>都有一个共轭函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>f</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">f^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.688696em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span>。定义为：</p>
-<img src='https://img-blog.csdnimg.cn/20200221123900537.png#pic_center' width=250>
-<p>同样，共轭函数的共轭就是原函数，即<br />
-<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mo><mi>max</mi><mo>⁡</mo></mo><mrow><mi>t</mi><mo>∈</mo><mi>d</mi><mi>o</mi><mi>m</mi><mo stretchy="false">(</mo><msup><mi>f</mi><mo>∗</mo></msup><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">{</mo><mi>x</mi><mi>t</mi><mo>−</mo><msup><mi>f</mi><mo>∗</mo></msup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">f(x)=\max_{t\in dom(f^*)}\{xt-f^*(t)\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3551999999999999em;"></span><span class="mop"><span class="mop">max</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">m</span><span class="mopen mtight">(</span><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6183428571428571em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mopen">{</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.688696em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mclose">}</span></span></span></span></p>
+<p>这里我们引入<strong>共轭</strong>的概念，每个凸函数<span class="math inline">\(f\)</span>都有一个共轭函数<span class="math inline">\(f^*\)</span>。定义为：</p>
+<p><img src='https://img-blog.csdnimg.cn/20200221123900537.png#pic_center' width=250></p>
+<p>同样，共轭函数的共轭就是原函数，即 <span class="math inline">\(f(x)=\max_{t\in dom(f^*)}\{xt-f^*(t)\}\)</span></p>
 <ul>
-<li>例如，对于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>x</mi><mi>log</mi><mo>⁡</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">f(x)=x\log x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span></span></span></span>，</li>
+<li>例如，对于<span class="math inline">\(f(x)=x\log x\)</span>，</li>
 </ul>
-<p>我们求它的共轭函数</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>f</mi><mo>∗</mo></msup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><munder><mo><mi>max</mi><mo>⁡</mo></mo><mrow><mi>x</mi><mo>∈</mo><mi>d</mi><mi>o</mi><mi>m</mi><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></munder><mo stretchy="false">{</mo><mi>x</mi><mi>t</mi><mo>−</mo><mi>x</mi><mi>log</mi><mo>⁡</mo><mi>x</mi><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">f^*(t)=\max_{x\in dom(f)}\{xt-x\log x\}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.738696em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.716em;vertical-align:-0.966em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.43055999999999994em;"><span style="top:-2.009em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">x</span><span class="mrel mtight">∈</span><span class="mord mathdefault mtight">d</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">m</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight" style="margin-right:0.10764em;">f</span><span class="mclose mtight">)</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop">max</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.966em;"><span></span></span></span></span></span><span class="mopen">{</span><span class="mord mathdefault">x</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">x</span><span class="mclose">}</span></span></span></span></span></p>
-<p>要求最大值就是对x求导得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x=\exp(t-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span>代入便得到</p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>f</mi><mo>∗</mo></msup><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi>exp</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>t</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^*(t)=\exp(t-1)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.738696em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">exp</span><span class="mopen">(</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span></p>
-<p>现在回想 f 散度，我们将 x 视为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi>p</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mrow><mi>q</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">p(x)\over q(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">q</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">x</span><span class="mclose mtight">)</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">x</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 得到</p>
-<img src='https://img-blog.csdnimg.cn/20200221132510357.png' width=250>
-<img src='https://img-blog.csdnimg.cn/20200221132547166.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center' width=250>
-<p>此时这个优化问题很难解出，这时我们便引入判别器<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>，让它来代替我们去寻找最优值，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>的输入是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 而输出是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">t</span></span></span></span> , 因此有：</p>
-<img src='https://img-blog.csdnimg.cn/20200221133317327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=350>
-<p>由于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>的容量是有限的，因此它只能是 f 散度的一个下界，但是我们可以找到使得这个式子最大的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">D(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>, 从而进行一个近似：</p>
-<img src='https://img-blog.csdnimg.cn/2020022113375982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center' width=400>
+<p>我们求它的共轭函数 <span class="math display">\[f^*(t)=\max_{x\in dom(f)}\{xt-x\log x\}\]</span> 要求最大值就是对x求导得到<span class="math inline">\(x=\exp(t-1)\)</span>代入便得到 <span class="math display">\[f^*(t)=\exp(t-1)\]</span></p>
+<p>现在回想 f 散度，我们将 x 视为 <span class="math inline">\(p(x)\over q(x)\)</span> 得到</p>
+<p><img src='https://img-blog.csdnimg.cn/20200221132510357.png' width=250></p>
+<p><img src='https://img-blog.csdnimg.cn/20200221132547166.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center' width=250></p>
+<p>此时这个优化问题很难解出，这时我们便引入判别器<span class="math inline">\(D(x)\)</span>，让它来代替我们去寻找最优值，即<span class="math inline">\(D(x)\)</span>的输入是 <span class="math inline">\(x\)</span> 而输出是 <span class="math inline">\(t\)</span> , 因此有：</p>
+<p><img src='https://img-blog.csdnimg.cn/20200221133317327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=350></p>
+<p>由于<span class="math inline">\(D(x)\)</span>的容量是有限的，因此它只能是 f 散度的一个下界，但是我们可以找到使得这个式子最大的<span class="math inline">\(D(x)\)</span>, 从而进行一个近似：</p>
+<p><img src='https://img-blog.csdnimg.cn/2020022113375982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center' width=400></p>
 <p>不难发现这和 GAN 的损失函数很相似，事实就是如此。因此我们最终优化函数其实就是</p>
-<p><img src="https://img-blog.csdnimg.cn/2020022113442699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/2020022113442699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>但是无论选择什么散度，我们都有可能遇到 <strong>mode collapse</strong> 的问题，如图，可能某一样本的概率密度十分大：</p>
-<img src='https://img-blog.csdn.net/20170521132113990?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU1BBUktLS0s=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast' width=400>
+<p><img src='https://img-blog.csdn.net/20170521132113990?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvU1BBUktLS0s=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast' width=400></p>
 <p>对于这个问题，我们将在后面解决。</p>
-<h2 id="三-conditional-gan"><a class="markdownIt-Anchor" href="#三-conditional-gan"></a> 三、Conditional GAN</h2>
+<h2 id="三conditional-gan">三、Conditional GAN</h2>
 <p>最原始的 GAN 的输入只是随机产生的向量，并没有什么具体解释，我们只能认为是向量的每个值可能对应输出的许多特征。那么有什么方法可以让我们控制输出的条件呢？</p>
 <p>如果我们已经有了一个标注好所有图片的特征的数据集，解决的方法就十分简单，我们只需要按照监督学习的思想，将标注也作为输入输入进生成器，然后用判别器进行打分，进行对抗训练即可。</p>
-<p>但要注意的是，判别器这时不能只对图片生成的质量进行评分，还需要对生成图片与是否符合描述进行打分，也就是说判别器的输入也应该有描述，同时损失项一共有三个：真实图片与相符合的描述；真实图片与其不相符的描述以及假的图片。<br />
-如图：</p>
-<img src='https://img-blog.csdnimg.cn/20200220205829102.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400>
+<p>但要注意的是，判别器这时不能只对图片生成的质量进行评分，还需要对生成图片与是否符合描述进行打分，也就是说判别器的输入也应该有描述，同时损失项一共有三个：真实图片与相符合的描述；真实图片与其不相符的描述以及假的图片。 如图：</p>
+<p><img src='https://img-blog.csdnimg.cn/20200220205829102.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400></p>
 <p>判别器的架构一般如下：</p>
-<img src='https://img-blog.csdnimg.cn/20200220210240590.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400>
+<p><img src='https://img-blog.csdnimg.cn/20200220210240590.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400></p>
 <p>要么是两个输入先独立进入网络然后整合在一起，要么是一个神经网络用来判别图像的真实性另一个神经网络判别是否符合描述。个人认为第二种可能效果会更好，因为它区分了真实性和符合度，而第一种将两个的评分糅合在了一起，使得有可能朝着不同于评分的方向优化。</p>
-<h2 id="四-infogan"><a class="markdownIt-Anchor" href="#四-infogan"></a> 四、infoGAN</h2>
+<h2 id="四infogan">四、infoGAN</h2>
 <p>在常规的 GAN 中，我们期望随机向量的每一个维度的数值变换对应一个特定的特征，但是事实往往并非如此：</p>
-<img src='https://img-blog.csdnimg.cn/20200221161943657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400>
+<p><img src='https://img-blog.csdnimg.cn/20200221161943657.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=400></p>
 <p>为了让特征更加清晰，我们可以引入<strong>自编码器</strong>的思想：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200221162225213.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<p>如图，其中输入 z 由两部分组成：一部分是设计向量 c ，它包含着我们期望有意义的一些维度，例如头发颜色、大小等等…… z’ 是随机生成的向量，代表着我们未知的维度。我们借助了自编码器的思想，我们加入了一个新的“解码器”，它可以对生成器产生的输出进行分类，输出一个向量 c ，每个维度的向量的意义与输入相同。因此生成器和分类器就共同构成了一个自编码器。由于都是处理生成器的输出，因此判别器和分类器可以在底层共享权重，减少计算量。这就是 InfoGAN 的思想。它强制向量 c 对生成的图片需要有很大的影响</p>
-<p>借助自编码器的思想，我们还可以构造许多 GAN 的架构，例如 VAE-GAN， BiGAN 等等。<br />
-Bi-GAN:</p>
-<p><img src="https://img-blog.csdnimg.cn/20200221171940619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<h2 id="五-无监督-gan"><a class="markdownIt-Anchor" href="#五-无监督-gan"></a> 五、无监督 GAN</h2>
+<p><img src="https://img-blog.csdnimg.cn/20200221162225213.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<p>如图，其中输入 z 由两部分组成：一部分是设计向量 c ，它包含着我们期望有意义的一些维度，例如头发颜色、大小等等…… z' 是随机生成的向量，代表着我们未知的维度。我们借助了自编码器的思想，我们加入了一个新的“解码器”，它可以对生成器产生的输出进行分类，输出一个向量 c ，每个维度的向量的意义与输入相同。因此生成器和分类器就共同构成了一个自编码器。由于都是处理生成器的输出，因此判别器和分类器可以在底层共享权重，减少计算量。这就是 InfoGAN 的思想。它强制向量 c 对生成的图片需要有很大的影响</p>
+<p>借助自编码器的思想，我们还可以构造许多 GAN 的架构，例如 VAE-GAN， BiGAN 等等。 Bi-GAN:</p>
+<p><img src="https://img-blog.csdnimg.cn/20200221171940619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<h2 id="五无监督-gan">五、无监督 GAN</h2>
 <p>很多时候我们不会遇到监督问题，更多的是 one-shot 问题，例如风格迁移等等，我们不能获取真实的标注，此时我们就需要进行无监督学习。此时主要有两种途径：</p>
 <ul>
 <li>直接转换：</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20200221174014511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221174014511.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" /></p>
 <p>这种转换一般不会对原输入有太大的改变，适合较少的迁移。</p>
 <ul>
 <li>映射特征：借助自编码器的思想，用 Endoder 提取输入的特征，然后用 Decoder 生成另一个分布的输出。</li>
 </ul>
-<p><img src="https://img-blog.csdnimg.cn/20200221174535335.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221174535335.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" /></p>
 <blockquote>
 <p>这种方法适用于输入和输出的分布差别很大的情况，只有相关特征被保留。</p>
 </blockquote>
 <p>现在我们分别说一说两个途径的具体实现：</p>
-<h4 id="直接转换"><a class="markdownIt-Anchor" href="#直接转换"></a> 直接转换</h4>
+<h4 id="直接转换">直接转换</h4>
 <p>直接借助 Conditional GAN 的思想，将 Domain X 当作给定的条件，进行训练：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200221175149226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221175149226.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>然而生成器有可能生成一个与条件完全不相关但又可以骗过判别器的图片，针对这一问题，有几种解决方法：</p>
-<ol>
+<ol type="1">
 <li>直接无视： 如果我们的生成器网络比较简单，不难想象它的输出不会与输入条件差太多，因此这种方法还是有可行性的。</li>
 <li>引入另一个预训练过的网络当作编码器，使得在生成器的输入和输出中提取的特征尽可能相似。这样就可以强制生成器的输入与输出相似。</li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20200221180347431.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<ol start="3">
+<p><img src="https://img-blog.csdnimg.cn/20200221180347431.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<ol start="3" type="1">
 <li><strong>Cycle GAN</strong></li>
 </ol>
 <p>首先，我们建立一个自编码器与 GAN 结合的结构, 还原的图像必须和原图像差不多：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200221180957731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<p>这使得输出必须保留输入的信息，否则没有办法还原。<br />
-然后，我们把 Encoder 和 Decoder 对调一下，引入一个新的 判别器，使得生成器同时学习到 domain Y 的特征。</p>
-<p><img src="https://img-blog.csdnimg.cn/202002211814189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221180957731.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<p>这使得输出必须保留输入的信息，否则没有办法还原。 然后，我们把 Encoder 和 Decoder 对调一下，引入一个新的 判别器，使得生成器同时学习到 domain Y 的特征。</p>
+<p><img src="https://img-blog.csdnimg.cn/202002211814189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>以上构成了 CycleGAN</p>
 <blockquote>
 <p>还有一些网络结构和 CycleGAN 相当，例如 Disco GAN, Dual GAN等等。</p>
 </blockquote>
-<p><img src="https://img-blog.csdnimg.cn/20200221182419928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<ol start="4">
-<li>
-<p><strong>Star GAN</strong></p>
-<p>我们介绍了两个 domain 的情况，但如果有多种风格，使用上述方法可能十分复杂。<br />
-而 StarGAN 只是用一个生成器就解决了这个问题。它的具体训练过程如图：</p>
-</li>
+<p><img src="https://img-blog.csdnimg.cn/20200221182419928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<ol start="4" type="1">
+<li><p><strong>Star GAN</strong></p>
+<p>我们介绍了两个 domain 的情况，但如果有多种风格，使用上述方法可能十分复杂。 而 StarGAN 只是用一个生成器就解决了这个问题。它的具体训练过程如图：</p></li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20200221190759712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221190759712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <blockquote>
 <p>判别器不仅需要识别真假，还需要对图像来自哪个 domain 进行分类；而生成器在生成指定 domain 的图像后，需要把生成的图像再输入回生成器让它还原到原来的 domain，构成了一个自编码器。</p>
 </blockquote>
-<h4 id="重映射"><a class="markdownIt-Anchor" href="#重映射"></a> 重映射</h4>
+<h4 id="重映射">重映射</h4>
 <p>基本思想是我们训练两个独立的自编码器，然后想办法让两个编码器提取的特征代表相当，从而使得一个编码器的特征可以被另一个解码器构造图片。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200221192851287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221192851287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>主要有以下几个方法：</p>
-<ol>
+<ol type="1">
 <li><strong>权重共享</strong></li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20200221192959782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221192959782.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>将两个自编码器的一些层数的权重共享，以期望能提取相似的特征。</p>
-<ol start="2">
+<ol start="2" type="1">
 <li><strong>增加判别器：</strong></li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20200221193251772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221193251772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>增加一个 Domain Discriminator 来区分特征属于哪个 domain ，两个 encoder 需要另外骗过判别器，这样就可以使得两者提取的特征相当。</p>
-<ol start="3">
+<ol start="3" type="1">
 <li><strong>借助Cycle思想</strong></li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20200221193753683.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221193753683.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>将 ENx 的产出直接喂入 DEy ，然后再把生产的图像喂入 ENy , 产出喂入 DEx，这样一番产生的最终图像和原图需要尽量相似，如此实现了无监督学习的 domain transfer。</p>
 <blockquote>
 <p>当然，也可以直接比较 ENy 和 ENx 的特征值的相似性。</p>
 </blockquote>
-<h2 id="六-wgan"><a class="markdownIt-Anchor" href="#六-wgan"></a> 六、WGAN</h2>
+<h2 id="六wgan">六、WGAN</h2>
 <p>第二节我们介绍了尽管使用不同的散度，它们仍然不能够很好地反映生成分布和真实分布之间的差距。</p>
-<ol>
+<ol type="1">
 <li>自然生成的数据经常是一个在高维空间中嵌入的低维流形，因此不同的分布之间实际上的重叠部分是可以忽略的，这直接导致了散度无法进行测量。</li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20200221212155372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221212155372.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>如图，这是在二维空间中两个一维流形，我们不难发现两者间的重叠可以忽略。</p>
-<ol start="2">
+<ol start="2" type="1">
 <li>另外，即便考虑两个分布间的重叠，我们也无法采样出足够多的数据来描述它们的差异。</li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20200221224736169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200221224736169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>如图, 由于没有足够的样本，我们学习到的很可能与实际大不相同。</p>
-<p>以 JS 散度为例，尽管在特定情况下它可以很好地表示两个分布的差异，但是当两个分布完全不重叠时， 无论它们的距离有多远，JS散度永远是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\log 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span></span></span></span> 此时我们无法学习到更多的信息，因此散度有着很大的缺陷。</p>
+<p>以 JS 散度为例，尽管在特定情况下它可以很好地表示两个分布的差异，但是当两个分布完全不重叠时， 无论它们的距离有多远，JS散度永远是 <span class="math inline">\(\log 2\)</span> 此时我们无法学习到更多的信息，因此散度有着很大的缺陷。</p>
 <p>那么我们有什么方法来解决它呢？</p>
-<p>这里我们引入 <strong>Wasserstein 距离</strong>，它又叫 Earth Mover’s Distance, 基本想法如下，我们将两个分布看作两个土堆，我们需要用推土机将一个土堆的形状变成另一个的形状，这当然有许多的方案，我们去平均移动距离最小的方案作为 Wasserstein 距离。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222003451253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p>这里我们引入 <strong>Wasserstein 距离</strong>，它又叫 Earth Mover's Distance, 基本想法如下，我们将两个分布看作两个土堆，我们需要用推土机将一个土堆的形状变成另一个的形状，这当然有许多的方案，我们去平均移动距离最小的方案作为 Wasserstein 距离。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222003451253.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>即：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222003726779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200222003726779.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>总而言之， 它的具体定义如下：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222003937605.png" alt="  " /></p>
-<p>其中 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Π</mi></mrow><annotation encoding="application/x-tex">\Pi</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Π</span></span></span></span> 是两个分布组合起来的所有可能的联合分布的集合。对于每一个联合分布，可以进行采样得到真实样本 x 和生成样本 y , 并计算这对样本的距离。它们所有的平均距离就是期望值。在所有可能的分布中能够对这个期望取到的下界就是 Wassertein 距离。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222003937605.png" /></p>
+<p>其中 <span class="math inline">\(\Pi\)</span> 是两个分布组合起来的所有可能的联合分布的集合。对于每一个联合分布，可以进行采样得到真实样本 x 和生成样本 y , 并计算这对样本的距离。它们所有的平均距离就是期望值。在所有可能的分布中能够对这个期望取到的下界就是 Wassertein 距离。</p>
 <p><strong>Wasserstein距离相比KL散度、JS散度的优越性在于，即便两个分布没有重叠，Wasserstein距离仍然能够反映它们的远近。</strong></p>
 <ul>
 <li>那么我们怎样去运用这一距离呢？</li>
 </ul>
 <p>不难发现定义的距离需要求出一个下界，而这个问题没法直接求解，经过一些定理推导后，我们得到了下面这个式子：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222004954279.png#pic_center" alt="  " /></p>
-<p>之前我们介绍过 Lipchitz 连续，它就是对一个连续函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>上的额外限制，要求存在一个非负的常数 K 使得定义域内任意两个元素满足：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222005242515.png" alt="  " /></p>
-<p>此时称<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>的 Lipschitz 常数为 K。<br />
-上面这个公式的意思就是在函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>的 Lipschitz 常数不超过 K 的条件下，去后面这个式子的上界，再除以 K 。此时我们就可以训练判别器 D(x) 代替<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span></span></span></span>，用深度学习去寻找上界。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222005917736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<p>这样我们需要考虑怎么使得 D 满足约束，原始的 WGAN 采用了简单的做法，就是限制 D 的所有参数的不超过某个范围<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mi>c</mi><mo separator="true">,</mo><mi>c</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-c, c]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord mathdefault">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">c</span><span class="mclose">]</span></span></span></span>, 此时一定存在某个常数 K 使得 D 的局部变动幅度不超过它。满足了约束。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222004954279.png#pic_center" /></p>
+<p>之前我们介绍过 Lipchitz 连续，它就是对一个连续函数<span class="math inline">\(f\)</span>上的额外限制，要求存在一个非负的常数 K 使得定义域内任意两个元素满足：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222005242515.png" /></p>
+<p>此时称<span class="math inline">\(f\)</span>的 Lipschitz 常数为 K。 上面这个公式的意思就是在函数<span class="math inline">\(f\)</span>的 Lipschitz 常数不超过 K 的条件下，去后面这个式子的上界，再除以 K 。此时我们就可以训练判别器 D(x) 代替<span class="math inline">\(f\)</span>，用深度学习去寻找上界。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222005917736.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<p>这样我们需要考虑怎么使得 D 满足约束，原始的 WGAN 采用了简单的做法，就是限制 D 的所有参数的不超过某个范围<span class="math inline">\([-c, c]\)</span>, 此时一定存在某个常数 K 使得 D 的局部变动幅度不超过它。满足了约束。</p>
 <p>因此 WGAN 虽然推导很复杂，但是它仅仅对原始的 GAN 进行了很少的改动：</p>
 <ul>
 <li>判别器最后一层去掉sigmoid</li>
@@ -606,98 +586,94 @@ Bi-GAN:</p>
 </ul>
 <p>第四点是作者从实验中发现的，属于trick，相对比较“玄”。作者发现如果使用Adam，判别器的loss有时候会崩掉，当它崩掉时，Adam给出的更新方向与梯度方向夹角的cos值就变成负数，更新方向与梯度方向南辕北辙，这意味着判别器的loss梯度是不稳定的，所以不适合用Adam这类基于动量的优化算法。作者改用RMSProp之后，问题就解决了，因为RMSProp适合梯度不稳定的情况。</p>
 <p>这便是它的完整流程：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222010806681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<h2 id="七-wgan"><a class="markdownIt-Anchor" href="#七-wgan"></a> 七、WGAN++</h2>
+<p><img src="https://img-blog.csdnimg.cn/20200222010806681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<h2 id="七wgan">七、WGAN++</h2>
 <p>上一节我们介绍了原始 WGAN 的算法，然而<strong>weight clipping的实现方式存在两个严重问题：</strong></p>
-<ol>
+<ol type="1">
 <li>weight clipping独立地限制每一个网络参数的取值范围，在这种情况下我们可以想象，最优的策略就是尽可能让所有参数走极端，要么取最大值（如0.01）要么取最小值（如-0.01）</li>
 </ol>
 <p>这样带来的结果就是，判别器会非常倾向于学习一个简单的映射函数。判别器没能充分利用自身的模型能力，经过它回传给生成器的梯度也会跟着变差。</p>
-<ol start="2">
+<ol start="2" type="1">
 <li>weight clipping会导致很容易一不小心就梯度消失或者梯度爆炸。原因是判别器是一个多层网络，如果我们把clipping threshold设得稍微小了一点，每经过一层网络，梯度就变小一点点，多层之后就会指数衰减；反之，如果设得稍微大了一点，每经过一层网络，梯度变大一点点，多层之后就会指数爆炸。</li>
 </ol>
 <p>因此产生了另一种实现李普希兹连续的方法：<strong>gradient penalty</strong> ，它应用在<strong>Improved WGAN（WGAN-GP)</strong> 中，可以很好地解决上面两个问题。</p>
 <p>事实上，<strong>要求判别器满足 Lipschitz 连续其实就是要求它的梯度的范数对所有的输入都不超过 K</strong>， 因此我们可以直接显式地在损失函数中加入一个惩罚项，例如：</p>
-<p><img src="https://img-blog.csdnimg.cn/2020022201252049.png" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/2020022201252049.png" /></p>
 <p>或者</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222012547452.png" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200222012547452.png" /></p>
 <p>尽管理论上前者就行了，但是论文作者选的是后者，因为实验上表现更好。接着我们简单地把K定为1，再跟WGAN原来的判别器loss加权合并，就得到新的判别器loss：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222012737108.png" alt="  " /></p>
-<p>可是第三个分布要求我们在整个样本空间 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">X</mi></mrow><annotation encoding="application/x-tex">\mathcal X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathcal" style="margin-right:0.14643em;">X</span></span></span></span> 上采样，这实际上没法做到。</p>
-<p>因此我们进行一个近似：假设 x 是从一个事先定好的分布 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>P</mi><mrow><mi>p</mi><mi>e</mi><mi>n</mi><mi>a</mi><mi>l</mi><mi>t</mi><mi>y</mi></mrow></msub></mrow><annotation encoding="application/x-tex">P_{penalty}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">t</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span> 中采样出的。我们只需要去确保在这个分布的范围内判别器梯度的范数会小于 1. 至于这个分布，我们假设只考虑生成分布和真实分布之间夹着的中间区域，我们在这里进行采样。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222012737108.png" /></p>
+<p>可是第三个分布要求我们在整个样本空间 <span class="math inline">\(\mathcal X\)</span> 上采样，这实际上没法做到。</p>
+<p>因此我们进行一个近似：假设 x 是从一个事先定好的分布 <span class="math inline">\(P_{penalty}\)</span> 中采样出的。我们只需要去确保在这个分布的范围内判别器梯度的范数会小于 1. 至于这个分布，我们假设只考虑生成分布和真实分布之间夹着的中间区域，我们在这里进行采样。</p>
 <p>具体来说，就是我们先随机采样一对真假样本，以及一个 0-1 的随机数，然后在它们的连线上随机插值取样，便得到了一个采样。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222013601453.png" alt="  " />   <img src="https://img-blog.csdnimg.cn/2020022201361456.png" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200222013601453.png" /> <img src="https://img-blog.csdnimg.cn/2020022201361456.png" /></p>
 <p>最终的 Loss 为：</p>
-<p><img src="https://img-blog.csdnimg.cn/2020022201383989.png" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/2020022201383989.png" /></p>
 <p>由于我们是对每个样本独立地施加梯度惩罚，所以判别器的模型架构中不能使用Batch Normalization，因为它会引入同个batch中不同样本的相互依赖关系。</p>
 <p>然而 Improved WGAN 所采用的方法也有许多问题，例如直接连线的随机插值取样可能导致分布并不是处于中间的分布等等。</p>
 <ul>
 <li><strong>Spectrum Norm（谱归一化）</strong></li>
 </ul>
-<p>谱归一化对 WGAN 进行了新的扩展，它从理论上保证了判别器的梯度始终可以小于 1，而非只是作出惩罚。<br />
-基本思想就是让网络每一层的权重矩阵 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>W</mi></mrow><annotation encoding="application/x-tex">W</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">W</span></span></span></span> 的所有元素每次都除以它的最大的特征值，而这一最大特征值使用了近似算法 power iteration 来求解。</p>
+<p>谱归一化对 WGAN 进行了新的扩展，它从理论上保证了判别器的梯度始终可以小于 1，而非只是作出惩罚。 基本思想就是让网络每一层的权重矩阵 <span class="math inline">\(W\)</span> 的所有元素每次都除以它的最大的特征值，而这一最大特征值使用了近似算法 power iteration 来求解。</p>
 <ul>
 <li><strong>Loss-sensitve GAN</strong></li>
 </ul>
 <p>这个 LSGAN 与 WGAN 的理论很相似，在实践中，它具体就是对判别器认为较为真实的生成样本设置一个 threshold ，让它同真实样本的 margin 相比于更假的样本要小一点。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222134905879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<h2 id="八-生成样本的评估"><a class="markdownIt-Anchor" href="#八-生成样本的评估"></a> 八、生成样本的评估</h2>
+<p><img src="https://img-blog.csdnimg.cn/20200222134905879.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<h2 id="八生成样本的评估">八、生成样本的评估</h2>
 <p>衡量生成样本的质量同样也很重要，现在普遍的评估标准就是拿一个事先训练好的分类网络（如 Inception）对生成样本进行分类，输出一个分布 P(y|x) ，如果这个分布比较集中，就表明生成样本足够清晰。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222141615954.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200222141615954.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>同时为了避免 mode collapse 的问题，我们还需要用多组样本喂入分类器，然后得到一个平均分布，如果这个分布表现得很平均，表明了没有 mode collapse 问题。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222141630724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200222141630724.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>一个 score 叫做 Inception Score， 因为它采用 Inception 网络。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222141745932.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<p>对于它的拓展称作 <strong>Fréchet Inception Distance（FID）</strong>，这也是现在最常使用的评价指标。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190114201533428.png" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200222141745932.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<p>对于它的拓展称作 <strong>Fréchet Inception Distance（FID）</strong>，这也是现在最常使用的评价指标。 </p>
+<p><img src="https://img-blog.csdnimg.cn/20190114201533428.png" /></p>
 <p>其中 x 代表真实样本，g 代表生成样本，</p>
 <p>一般情况下IS评价指标的使用很少，因为它只考虑了GAN生成样本的质量，并没有考虑真实数据的影响。IS用Inception V3直接输出类别，而FID则用其输出特征。FID距离计算真实样本，生成样本在特征空间之间的Wasserstein-2 distance或者Frechet distance距离。首先利用Inception网络来提取特征，然后使用高斯模型对特征空间进行建模，再去求解两个特征之间的距离，<strong>较低的FID意味着较高图片的质量和多样性。</strong></p>
-<p>另外，我们怎样才能知道我们的生成样本不是单纯记忆数据集里面的样本而是新的样本呢（过拟合）？我们不能直接检测生成样本和数据集里面图片的差异，因为将图片平移几个像素都有可能与原图差异大大增加。<br />
-这个问题有一些方法衡量，但是还有待开发。</p>
+<p>另外，我们怎样才能知道我们的生成样本不是单纯记忆数据集里面的样本而是新的样本呢（过拟合）？我们不能直接检测生成样本和数据集里面图片的差异，因为将图片平移几个像素都有可能与原图差异大大增加。 这个问题有一些方法衡量，但是还有待开发。</p>
 <p>接下来介绍一些目前比较流行的模型</p>
-<h2 id="九-更大更好-stylegan"><a class="markdownIt-Anchor" href="#九-更大更好-stylegan"></a> 九、更大，更好—— StyleGAN</h2>
-<p>我们怎样才能让 GAN 生成高质量的大图像（1024 x 1024）呢？<br />
-一个比较自然的想法就是先使用非常低分辨率的图像（如:4x4) 开始训练，然后逐步扩大网络，最后便产生一个拥有丰富细节的高清图片。这便是 <strong>ProGAN</strong> （StyleGAN前身）的想法。</p>
-<p><img src="https://img-blog.csdnimg.cn/2020022219170764.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<h2 id="九更大更好-stylegan">九、更大，更好—— StyleGAN</h2>
+<p>我们怎样才能让 GAN 生成高质量的大图像（1024 x 1024）呢？ 一个比较自然的想法就是先使用非常低分辨率的图像（如:4x4) 开始训练，然后逐步扩大网络，最后便产生一个拥有丰富细节的高清图片。这便是 <strong>ProGAN</strong> （StyleGAN前身）的想法。</p>
+<p><img src="https://img-blog.csdnimg.cn/2020022219170764.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>这项技术首先通过学习在低分辨率可以显示的基本特征，然后随着分辨率的提高，学习越来越多的细节，低分辨率图像的训练简单快速且有助于高级别的训练，因此整体的训练更快。</p>
 <p>注意网络结构并不是 4x4 连接到 8x8 再到 16x16 的，而是动态变化，生成器内部的网络只有一个。这种突变导致了网络的参数会失效，因此 ProGAN 采用了一种平滑过渡的技术：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200222192453353.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<p>如图，当把生成器和判别器的分辨率加倍时，会平滑地增大新的层。在转换过程（b）中，输出的样本 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi><mo>=</mo><msub><mi>X</mi><mrow><mi>l</mi><mi>o</mi><mi>w</mi></mrow></msub><mo>∗</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="false">)</mo><mo>+</mo><msub><mi>X</mi><mrow><mi>h</mi><mi>i</mi><mi>g</mi><mi>h</mi></mrow></msub><mo>∗</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">X=X_{low}*(1-\alpha)+X_{high}*\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">h</span><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span><span class="mord mathdefault mtight">h</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span> 我们把权重 α 从 0 到 1 线性增长，使得样本进行平滑过渡。图中的 2x 和 0.5x 表示利用最近邻卷积和平均池化对分辨率放大和缩小，另外，toRGB 和 fromRGB 是两个映射层，它们采用 1x1 卷积，实现了由更多的通道转向 RGB 通道的映射与还原。<br />
-当训练判别器时，插入下采样后的真实图片去匹配网络中的当前分辨率。在分辨率转换过程中，会在真实图片的不同分辨率之间插值，类似于将两个分辨率结合到一起用生成器输出。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200222192453353.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<p>如图，当把生成器和判别器的分辨率加倍时，会平滑地增大新的层。在转换过程（b）中，输出的样本 <span class="math inline">\(X=X_{low}*(1-\alpha)+X_{high}*\alpha\)</span> 我们把权重 α 从 0 到 1 线性增长，使得样本进行平滑过渡。图中的 2x 和 0.5x 表示利用最近邻卷积和平均池化对分辨率放大和缩小，另外，toRGB 和 fromRGB 是两个映射层，它们采用 1x1 卷积，实现了由更多的通道转向 RGB 通道的映射与还原。 当训练判别器时，插入下采样后的真实图片去匹配网络中的当前分辨率。在分辨率转换过程中，会在真实图片的不同分辨率之间插值，类似于将两个分辨率结合到一起用生成器输出。</p>
 <p>然而 ProGAN 并不能控制它所生成图片的特定特征，一个输入可能会影响多个特性，因此我们希望有一种更好的模型，能让我们控制住图片的样子，并且每个输入维度之间的影响尽可能小。于是便有了 <strong>StyleGAN</strong>：</p>
 <p>StyleGAN 发现渐进层的一个潜在的好处就是：如果使用得当，就能够控制图像的不同视觉特征。层和分辨率越低，它影响的特征就越粗糙：</p>
-<ol>
+<ol type="1">
 <li>粗糙的——分辨率小于 8x8，影响姿势，一般发型，脸型等等；</li>
 <li>中等的——分别率介于 16<sup>2</sup> ~ 32<sup>2</sup> 之间，影响更精细的面部特征如眼睛的闭合等；</li>
 <li>精细的——分辨率高于 64x64，此时影响许多微观特征如颜色等。</li>
 </ol>
 <p>StyleGAN通过增添许多附加模块实现了样式上更细微和精确的控制：</p>
-<h4 id="1-映射网络"><a class="markdownIt-Anchor" href="#1-映射网络"></a> 1. 映射网络</h4>
+<h4 id="映射网络">1. 映射网络</h4>
 <p>StyleGAN 给生成器的输入加上了 8 个全连接层组成的映射网络，且输出与输入大小一样。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200223163636822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200223163636822.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" /></p>
 <p>这个目的就是将输入向量进行编码生成控制向量，使得它的不同元素能够控制不同的视觉特征。控制向量的不同元素之间代表的特征不会纠缠在一起。</p>
 <p>至于为什么 Mapping Network 可以学习到特征解耦呢？直观地想若仅使用输入向量控制视觉特征，能力是很有限的，因为它遵循着训练数据的概率密度，即判别器的评分会影响生成器的分布，此时输入的许多值都会对概率较大的特征产生影响。但是若使用另一个神经网络，使得可以生成一个不必遵循训练数据分布的向量，就可以减少特征之间的相关性。</p>
-<p>最后得到的特征在每个分辨率的网络中会由一层神经元进行仿射变换，让神经网络最后选择这个分辨率所需要的特征，然后最后得到输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="bold">y</mi><mo>=</mo><mo stretchy="false">(</mo><msub><mi mathvariant="bold">y</mi><mi mathvariant="bold">s</mi></msub><mo separator="true">,</mo><msub><mi mathvariant="bold">y</mi><mi mathvariant="bold">b</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\bold{y=(y_s, y_b)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.161108em;"><span style="top:-2.5500000000000003em;margin-left:-0.01597em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathbf" style="margin-right:0.01597em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.01597em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>，用于下一步的实例归一化。</p>
-<h4 id="2-adainadaptive-instance-normalization"><a class="markdownIt-Anchor" href="#2-adainadaptive-instance-normalization"></a> 2. AdaIN（Adaptive Instance Normalization）</h4>
+<p>最后得到的特征在每个分辨率的网络中会由一层神经元进行仿射变换，让神经网络最后选择这个分辨率所需要的特征，然后最后得到输出 <span class="math inline">\(\bold{y=(y_s, y_b)}\)</span>，用于下一步的实例归一化。</p>
+<h4 id="adainadaptive-instance-normalization">2. AdaIN（Adaptive Instance Normalization）</h4>
 <p>AdaIN，自适应实例归一化。AdaIN层扮演了一个类似的风格交换层的角色，它把选择的特征（style）加入到输入中，</p>
-<p><img src="https://img-blog.csdnimg.cn/20200223171640575.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200223171640575.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>如图，具体来说，在得到特征向量 W 后，经过仿射变换层 A 进行选择特征，最后得到（2xn）大小的矩阵，每一列对应一个卷积核产生的特征图，最后代入公式计算即可。这个过程在每次上采样和卷积后都进行一次。</p>
-<h4 id="3-删除传统输入"><a class="markdownIt-Anchor" href="#3-删除传统输入"></a> 3. 删除传统输入</h4>
+<h4 id="删除传统输入">3. 删除传统输入</h4>
 <p>传统 GAN 的输入就是一个随机向量，但是 StyleGAN 的特征向量是在过程中插入的，因此它的初始输入就可以被忽略，并使用一个常量值替代。这样子不仅可以降低生成不正常照片的概率，还可以减少特征纠缠。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200223180727902.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<h4 id="4-随机变化"><a class="markdownIt-Anchor" href="#4-随机变化"></a> 4. 随机变化</h4>
-<p><img src="https://img-blog.csdnimg.cn/20200223180656889.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200223180727902.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<h4 id="随机变化">4. 随机变化</h4>
+<p><img src="https://img-blog.csdnimg.cn/20200223180656889.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>加入的噪声可以产生人脸上的许多小的特征，例如雀斑、发际线、皱纹等等，这里的噪声是逐通道进行生成加入。噪声可以使生成的图像更加的真实多样。</p>
-<p>此外，StyleGAN 还使用了截断中间向量 W 的技巧，就是选择多个随机输入，生成中间向量后计算它们的均值，在生成新的图片时，使用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>W</mi><mrow><mi>n</mi><mi>e</mi><mi>w</mi></mrow><mo mathvariant="normal">′</mo></msubsup><mo>=</mo><msubsup><mi>W</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow><mo mathvariant="normal">′</mo></msubsup><mo>+</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false">(</mo><msup><mi>W</mi><mo mathvariant="normal">′</mo></msup><mo>−</mo><msubsup><mi>W</mi><mrow><mi>a</mi><mi>v</mi><mi>g</mi></mrow><mo mathvariant="normal">′</mo></msubsup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">W&#x27;_{new}=W&#x27;_{avg}+  \Psi(W&#x27;-W&#x27;_{avg})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.998892em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-2.4530000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.135em;vertical-align:-0.383108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-2.4530000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.383108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mord">Ψ</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.135em;vertical-align:-0.383108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">W</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-2.4530000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">g</span></span></span></span><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.383108em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> , 其中的参数定义了图像与平均图像的差异量，如图：</p>
-<p><img src="https://img-blog.csdnimg.cn/2020022319195710.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<h4 id="5-style-mixing"><a class="markdownIt-Anchor" href="#5-style-mixing"></a> 5. Style Mixing</h4>
+<p>此外，StyleGAN 还使用了截断中间向量 W 的技巧，就是选择多个随机输入，生成中间向量后计算它们的均值，在生成新的图片时，使用 <span class="math inline">\(W&#39;_{new}=W&#39;_{avg}+ \Psi(W&#39;-W&#39;_{avg})\)</span> , 其中的参数定义了图像与平均图像的差异量，如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/2020022319195710.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<h4 id="style-mixing">5. Style Mixing</h4>
 <p>StyleGAN 还有一个有趣的地方就是它可以进行样式混合，即把一个图片的特征融合进入另一个图片当中。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200223193342678.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200223193342678.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>如图，第一列是不进行融合生成的图像，最上面一行是其他的生成图像。如果把最上面的图像的特征向量分别代替原向量喂入粗糙的（2-3行）、中等的（4-5行）、精细的（6行）对应的AdaIN中就会产生神奇的效果，这进一步说明了 StyleGAN 能够控制特征的强大功能。这种融合也可以提高模型的泛化性。</p>
 <p>StyleGAN的总体结构大致如下：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200223195100951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200223195100951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>另外，StyleGAN 没有使用 spectrum norm，WGAN-GP loss，等等技巧，且它的网络架构是简单的前馈网络，因此它还有很大的改进空间，还有<strong>它最明显的缺陷是生成的图像有时包含斑点似的伪影(artifacts)</strong></p>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMxLnpoaW1nLmNvbS92Mi05MjIzZTViYjhmYjM1ZDEwMWI5YzgxN2Y0NGNhY2E3MF9iLndlYnA?x-oss-process=image/format,png" alt="  " /></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMxLnpoaW1nLmNvbS92Mi05MjIzZTViYjhmYjM1ZDEwMWI5YzgxN2Y0NGNhY2E3MF9iLndlYnA?x-oss-process=image/format,png" /></p>
 <p>因此便产生了 <strong>StyleGAN2</strong>，它的主要改进包括：</p>
 <ul>
 <li>生成的图像质量明显更好(FID分数更高、artifacts减少)</li>
@@ -706,79 +682,65 @@ Bi-GAN:</p>
 <li>更平滑的插值(额外的正则化)</li>
 <li>训练速度更快</li>
 </ul>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMyLnpoaW1nLmNvbS84MC92Mi0wMThkY2VkN2NlYjllZGZhMWUxMTA0NmMzZTE2YWNjOV9oZC5qcGc?x-oss-process=image/format,png" alt="  " /></p>
-<p>如图，右边两列是改进的方法，使用了 “demodulation” 代替 AdaIN 可以去除伪隐影。<br />
-另外 StyleGAN2 还改进了前馈网络，测试了 skip connection 、残差网络以及分层方法.</p>
-<p><img src="https://img-blog.csdnimg.cn/20200223235919211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<h2 id="十-图像翻译gauganspade"><a class="markdownIt-Anchor" href="#十-图像翻译gauganspade"></a> 十、图像翻译——GauGAN（SPADE）</h2>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9waWMyLnpoaW1nLmNvbS84MC92Mi0wMThkY2VkN2NlYjllZGZhMWUxMTA0NmMzZTE2YWNjOV9oZC5qcGc?x-oss-process=image/format,png" /></p>
+<p>如图，右边两列是改进的方法，使用了 “demodulation” 代替 AdaIN 可以去除伪隐影。 另外 StyleGAN2 还改进了前馈网络，测试了 skip connection 、残差网络以及分层方法.</p>
+<p><img src="https://img-blog.csdnimg.cn/20200223235919211.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<h2 id="十图像翻译gauganspade">十、图像翻译——GauGAN（SPADE）</h2>
 <p>GauGAN 研究的是<strong>在给定一张语义分割图时合成对应的实际图像，英文名为semantic image synthesis。</strong> 如图（上面是语义，左边是风格）：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200224215003490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200224215003490.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>在之前，<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQzODAxNjUvYXJ0aWNsZS9kZXRhaWxzLzEwMDEwOTkzMA==">pix2pixHD<i class="fa fa-external-link-alt"></i></span> 是这个方面的经典算法，GauGAN 发现 pix2pixHD 这样的算法都是将语义分割图直接作为输入进行计算，但是一旦这些生成网络使用传统的归一化层(BN)，就容易丢失输入语义图像中的信息，如图：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200224220206605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200224220206605.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>因此提出了新的归一化层：<strong>Spatially-Adaptive Normalization(SPADE)</strong> 来解决这一问题。</p>
 <p>SPADE 在 BN 的基础上进行了修改，公式如图：</p>
-<p><img src="https://img-blog.csdnimg.cn/202002242206417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<p><img src="https://img-blog.csdnimg.cn/20200224220718466.png" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/202002242206417.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200224220718466.png" /></p>
 <p>在传统 BN 中，γ 和 β 都是一维向量，每个值对应着轴通道，而在 SPADE 中，它们是三维矩阵，除了通道维度，还有高和宽的维度，因此有了公式中的下标，这也是 spatially adaptive 的含义。</p>
 <p>我们不难发现这个好像与 StyleGAN 中的 AdaIN 的实现方式差不多，事实上只要几个小的改动就可以变成 AdaIN，但是对于语义图像，SPADE 的表现更适合。使用 SPADE 可以更好的防止语义信息被标准化消失掉，同时又具有标准化的优点。</p>
 <p>最后由于语义图像是在 SPADE 过程中输入进网络的，我们的输入可以变成一个样式图像，从而可以生成指定的 style。SPADE 的生成器使用了含 SPADE 的残差网络，如图：</p>
-<p><img src="https://img-blog.csdnimg.cn/2020022422171975.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<h2 id="十一-单样本学习-singan"><a class="markdownIt-Anchor" href="#十一-单样本学习-singan"></a> 十一、单样本学习—— SinGAN</h2>
+<p><img src="https://img-blog.csdnimg.cn/2020022422171975.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<h2 id="十一单样本学习-singan">十一、单样本学习—— SinGAN</h2>
 <p><strong>SinGAN 是一个可以从单张自然图像学习的非条件性生成式模型，它可以捕捉给定图像中各个小块内在的分布，然后产生和图像视觉内容相同且多样的新图像。</strong> SinGAN 的结构是多个全卷积GANs组成的金字塔，它们负责学习图像中的某个小块的数据分布。这种设计可以让它生成具有任意大小和比例的新图像，这些新图像在具有给定的训练图像的全局结构和细节纹理的同时，还可以有很高的可变性。SinGAN 是一个非条件模型，即输入是随机噪声。</p>
-<p>此外，SInGAN可以通过同样的架构去实现多种任务，例如单个图像到图像的绘制、编辑、协调、超分辨率和动画。<br />
-效果如图：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200225000213185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p>此外，SInGAN可以通过同样的架构去实现多种任务，例如单个图像到图像的绘制、编辑、协调、超分辨率和动画。 效果如图：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200225000213185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>多任务，注意这里<strong>网络只观察过第一行的训练数据且没有额外的架构修改或是调参</strong>：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200225000858823.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200225000858823.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>SinGAN 的总体架构：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200225005128507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200225005128507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>同样运用了 ProGAN 的思想，可见这是 GAN 的一种趋势。但是 SinGAN 的不同 scale 之间是分开训练的，前一个训练完它的参数就固定了，将生成的图像传递给下一个 scale。</p>
 <p>对于单个的 scale , 它使用了残差结构：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200225010505727.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200225010505727.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p><strong>SinGAN 证明了 GAN 可以学习单一图像的完全分布，从噪声完全生成具有逼真细节、清晰纹理的自然图像。</strong></p>
 <p>个人尝试了一下 SinGAN 进行动画生成，发现效果还不错——</p>
-<p><img src="https://img-blog.csdnimg.cn/20200225132214399.gif" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200225132214399.gif" /></p>
 <p>这张是从第二层进行生成的，如果从更低的层生成，对于我这个训练图像，它的生成就很不真实：</p>
-<p><img src="https://img-blog.csdnimg.cn/20200225132600188.gif" alt="  " /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200225132600188.gif" /></p>
 <p>不难理解这是因为较低层的轻微改变被上采样不断扩大从而导致生成的样本不自然。</p>
 <p>但是如果对于一些其他图像，是完全可以从底层开始生成的：</p>
-<p>[video(video-H9uTQTtW-1582608485913)(type-bilibili)(url-<span class="exturl" data-url="aHR0cHM6Ly9wbGF5ZXIuYmlsaWJpbGkuY29tL3BsYXllci5odG1sP2FpZD03NDcxNDYxMw==">https://player.bilibili.com/player.html?aid=74714613<i class="fa fa-external-link-alt"></i></span>)(image-<span class="exturl" data-url="aHR0cHM6Ly9zcy5jc2RuLm5ldC9wP2h0dHA6Ly9pMC5oZHNsYi5jb20vYmZzL2FyY2hpdmUvZGI5NTc0ZWQ2MDkxNjZiNWVlOGVmMWE5OWMwN2NiYjg3ZmU1NDAyOC5qcGc=">https://ss.csdn.net/p?http://i0.hdslb.com/bfs/archive/db9574ed609166b5ee8ef1a99c07cbb87fe54028.jpg<i class="fa fa-external-link-alt"></i></span>)(title-SinGAN for single image animation)]</p>
-<h2 id="十二-gan-的下一步"><a class="markdownIt-Anchor" href="#十二-gan-的下一步"></a> 十二、GAN 的下一步</h2>
+<p>[video(video-H9uTQTtW-1582608485913)(type-bilibili)(url-https://player.bilibili.com/player.html?aid=74714613)(image-https://ss.csdn.net/p?http://i0.hdslb.com/bfs/archive/db9574ed609166b5ee8ef1a99c07cbb87fe54028.jpg)(title-SinGAN for single image animation)]</p>
+<h2 id="十二gan-的下一步">十二、GAN 的下一步</h2>
 <p>学习了这么多 GAN 的结构和思想，不由得会产生一些直觉，让我们想象 GAN 的下一步会是什么。谷歌大脑的研究员Augustus Odena在distill上发表了一篇新的文章，就提出了<span class="exturl" data-url="aHR0cHM6Ly9kaXN0aWxsLnB1Yi8yMDE5L2dhbi1vcGVuLXByb2JsZW1zLw==">关于GAN的七个问题<i class="fa fa-external-link-alt"></i></span>，这些问题都是 GAN 发展的方向。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200225124150443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<h4 id="1-gan-是否会被取代"><a class="markdownIt-Anchor" href="#1-gan-是否会被取代"></a> 1. GAN 是否会被取代</h4>
+<p><img src="https://img-blog.csdnimg.cn/20200225124150443.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<h4 id="gan-是否会被取代">1. GAN 是否会被取代</h4>
 <p>除了GAN以外，目前还有另外两种比较流行的生成模型：流模型（Flow Models）和自回归模型（Autoregressive Models）。最近的研究成果表明，这些模型具有不同的性能特征和权衡。GAN并行高效但不可逆；流模型允许精确的对数似然计算和精确推理，但效率低；自回归模型可逆且高效，但不并行。</p>
-<p><img src="https://img-blog.csdnimg.cn/20200225125007261.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<p>那么 GAN 和其它生成模型之间的基本权衡是什么呢？<br />
-这就需要我们去研究更多的模型，同时尝试进行混合模型，说不定会有更好的表现，各取其长。</p>
-<h4 id="2-gan-给指定分布建模有多难"><a class="markdownIt-Anchor" href="#2-gan-给指定分布建模有多难"></a> 2. GAN 给指定分布建模有多难</h4>
+<p><img src="https://img-blog.csdnimg.cn/20200225125007261.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<p>那么 GAN 和其它生成模型之间的基本权衡是什么呢？ 这就需要我们去研究更多的模型，同时尝试进行混合模型，说不定会有更好的表现，各取其长。</p>
+<h4 id="gan-给指定分布建模有多难">2. GAN 给指定分布建模有多难</h4>
 <p>大多数GAN研究侧重于图像合成，人们往往都是用MINIST、CIFAR-10、STL-10、CelebA和Imagenet这样的数据集来训练GAN。而哪些数据集更容易建模，总有一些坊间传闻，但如果想要验证这些结论，那就复杂了。</p>
 <p>Augustus Odena指出，与任何科学一样，GAN也希望有一个简单的理论来解释实验结果。</p>
 <p>于是问题二就来了：我们怎么才能知道用GAN建模有多难？</p>
 <p>大牛建议从两个方面着手：</p>
 <ul>
-<li>
-<p>合成数据集——通过研究合成数据集来探究哪些特征会影响学习性</p>
-</li>
-<li>
-<p>修改现有的理论结果——尝试修改现有理论结果的假设来解释数据集的不同属性</p>
-</li>
+<li><p>合成数据集——通过研究合成数据集来探究哪些特征会影响学习性</p></li>
+<li><p>修改现有的理论结果——尝试修改现有理论结果的假设来解释数据集的不同属性</p></li>
 </ul>
-<h4 id="3-gan只能合成图像吗"><a class="markdownIt-Anchor" href="#3-gan只能合成图像吗"></a> 3. GAN只能合成图像吗</h4>
-<p>GAN在图像合成领域的成绩有目共睹，而在图像合成之外，Augustus Odena提到了三个主要受到关注的领域：文本，结构化数据，音频。<br />
-<img src="https://pic4.zhimg.com/50/v2-f597e74e0b6b65b2c65c4fc20b8a9d44_hd.jpg" data-caption="" data-size="normal" data-rawwidth="1008" data-rawheight="549" class="origin_image zh-lightbox-thumb" width="1008" data-original="https://pic4.zhimg.com/v2-f597e74e0b6b65b2c65c4fc20b8a9d44_r.jpg"/><br />
-（快速生成高保真音频的新方法GANsynth, Jesse Engel, 2019）</p>
-<p>在无监督音频合成方面GAN是比较成功的，但在其他方面还是乏善可陈。<br />
-那么如何才能使GAN在非图像数据上表现得更好呢？这就是第三个问题。</p>
+<h4 id="gan只能合成图像吗">3. GAN只能合成图像吗</h4>
+<p>GAN在图像合成领域的成绩有目共睹，而在图像合成之外，Augustus Odena提到了三个主要受到关注的领域：文本，结构化数据，音频。 <img src="https://pic4.zhimg.com/50/v2-f597e74e0b6b65b2c65c4fc20b8a9d44_hd.jpg" data-caption="" data-size="normal" data-rawwidth="1008" data-rawheight="549" class="origin_image zh-lightbox-thumb" width="1008" data-original="https://pic4.zhimg.com/v2-f597e74e0b6b65b2c65c4fc20b8a9d44_r.jpg"/> （快速生成高保真音频的新方法GANsynth, Jesse Engel, 2019）</p>
+<p>在无监督音频合成方面GAN是比较成功的，但在其他方面还是乏善可陈。 那么如何才能使GAN在非图像数据上表现得更好呢？这就是第三个问题。</p>
 <ul>
-<li>
-<p>对于连续型的数据，我们可能需要找到更好的隐含先验信息，并且这些信息是可以在给定的域里能计算出来的。</p>
-</li>
-<li>
-<p>而对于结构性数据或是离散数据，我们并不确定什么可以改进，但是也许可以让判别器和生成器进行强化学习。或者这类问题只是缺少一些更基础性的研究进展。</p>
-</li>
+<li><p>对于连续型的数据，我们可能需要找到更好的隐含先验信息，并且这些信息是可以在给定的域里能计算出来的。</p></li>
+<li><p>而对于结构性数据或是离散数据，我们并不确定什么可以改进，但是也许可以让判别器和生成器进行强化学习。或者这类问题只是缺少一些更基础性的研究进展。</p></li>
 </ul>
-<h4 id="4-gan-的收敛问题"><a class="markdownIt-Anchor" href="#4-gan-的收敛问题"></a> 4. GAN 的收敛问题</h4>
+<h4 id="gan-的收敛问题">4. GAN 的收敛问题</h4>
 <p>GAN 的训练过程是在同时优化发生器和鉴别器，让两个 AI 相互对抗，而这很可能导致模型不收敛。</p>
 <p>目前有三种路线都有所突破但尚未完成：</p>
 <ul>
@@ -786,7 +748,7 @@ Bi-GAN:</p>
 <li><strong>使用普通神经网络的技术</strong>——应用分析普通神经网络（非凸）的技术来回答 GAN 的收敛性问题。在前面的文章中介绍了深度学习其实并不一定需要全局收敛，但这种分析能否提升到 GAN 上呢？</li>
 <li><strong>博弈论</strong>——可以使用博弈论中的概念为 GAN 训练建模。这种技术产生的训练过程可以证明是收敛到近似的纳什均衡，但是这会导致不合理的资源约束。因此下一步就是减少这些约束。</li>
 </ul>
-<h4 id="5-gan-的评估问题"><a class="markdownIt-Anchor" href="#5-gan-的评估问题"></a> 5. GAN 的评估问题</h4>
+<h4 id="gan-的评估问题">5. GAN 的评估问题</h4>
 <p>前面我们也说过，关于 GAN 的评估标准有很多但没有共识。例如有：</p>
 <ul>
 <li>FID——只能衡量样本质量而不能衡量样本多样性。</li>
@@ -794,89 +756,61 @@ Bi-GAN:</p>
 <li>AIS——建议在GAN的输出上使用高斯观测模型，并使用退火的重要性采样来估计在此模型下的对数可能性。</li>
 <li>……</li>
 </ul>
-<p>关于如何评估 GAN 的困惑实际上源于对何时使用 GAN 的疑惑。<br />
-可能最终还是需要人的参与才可以真正衡量 GAN （生成模型的图灵测试？）</p>
-<h4 id="6-gan-的训练如何按批的大小进行扩展"><a class="markdownIt-Anchor" href="#6-gan-的训练如何按批的大小进行扩展"></a> 6. GAN 的训练如何按批的大小进行扩展</h4>
+<p>关于如何评估 GAN 的困惑实际上源于对何时使用 GAN 的疑惑。 可能最终还是需要人的参与才可以真正衡量 GAN （生成模型的图灵测试？）</p>
+<h4 id="gan-的训练如何按批的大小进行扩展">6. GAN 的训练如何按批的大小进行扩展</h4>
 <p>大部分GAN中的鉴别器只是一个图像分类器，如果瓶颈在于梯度噪声，那么增加批大小就能加速训练。但是GAN有一个不同于分类器的瓶颈：它的训练过程是不稳定的。</p>
 <p>Augustus Odena于是提出了第六个问题：GAN训练如何按批大小进行扩展？梯度噪声在GAN的训练过程中扮演什么样的角色？是否可以修改GAN训练，使其随批处理大小更好地实现扩展？</p>
 <p>他指出了三个解决方案，其中，他认为在批大小非常大的时候，Optimal Transport GANs会是不错的选择。而异步SGD也是一个值得关注的方法。</p>
-<h4 id="7-判别器的对抗鲁棒性会怎样影响-gan-的训练"><a class="markdownIt-Anchor" href="#7-判别器的对抗鲁棒性会怎样影响-gan-的训练"></a> 7. 判别器的对抗鲁棒性会怎样影响 GAN 的训练。</h4>
+<h4 id="判别器的对抗鲁棒性会怎样影响-gan-的训练">7. 判别器的对抗鲁棒性会怎样影响 GAN 的训练。</h4>
 <p>众所周知，图像分类器会受到对抗样本的影响：对抗样本与真实样本的区别几乎无法用肉眼分辨，但是却会导致模型进行错误的判断。由于GAN的鉴别器就是图像分类器，所以它也可能遭遇对抗样本的问题。</p>
 <p>Augustus Odena提到，尽管有大量关于GAN和对抗样本的文献，但它们之间的关系却没有得到多少研究。</p>
 <p>那么问题就来了：GAN和对抗样本之间有什么样的关系？鉴别器的对抗鲁棒性会如何影响GAN的训练结果？</p>
 <p>Augustus Odena认为这个研究课题很有价值。对生成模型的蓄意攻击已经被证明是可行的，而遭到“意外攻击”的可能性虽然比较小，但也没有决定性的证据证明发生器不会产生对抗样本。</p>
-<hr />
-<p>以上就是关于 GAN 的综述，我们学习了 GAN 的背后的数学思想，然后知道了 GAN 的 loss 的选择。学习了条件 GAN, 无监督 GAN 的经典结构与思想，认识了全新的 GAN 的算法结构，并有了对于 GAN 的下一步的初步认识。GAN 的论文每年都在激增，当然不可能学习全部的结构和算法，但是我们可以由一些经典架构学习到 GAN 背后巧妙的思想，并将这种思想或是直觉用于新的结构设计或是应用中。</p>
-<p>本文参考了大量博客与教程论文，想要了解更多还请前往参考文章去继续深入。</p>
-<hr />
-<h2 id="参考文献及推荐阅读"><a class="markdownIt-Anchor" href="#参考文献及推荐阅读"></a> 参考文献及推荐阅读</h2>
-<ol>
+<h2 id="参考文献及推荐阅读">参考文献及推荐阅读</h2>
+<ol type="1">
 <li>前四节：</li>
 </ol>
 <p><strong>李宏毅的 GAN 课程</strong>：</p>
 <p>油管：<span class="exturl" data-url="aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1EUU5OTWlBUDVsdyZhbXA7bGlzdD1QTEpWX2VsM3VWVHNNcTZKRUZQVzM1QkNpT1FUc29xd053JmFtcDtpbmRleD0x">https://www.youtube.com/watch?v=DQNNMiAP5lw&amp;list=PLJV_el3uVTsMq6JEFPW35BCiOQTsoqwNw&amp;index=1<i class="fa fa-external-link-alt"></i></span></p>
 <p>b站：<span class="exturl" data-url="aHR0cHM6Ly93d3cuYmlsaWJpbGkuY29tL3ZpZGVvL2F2MjQwMTE1Mjg/ZnJvbT1zZWFyY2gmYW1wO3NlaWQ9OTczMzg1MTYxMDQzOTAyMDMy">https://www.bilibili.com/video/av24011528?from=search&amp;seid=973385161043902032<i class="fa fa-external-link-alt"></i></span></p>
 <p>课程主页（包含课程的课件和作业）：<span class="exturl" data-url="aHR0cDovL3NwZWVjaC5lZS5udHUuZWR1LnR3L350bGthZ2svY291cnNlc19NTERTMTguaHRtbA==">http://speech.ee.ntu.edu.tw/~tlkagk/courses_MLDS18.html<i class="fa fa-external-link-alt"></i></span></p>
-<ol start="2">
+<ol start="2" type="1">
 <li>WGAN 部分：</li>
 </ol>
 <p><strong>令人拍案叫绝的Wasserstein GAN</strong> <span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNTA3MTkxMw==">https://zhuanlan.zhihu.com/p/25071913<i class="fa fa-external-link-alt"></i></span></p>
-<ol start="3">
+<ol start="3" type="1">
 <li>WGAN++ 部分：</li>
 </ol>
 <p>知乎提问中 <strong>LSGAN 的作者郑华滨老师的回答</strong><span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzUyNjAyNTI5L2Fuc3dlci8xNTg3Mjc5MDA=">https://www.zhihu.com/question/52602529/answer/158727900<i class="fa fa-external-link-alt"></i></span></p>
 <p><strong>进一步了解谱归一化</strong>: <span class="exturl" data-url="aHR0cHM6Ly93d3cuc29odS5jb20vYS8yOTQzOTk4NjRfNTAwNjU5">https://www.sohu.com/a/294399864_500659<i class="fa fa-external-link-alt"></i></span></p>
 <p>另外郑华滨老师还<strong>将 WGAN 同 LSGAN 进行了比较和拓展</strong></p>
 <p>条条大路通罗马LS-GAN：把GAN建立在Lipschitz密度上：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNTIwNDAyMA==">https://zhuanlan.zhihu.com/p/25204020<i class="fa fa-external-link-alt"></i></span></p>
-<p>另外描述了WGAN与LSGAN共同属于的一个<strong>广义模型族GLSGAN</strong>：<br />
-<strong>广义LS-GAN（GLS-GAN)</strong>: <span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNTU4MDAyNw==">https://zhuanlan.zhihu.com/p/25580027<i class="fa fa-external-link-alt"></i></span></p>
-<ol start="4">
+<p>另外描述了WGAN与LSGAN共同属于的一个<strong>广义模型族GLSGAN</strong>： <strong>广义LS-GAN（GLS-GAN)</strong>: <span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yNTU4MDAyNw==">https://zhuanlan.zhihu.com/p/25580027<i class="fa fa-external-link-alt"></i></span></p>
+<ol start="4" type="1">
 <li>评估 GAN 部分：</li>
 </ol>
 <p>FID 的教程<strong>How to Implement the Frechet Inception Distance (FID) for Evaluating GANs</strong> ：<span class="exturl" data-url="aHR0cHM6Ly9tYWNoaW5lbGVhcm5pbmdtYXN0ZXJ5LmNvbS9ob3ctdG8taW1wbGVtZW50LXRoZS1mcmVjaGV0LWluY2VwdGlvbi1kaXN0YW5jZS1maWQtZnJvbS1zY3JhdGNoLw==">https://machinelearningmastery.com/how-to-implement-the-frechet-inception-distance-fid-from-scratch/<i class="fa fa-external-link-alt"></i></span></p>
 <p><strong>从泛化性到Mode Collapse：关于GAN的一些思考</strong>（作者同样是郑华滨老师）：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8zNjQxMDQ0Mw==">https://zhuanlan.zhihu.com/p/36410443<i class="fa fa-external-link-alt"></i></span></p>
-<ol start="5">
+<ol start="5" type="1">
 <li>StyleGAN 部分：</li>
 </ol>
-<p><strong>论文</strong>：<br />
-StyleGAN：<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE4MTIuMDQ5NDg=">https://arxiv.org/abs/1812.04948<i class="fa fa-external-link-alt"></i></span><br />
-StyleGAN2：<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE5MTIuMDQ5NTgucGRm">https://arxiv.org/pdf/1912.04958.pdf<i class="fa fa-external-link-alt"></i></span></p>
-<p><strong>代码</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL05WbGFicy9zdHlsZWdhbg==">https://github.com/NVlabs/stylegan<i class="fa fa-external-link-alt"></i></span><br />
-<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL05WbGFicy9zdHlsZWdhbjI=">https://github.com/NVlabs/stylegan2<i class="fa fa-external-link-alt"></i></span></p>
-<p>StyleGAN的代码结构非常好，还是值得研究一下的，尤其是生成器的部分。<br />
-<strong>StyleGAN 从代码完全解读</strong>：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzAxMzc2MS9hcnRpY2xlL2RldGFpbHMvMTAwODk1MzMz">https://blog.csdn.net/weixin_43013761/article/details/100895333<i class="fa fa-external-link-alt"></i></span><br />
-一个 StyleGAN的应用与研究网站，可以生成照片，并且<strong>还有许多 GAN 的研究笔记</strong>，很值得去看：<span class="exturl" data-url="aHR0cDovL3d3dy5zZWVwcmV0dHlmYWNlLmNvbS8=">http://www.seeprettyface.com<i class="fa fa-external-link-alt"></i></span><br />
-<strong>StyleGAN 2 解读</strong>：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85NzE5NzEzMw==">https://zhuanlan.zhihu.com/p/97197133<i class="fa fa-external-link-alt"></i></span></p>
-<ol start="6">
-<li>GauGAN 部分：<br />
-<strong>论文</strong>：<br />
-<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1903.07291.pdf">Semantic Image Synthesis with Spatially-Adaptive Normalization<br />
-</a></li>
+<p><strong>论文</strong>： StyleGAN：<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvYWJzLzE4MTIuMDQ5NDg=">https://arxiv.org/abs/1812.04948<i class="fa fa-external-link-alt"></i></span> StyleGAN2：<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE5MTIuMDQ5NTgucGRm">https://arxiv.org/pdf/1912.04958.pdf<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>代码</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL05WbGFicy9zdHlsZWdhbg==">https://github.com/NVlabs/stylegan<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL05WbGFicy9zdHlsZWdhbjI=">https://github.com/NVlabs/stylegan2<i class="fa fa-external-link-alt"></i></span></p>
+<p>StyleGAN的代码结构非常好，还是值得研究一下的，尤其是生成器的部分。 <strong>StyleGAN 从代码完全解读</strong>：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzAxMzc2MS9hcnRpY2xlL2RldGFpbHMvMTAwODk1MzMz">https://blog.csdn.net/weixin_43013761/article/details/100895333<i class="fa fa-external-link-alt"></i></span> 一个 StyleGAN的应用与研究网站，可以生成照片，并且<strong>还有许多 GAN 的研究笔记</strong>，很值得去看：<span class="exturl" data-url="aHR0cDovL3d3dy5zZWVwcmV0dHlmYWNlLmNvbS8=">http://www.seeprettyface.com<i class="fa fa-external-link-alt"></i></span> <strong>StyleGAN 2 解读</strong>：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85NzE5NzEzMw==">https://zhuanlan.zhihu.com/p/97197133<i class="fa fa-external-link-alt"></i></span></p>
+<ol start="6" type="1">
+<li>GauGAN 部分： <strong>论文</strong>： <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE5MDMuMDcyOTEucGRm">Semantic Image Synthesis with Spatially-Adaptive Normalization<i class="fa fa-external-link-alt"></i></span></li>
 </ol>
-<p>这里有一个 <strong>GauGAN 的 demo</strong><span class="exturl" data-url="aHR0cHM6Ly9udmxhYnMuZ2l0aHViLmlvL1NQQURFL2RlbW8uaHRtbA==">https://nvlabs.github.io/SPADE/demo.html<i class="fa fa-external-link-alt"></i></span><br />
-<img src="https://img-blog.csdnimg.cn/20200224231832871.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
-<p><img src="https://img-blog.csdnimg.cn/20200224234343656.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="  " /></p>
+<p>这里有一个 <strong>GauGAN 的 demo</strong><span class="exturl" data-url="aHR0cHM6Ly9udmxhYnMuZ2l0aHViLmlvL1NQQURFL2RlbW8uaHRtbA==">https://nvlabs.github.io/SPADE/demo.html<i class="fa fa-external-link-alt"></i></span> <img src="https://img-blog.csdnimg.cn/20200224231832871.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
+<p><img src="https://img-blog.csdnimg.cn/20200224234343656.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" /></p>
 <p>可以看到效果还不错。</p>
 <p><strong>代码</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL05WbGFicy9TUEFERQ==">https://github.com/NVlabs/SPADE<i class="fa fa-external-link-alt"></i></span></p>
 <p><strong>GauGAN 的详细笔记</strong>：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTQzODAxNjUvYXJ0aWNsZS9kZXRhaWxzLzEwMDExMDA2NQ==">https://blog.csdn.net/u014380165/article/details/100110065<i class="fa fa-external-link-alt"></i></span></p>
-<ol start="7">
-<li>
-<p>SinGAN 部分：<br />
-<strong>论文</strong>：<br />
-<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE5MDUuMDExNjQucGRm">SinGAN: Learning a Generative Model from a Single Natural Image<i class="fa fa-external-link-alt"></i></span><br />
-<strong>论文翻译</strong>：<br />
-<span class="exturl" data-url="aHR0cDovL3d3dy5kYXRhZ3VydS5jbi9hcnRpY2xlLTE1MTY1LTEuaHRtbA==">http://www.dataguru.cn/article-15165-1.html<i class="fa fa-external-link-alt"></i></span><br />
-<strong>代码</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RhbWFyb3R0L1NpbkdBTg==">https://github.com/tamarott/SinGAN<i class="fa fa-external-link-alt"></i></span><br />
-<strong>SinGAN 论文解读</strong>：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85MjIxODUyNQ==">https://zhuanlan.zhihu.com/p/92218525<i class="fa fa-external-link-alt"></i></span></p>
-</li>
-<li>
-<p>GAN的下一步 部分：</p>
-</li>
+<ol start="7" type="1">
+<li><p>SinGAN 部分： <strong>论文</strong>： <span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE5MDUuMDExNjQucGRm">SinGAN: Learning a Generative Model from a Single Natural Image<i class="fa fa-external-link-alt"></i></span> <strong>论文翻译</strong>： <span class="exturl" data-url="aHR0cDovL3d3dy5kYXRhZ3VydS5jbi9hcnRpY2xlLTE1MTY1LTEuaHRtbA==">http://www.dataguru.cn/article-15165-1.html<i class="fa fa-external-link-alt"></i></span> <strong>代码</strong>：<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3RhbWFyb3R0L1NpbkdBTg==">https://github.com/tamarott/SinGAN<i class="fa fa-external-link-alt"></i></span> <strong>SinGAN 论文解读</strong>：<span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85MjIxODUyNQ==">https://zhuanlan.zhihu.com/p/92218525<i class="fa fa-external-link-alt"></i></span></p></li>
+<li><p>GAN的下一步 部分：</p></li>
 </ol>
-<p>distill上的文章：<br />
-<strong>Open Questions about Generative Adversarial Networks</strong><br />
-<span class="exturl" data-url="aHR0cHM6Ly9kaXN0aWxsLnB1Yi8yMDE5L2dhbi1vcGVuLXByb2JsZW1zLw==">https://distill.pub/2019/gan-open-problems/<i class="fa fa-external-link-alt"></i></span></p>
-<p>以及知乎提问中 <strong>量子位的回答</strong>	：<span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzUyNjAyNTI5L2Fuc3dlci8xNTg3Mjc5MDA=">https://www.zhihu.com/question/52602529/answer/158727900<i class="fa fa-external-link-alt"></i></span></p>
+<p>distill上的文章： <strong>Open Questions about Generative Adversarial Networks</strong> <span class="exturl" data-url="aHR0cHM6Ly9kaXN0aWxsLnB1Yi8yMDE5L2dhbi1vcGVuLXByb2JsZW1zLw==">https://distill.pub/2019/gan-open-problems/<i class="fa fa-external-link-alt"></i></span></p>
+<p>以及知乎提问中 <strong>量子位的回答</strong> ：<span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzUyNjAyNTI5L2Fuc3dlci8xNTg3Mjc5MDA=">https://www.zhihu.com/question/52602529/answer/158727900<i class="fa fa-external-link-alt"></i></span></p>
 <p><strong>关于流（FLOW）模型的学习：</strong><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EzMTI4NjMwNjMvYXJ0aWNsZS9kZXRhaWxzLzk0MzA2MTA3">https://blog.csdn.net/a312863063/article/details/94306107<i class="fa fa-external-link-alt"></i></span></p>
 <hr />
 <p><strong>人生苦短，不服就 GAN.</strong></p>
@@ -907,7 +841,7 @@ StyleGAN2：<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE5MTIuM
 </div>
 
           <div class="post-tags">
-              <a href="/tags/notes/" rel="tag"><i class="fa fa-tag"></i> notes</a>
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
           </div>
 
         
@@ -980,13 +914,13 @@ StyleGAN2：<span class="exturl" data-url="aHR0cHM6Ly9hcnhpdi5vcmcvcGRmLzE5MTIuM
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">101k</span>
+    <span title="站点总字数">88k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:32</span>
+    <span title="站点阅读时长">1:20</span>
   </span>
 </div>
 <div class="busuanzi-count">
