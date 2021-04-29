@@ -249,7 +249,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2021/04/28/Unity/Unity%E4%BD%BF%E7%94%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2021/04/28/Unity/UnityIssue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
@@ -262,7 +262,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/28/Unity/Unity%E4%BD%BF%E7%94%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">Unity使用时遇到的问题</a>
+          <a href="/2021/04/28/Unity/UnityIssue/" class="post-title-link" itemprop="url">Unity使用时遇到的问题</a>
         </h2>
 
         <div class="post-meta-container">
@@ -272,10 +272,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-04-28 13:36:27 / 修改时间：14:01:07" itemprop="dateCreated datePublished" datetime="2021-04-28T13:36:27+08:00">2021-04-28</time>
+      <time title="创建时间：2021-04-28 13:36:27" itemprop="dateCreated datePublished" datetime="2021-04-28T13:36:27+08:00">2021-04-28</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-29 13:03:36" itemprop="dateModified" datetime="2021-04-29T13:03:36+08:00">2021-04-29</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -294,7 +300,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>519</span>
+      <span>569</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -312,16 +318,28 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="如果-unity-启动过程中提示有compilation-errors">如果 Unity 启动过程中提示有compilation errors</h1>
+          <a id="more"></a>
+<h1 id="如果-unity-启动过程中提示有compilation-errors">如果 Unity 启动过程中提示有compilation errors</h1>
 <p>进入安全模式，查看控制台报错</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/04/28/Unity/Unity%E4%BD%BF%E7%94%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h2 id="控制台报错没有错误信息">控制台报错没有错误信息：</h2>
+<p>查看Unity日志文件，位于</p>
+<blockquote>
+<p>C:/Users/xxx/AppData/Local/Unity/Editor/Editor.log</p>
+</blockquote>
+<p>搜索error,然后解决相关错误，一般是文件缺失。</p>
+<h1 id="文件缺失">文件缺失：</h1>
+<h2 id="unity-打开项目fatal-error显示无权访问d3dcompiler_47.dll">unity 打开项目Fatal error!显示无权访问d3dcompiler_47.dll</h2>
+<p>https://blog.csdn.net/qq_29245693/article/details/115576107</p>
+<p>下载对应dll文件放在System32对应文件夹中</p>
+<h1 id="编译错误">编译错误</h1>
+<h2 id="unity-提示the-script-dont-inherit-a-native-class-that-can-manage-a-script-或-no-monobehaviour-scripts-in-the-file-or-their-names-dont-match-the-file-name">unity 提示The script don‘t inherit a native class that can manage a script 或 no Monobehaviour scripts in the file, or their names don't match the file name</h2>
+<p><strong>注意c#和java一样public类的名字需要和文件名相同</strong>。</p>
+<p>另外注意需要基于 Unity 已有类实现否则 Unity 编译不出来</p>
+<p>最后命名空间不要引入 Unity 无法识别的空间。这时会报</p>
+<blockquote>
+<p>unity 3D error CS0234: The type or namespace name `***' does not exist in the namespace</p>
+</blockquote>
+
       
     </div>
 
