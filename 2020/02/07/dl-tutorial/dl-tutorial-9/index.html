@@ -349,7 +349,7 @@
 <a id="more"></a>
 <p><strong>循环神经网络</strong>（recurrent neural network）或 RNN ，是一类用于处理序列数据的神经网络。大多数循环网络都能处理可变长度的序列。循环网络强调参数共享，这使得模型能够扩展到不同形式的样本并进行泛化。例如 “我八点吃的早饭” 和 “我早饭在八点吃” ，要提取时间信息。如果我们训练一个前馈网络，需要分别学习句子每个位置的所有语言规则，而循环网络在几个时间步内共享相同的权重，不需要在每个位置都分别学习。</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200205165747929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200205165747929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>循环网络的计算图有两种表现方式，如图。左边循环图展开后就是右边展开图。</p>
 <h2 id="一循环神经网络">一、循环神经网络</h2>
@@ -358,19 +358,19 @@
 <li>每个时间步都有输出，并且隐藏单元之间有循环连接的循环网络。如图：</li>
 </ul>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200205170715305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200205170715305.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <ul>
 <li>每个时间步产生一个输出，只有当前时刻的输出到下个时刻的隐藏单元之间有循环连接的循环网络。如图：</li>
 </ul>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200205171155340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200205171155340.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <ul>
 <li>隐藏单元之间存在循环连接，读取整个序列后产生单个输出的循环网络，如图：</li>
 </ul>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200205171411937.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200205171411937.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>现在我们研究第一种情形的 RNN 前向传播公式。这种循环网络可以计算任何图灵可计算的函数。我们使用 tanh 作为激活函数，RNN 从特定的初始状态 <span class="math inline">\(\boldsymbol h^{(0)}\)</span>出发，开始前向传播。从 <span class="math inline">\(t=1\)</span> 到 <span class="math inline">\(t=\tau\)</span> 的每个时间步，我们应用以下更新方程： <span class="math display">\[\begin{aligned}\boldsymbol a^{(t)} &amp;= \boldsymbol{b+Wh^{(t-1)}+Ux^{(t)}}\\ \boldsymbol h^{(t)}&amp;=\boldsymbol{\tanh(a^{(t)})}\\
 \boldsymbol o^{(t)}&amp;=\boldsymbol {c +Vh^{(t)}}\\
@@ -382,7 +382,7 @@
 <p>对于第二种情形，仅在一个时间步的输出和下一个时间步的隐藏单元间存在循环连接的网络确实没有第一种那么强大，因为缺乏隐藏到隐藏的循环连接。例如，它不能模拟通用图灵机。但消除了隐藏到隐藏循环使得任何基于比较时刻 t 的预测和时刻 t 的训练目标的损失函数中的所有时间步都解耦了。使得训练可以并行化。因为训练集提供了输出的理想值，因此没有必要先计算前一时刻的输出。</p>
 <p>由输出反馈的模型的循环连接模型可用<strong>导师驱动过程(teacher forcing)</strong>进行训练。如图：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200205181902240.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200205181902240.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>训练时我们将训练集中正确的输出反馈到下一个时间步。而当模型部署后，我们用模型的输出近似正确的输出，并反馈回模型。这样可以避免通过时间来传播。</p>
 <p>当然，只要模型一个时间步的输出与下一时间步计算的值存在连接，导师驱动过程就可以使用。因此某些模型要同时使用导师驱动和 BPTT 。</p>
@@ -391,7 +391,7 @@
 <p>之前我们所说的 RNN 都是在时刻 t 的状态只能从过去的序列以及当前的输入中捕获信息，但是在许多情况下，我们要输出的 <span class="math inline">\(\boldsymbol y^{(t)}\)</span> 的预测可能依赖于整个输入序列。</p>
 <p>双向循环神经网络就是为此发明的。它在需要双向信息的应用中很成功。双向 RNN 结合时间上从序列起点开始移动的 RNN 和另一个时间上从序列末尾开始移动的 RNN. 如图：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200206201747900.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200206201747900.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>这允许输出单元能够计算同时依赖于过去和未来且对时刻 t 的输入值最敏感的表示，而不必指定 t 周围固定大小的窗口。</p>
 <p>这种思想可以扩展到二维，如图像。由 4 个 RNN 组成，每一个沿着上下左右中的一个方向计算。相比卷积网络，应用于图像的 RNN 计算成本更高，但允许同一特征图的特征之间存在长期横向的相互作用。</p>
@@ -400,7 +400,7 @@
 <p>我们将 RNN 的输入称为“上下文”，我们希望产生上下文的表示 <span class="math inline">\(C\)</span> 这个 <span class="math inline">\(C\)</span> 可能是一个向量或者向量序列。</p>
 <p>用于映射可变长度到另一可变长度序列的 RNN 架构称为编码 - 解码或序列到序列架构，如图：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200206205938383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200206205938383.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>它的想法很简单：</p>
 <ul>
@@ -420,7 +420,7 @@
 </ul>
 <p>将 RNN 的状态分为多层有许多好处，如图：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200206234033699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200206234033699.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>（a）所示层次结构中较低的层起到了将原始输入转化为对更高层的隐藏状态更合适表示的作用。(b) 展示了可以向输入到隐藏、隐藏到隐藏以及隐藏到输出的部分引入更深的计算（如 MLP ），但这会导致优化困难。针对这个问题，提出了(c)的结构，引入了跳跃连接来缓解路径延长的效应。</p>
 <h2 id="五长期依赖的挑战">五、长期依赖的挑战</h2>
@@ -442,13 +442,13 @@
 <p>LSTM 引入了自循环的思想，以产生梯度长时间持续流动的路径。且一个关键的扩展是使自循环的权重视上下文而定，而非固定的。 LSTM 除了外部的 RNN 循环外，还具有内部的自环，因此 LSTM 不是简单地向输入和循环单元的仿射变换后施加一个逐元素的非线性。</p>
 <p>LSTM 块的基本结构如图（cousera版本）：</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200207154033783.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200207154033783.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>LSTM 网络比简单的循环架构更易于学习长期依赖。</p>
 <h4 id="其他门控-rnn">2. 其他门控 RNN</h4>
 <p>LSTM 哪些部分是真正必需的？ <strong>GRU</strong> 给出了一个答案，它与 LSTM 的主要区别就是单个门控单元同时控制遗忘因子和更新状态单元的决定。</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200207162748441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200207162748441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>更新门像条件渗漏累计器一样可以线性门控任意维度，从而可以选择遗忘或是记住之前的状态。复位门控制当前状态中哪些部分用于计算下一个目标状态，在过去状态和未来状态之间引入了附加的非线性效应。 围绕这一主题可以设计更多的变种。</p>
 <p>例如复位门的输出可以在多个隐藏单元间共享，或者，全局门的乘积和一个据部门结合以结合全局控制和局部控制。但是很多变种的性能并没有太大提升，甚至不如原版。</p>
@@ -456,7 +456,7 @@
 <p>智能需要知识并且可以通过学习获取知识，但是知识是不同的并且种类繁多，有些知识是隐含的、潜意识的且难以用语言表达。神经网络擅长存储隐性知识，但它们难以记住事实。有推测称这是因为神经网络缺乏<strong>工作存储</strong>系统，即类似人类为实现一些目标而明确保存和操作相关信息片段的系统。</p>
 <p>为了解决这一问题， Weston <em>et al.</em>(2014) 引入了<strong>记忆网络</strong>，其中包括一组可以通过寻址机制来访问的记忆单元。 Gaves <em>et al.</em>(2014) 引入的<strong>神经图灵自动机</strong>，不需要明确地监督指示采取哪些行动而能学习从记忆单元读写任意内容，并通过使用基于内容的软注意机制，允许端到端的训练。</p>
 <figure>
-<img src="https://img-blog.csdnimg.cn/20200207205131857.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" /><figcaption>在这里插入图片描述</figcaption>
+<img src="https://img-blog.csdnimg.cn/20200207205131857.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述" /><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>每个记忆单元可以看作是 LSTM 或 GRU 中记忆单元的扩展。不同的是网络输出一个内部状态来选择从哪个单元读取或写入。无论是软或随机硬性的，用于选择一个地址的机制与先前介绍的注意力机制形式相同。</p>
 <p>外显记忆可以使得信息和梯度在非常长的持续时间内传播。</p>

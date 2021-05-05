@@ -407,31 +407,31 @@
 <li>在具有相同方差的所有可能的概率分布中，正态分布在实数上具有最大的不确定性。（熵最大）</li>
 </ul>
 <figure>
-<img src="https://img-blog.csdnimg.cn/2020011400155645.png#pic_center" alt="多维正态分布" /><figcaption>多维正态分布</figcaption>
+<img src="https://img-blog.csdnimg.cn/2020011400155645.png#pic_center" alt="多维正态分布" /><figcaption aria-hidden="true">多维正态分布</figcaption>
 </figure>
 <p><strong>混合分布</strong> 通过简单的概率分布的组合来生成更丰富的分布 eg(组件的分布取决于一个范畴分布）: <span class="math display">\[P(x)=\sum_{i}P(c=i)P(x|c=i)\]</span> <strong>高斯混合模型（GMM)</strong> 是一个万能近似器，即任何概率密度都可以用足够多组件的GMM来逼近。</p>
 <p>注意：概率论的一些结论对于连续型随机变量实际上由测度论得只能是几乎处处成立</p>
 <h3 id="信息论">3.信息论</h3>
 <p>我们使用信息论来描述概率分布或量化概率分布的相似性。</p>
 <ul>
-<li>信息论的基本思想：一个较不可能的事的发生比一个很可能的事情的发生会提供更多信息。为了量化信息，规定：
+<li><p>信息论的基本思想：一个较不可能的事的发生比一个很可能的事情的发生会提供更多信息。为了量化信息，规定：</p>
 <ol type="1">
 <li>非常可能发生的事情信息量很少，且极端情况下无信息量。</li>
 <li>较不可能发生的事提供更多信息。</li>
 <li>独立事件有增量的信息。</li>
 </ol></li>
-<li>规定一个事件<span class="math inline">\(x\)</span>的<strong>自信息</strong>为：<span class="math inline">\(I(x)=-\log P(x)\)</span> 这里令log为自然对数，因此自信息的单位是奈特（nats)。（以2为底的单位就是比特或者香农）</li>
-<li>对于整个概率分布的不确定性总量，我们用<strong>香农熵</strong>衡量： <span class="math display">\[H(x)=\mathbb{E}_{x\sim P}[I(x)]=-\mathbb{E}_{x\sim P}[\log P(x)]\]</span> 也记作<span class="math inline">\(H(P)\)</span>。一个分布的香农熵是指遵循这个分布的事件所产生的期望信息总量。x是连续的时候，香农熵又被称为<strong>微分熵</strong></li>
+<li><p>规定一个事件<span class="math inline">\(x\)</span>的<strong>自信息</strong>为：<span class="math inline">\(I(x)=-\log P(x)\)</span> 这里令log为自然对数，因此自信息的单位是奈特（nats)。（以2为底的单位就是比特或者香农）</p></li>
+<li><p>对于整个概率分布的不确定性总量，我们用<strong>香农熵</strong>衡量： <span class="math display">\[H(x)=\mathbb{E}_{x\sim P}[I(x)]=-\mathbb{E}_{x\sim P}[\log P(x)]\]</span> 也记作<span class="math inline">\(H(P)\)</span>。一个分布的香农熵是指遵循这个分布的事件所产生的期望信息总量。x是连续的时候，香农熵又被称为<strong>微分熵</strong></p></li>
 <li><p>若对于一个随机变量x有两个单独的概率分布<span class="math inline">\(P(x)、Q(x)\)</span>我们可以用<strong>KL 散度</strong>衡量两个分布的差异： <span class="math display">\[D_{KL}(P\| Q)=\mathbb{E}_{x\sim P}[\log \dfrac{P(x)}{Q(x)}]\]</span></p>
-KL散度是非对称的，但由于它非负，常被用来测量两个分布的“距离”，这意味着如果要令一个分布<span class="math inline">\(q\)</span>近似分布<span class="math inline">\(p\)</span>，那么抉择是最小化<span class="math inline">\(D_{KL}(P\| Q)\)</span>或者<span class="math inline">\(D_{KL}(Q\| P)\)</span>是很重要的</li>
-<li><strong>交叉熵</strong>：<span class="math inline">\(H(P,Q)=H(P)+D_{KL}(P\| Q)=-\mathbb{E}_{x\sim P}\log Q(x)\)</span>针对Q的最小化交叉熵过程相当于最小化KL散度。</li>
+<p>KL散度是非对称的，但由于它非负，常被用来测量两个分布的“距离”，这意味着如果要令一个分布<span class="math inline">\(q\)</span>近似分布<span class="math inline">\(p\)</span>，那么抉择是最小化<span class="math inline">\(D_{KL}(P\| Q)\)</span>或者<span class="math inline">\(D_{KL}(Q\| P)\)</span>是很重要的</p></li>
+<li><p><strong>交叉熵</strong>：<span class="math inline">\(H(P,Q)=H(P)+D_{KL}(P\| Q)=-\mathbb{E}_{x\sim P}\log Q(x)\)</span>针对Q的最小化交叉熵过程相当于最小化KL散度。</p></li>
 <li><p>信息论中规定<span class="math inline">\(\lim _{x\rightarrow 0}x\log x=0\)</span></p></li>
 </ul>
 <h2 id="二数值计算">二、数值计算</h2>
 <h3 id="溢出">1. 溢出</h3>
 <p>计算机表示实数总会有一些误差，因此我们在设计算法时应该考虑到最小化舍入误差的积累。</p>
 <ul>
-<li><strong>下溢</strong>：当接近0的数被舍为0时发生。很多函数在输入为0时会发生严重错误。</li>
+<li><p><strong>下溢</strong>：当接近0的数被舍为0时发生。很多函数在输入为0时会发生严重错误。</p></li>
 <li><p><strong>上溢</strong>：当大量级的数被近似为<span class="math inline">\(\infty\)</span>时发生</p>
 <p>很多底层的库在设计时就考虑了很多溢出的情况，可以自动保持数值稳定。</p></li>
 </ul>
@@ -482,7 +482,7 @@ KL散度是非对称的，但由于它非负，常被用来测量两个分布的
 <h4 id="拉格朗日对偶性">6. 拉格朗日对偶性</h4>
 <p>在约束最优化问题中，我们常利用拉格朗日对偶性将原始问题转换为对偶问题。</p>
 <ul>
-<li>原始问题： <span class="math display">\[\boldsymbol{\min_x\max_\lambda\max_{\alpha,\alpha\geq0}}L(\boldsymbol{x,\lambda,\alpha})\]</span> 称为广义拉格朗日函数的极小极大问题，记<span class="math inline">\(p^*\)</span>为原始问题的最优值。</li>
+<li><p>原始问题： <span class="math display">\[\boldsymbol{\min_x\max_\lambda\max_{\alpha,\alpha\geq0}}L(\boldsymbol{x,\lambda,\alpha})\]</span> 称为广义拉格朗日函数的极小极大问题，记<span class="math inline">\(p^*\)</span>为原始问题的最优值。</p></li>
 <li><p>对偶问题： <span class="math display">\[\boldsymbol{\max_\lambda\max_{\alpha,\alpha\geq0}\min_x}L(\boldsymbol{x,\lambda,\alpha})\]</span> 称为广义拉格朗日函数的极大极小问题，记<span class="math inline">\(d^*\)</span>为对偶问题的最优值</p></li>
 <li><p>原始问题与对偶问题的关系： <strong>定理1</strong>：若原始问题和对偶问题都有最优值，则 <span class="math display">\[d^*=\boldsymbol{\max_{\lambda,\alpha:\alpha\geq0}\min_x}L(\boldsymbol{x,\lambda,\alpha})\leq\boldsymbol{\min_x\max_{\lambda,\alpha:\alpha\geq0}}L(\boldsymbol{x,\lambda,\alpha})=p^*\]</span></p></li>
 </ul>
