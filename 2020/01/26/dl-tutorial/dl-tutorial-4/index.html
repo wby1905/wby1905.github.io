@@ -27,12 +27,12 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="以下内容由我的CSDN博客迁移。 前面介绍了有关机器学习的基本概念和经典算法，现在让我们了解一下为什么深度学习会崛起。（主要参考《深度学习》）">
+<meta name="description" content="以下内容由我的CSDN博客迁移。 前面介绍了有关机器学习的基本概念和经典算法，现在让我们了解一下为什么深度学习会崛起。（主要参考《深度学习》）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从传统机器学习走向深度学习">
 <meta property="og:url" content="https://wby1905.github.io/2020/01/26/dl-tutorial/dl-tutorial-4/index.html">
 <meta property="og:site_name" content="David Wang">
-<meta property="og:description" content="以下内容由我的CSDN博客迁移。 前面介绍了有关机器学习的基本概念和经典算法，现在让我们了解一下为什么深度学习会崛起。（主要参考《深度学习》）">
+<meta property="og:description" content="以下内容由我的CSDN博客迁移。 前面介绍了有关机器学习的基本概念和经典算法，现在让我们了解一下为什么深度学习会崛起。（主要参考《深度学习》）">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMwLmNuYmxvZ3MuY29tL2kvNjQzODMyLzIwMTQwNi8yNDE2NTExNzUxNzg2MTYucG5n?x-oss-process=image/format,png">
 <meta property="article:published_time" content="2020-01-26T09:48:53.000Z">
@@ -175,7 +175,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%83%E4%BD%BF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8F%91%E5%B1%95%E7%9A%84%E6%8C%91%E6%88%98"><span class="nav-text"> 促使深度学习发展的挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%BB%B4%E6%95%B0%E7%81%BE%E9%9A%BEcurse-of-dimensionality"><span class="nav-text"> 1. 维数灾难(Curse of Dimensionality)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B1%80%E9%83%A8%E4%B8%8D%E5%8F%98%E6%80%A7%E5%92%8C%E5%B9%B3%E6%BB%91%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-text"> 2. 局部不变性和平滑正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%B5%81%E5%BD%A2%E5%AD%A6%E4%B9%A0"><span class="nav-text"> 3. 流形学习</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%83%E4%BD%BF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8F%91%E5%B1%95%E7%9A%84%E6%8C%91%E6%88%98"><span class="nav-text">促使深度学习发展的挑战</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%B4%E6%95%B0%E7%81%BE%E9%9A%BEcurse-of-dimensionality"><span class="nav-text">1. 维数灾难(Curse of Dimensionality)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B1%80%E9%83%A8%E4%B8%8D%E5%8F%98%E6%80%A7%E5%92%8C%E5%B9%B3%E6%BB%91%E6%AD%A3%E5%88%99%E5%8C%96"><span class="nav-text">2. 局部不变性和平滑正则化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%81%E5%BD%A2%E5%AD%A6%E4%B9%A0"><span class="nav-text">3. 流形学习</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -337,43 +337,39 @@
         <p>以下内容由我的<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDUvYXJ0aWNsZS9kZXRhaWxzLzEwNDA4NjcyMw==">CSDN博客<i class="fa fa-external-link-alt"></i></span>迁移。</p>
 <p>前面介绍了有关机器学习的基本概念和经典算法，现在让我们了解一下为什么深度学习会崛起。（主要参考《深度学习》）</p>
 <a id="more"></a>
-<h2 id="促使深度学习发展的挑战"><a class="markdownIt-Anchor" href="#促使深度学习发展的挑战"></a> 促使深度学习发展的挑战</h2>
+<h2 id="促使深度学习发展的挑战">促使深度学习发展的挑战</h2>
 <p>很多简单的机器学习算法在不同的重要问题上面效果都表现良好，但它们不能解决一些核心问题，比如语音识别或者对象识别。传统学习算法在这些方面的泛化能力不足。下面让我们说说泛化能力不足的具体原因。</p>
 <ul>
 <li>事实上，深度学习的复兴起始于Hinton表明神经网络能够在MNIST基准数据上胜过RBF核的支持向量机。</li>
 </ul>
-<h4 id="1-维数灾难curse-of-dimensionality"><a class="markdownIt-Anchor" href="#1-维数灾难curse-of-dimensionality"></a> 1. 维数灾难(Curse of Dimensionality)</h4>
+<h4 id="维数灾难curse-of-dimensionality">1. 维数灾难(Curse of Dimensionality)</h4>
 <p>当数据的维数很高时，很多学习问题就会变得相当困难。这种现象被称为<strong>维数灾难</strong>。一组变量不同的可能配置组合的数量会随着变量数目的增加而指数级增长。</p>
 <ul>
 <li>由维数灾难带来的挑战就是统计挑战。许多传统机器学习算法只是简单地假设在一个新点的输出应大致和最近的训练点的输出相同。</li>
 </ul>
 <p>在低维度里，由于数据可能的组合配置很少，我们很容易就能覆盖大部分的区域，比如我们只考虑一个特征的十个值，我们不需要很多数据就能完全覆盖它的配置组合。可是随着维数上升，比如两个特征的各自十个值，我们就需要考虑10 x 10 =100个区域；三个特征就需要追踪1000个区域……</p>
-<p>一般来说，对于需要区分的d维的v个值，我们需要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>v</mi><mi>d</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(v^d)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">d</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>个区域和样本。由此我们可以看到维数不断增加造成的传统机器学习的泛化不足。</p>
-<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMwLmNuYmxvZ3MuY29tL2kvNjQzODMyLzIwMTQwNi8yNDE2NTExNzUxNzg2MTYucG5n?x-oss-process=image/format,png" alt=" " /></p>
+<p>一般来说，对于需要区分的d维的v个值，我们需要<span class="math inline">\(O(v^d)\)</span>个区域和样本。由此我们可以看到维数不断增加造成的传统机器学习的泛化不足。</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWFnZXMwLmNuYmxvZ3MuY29tL2kvNjQzODMyLzIwMTQwNi8yNDE2NTExNzUxNzg2MTYucG5n?x-oss-process=image/format,png" /></p>
 <p>如图，可以看到，随着维数的增加，分类器的性能最终会不断下降。</p>
 <p>对于维数灾难的更详细直观解释，请看<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vZGF0YWh1bnRlci9wLzM4MDgyNTIuaHRtbD91dG1fc291cmNlPXR1aWNvb2wmYW1wO3V0bV9tZWRpdW09cmVmZXJyYWw=">《分类问题中的“维数灾难”》<i class="fa fa-external-link-alt"></i></span></p>
-<h4 id="2-局部不变性和平滑正则化"><a class="markdownIt-Anchor" href="#2-局部不变性和平滑正则化"></a> 2. 局部不变性和平滑正则化</h4>
+<h4 id="局部不变性和平滑正则化">2. 局部不变性和平滑正则化</h4>
 <p>为了提高泛化能力，机器学习算法需要由先验信念引导应该学习什么类型的函数。其中使用最广泛的隐式先验是<strong>平滑先验或局部不变性先验</strong>，它表明我们学习的函数不应在小区域内发生很大的变化。但这一先验不能推广去解决深度学习级别任务中的统计挑战。</p>
 <ul>
-<li>对于我们学习出的函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>f</mi><mo>∗</mo></msup></mrow><annotation encoding="application/x-tex">f^*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.688696em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span></span></span></span>我们认为对于小变动<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>ϵ</mi></mrow><annotation encoding="application/x-tex">\epsilon</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">ϵ</span></span></span></span>，有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>f</mi><mo>∗</mo></msup><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>≈</mo><msup><mi>f</mi><mo>∗</mo></msup><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mi>ϵ</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">f^*(x)\approx f^*(x+\epsilon)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.688696em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.688696em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mbin mtight">∗</span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">ϵ</span><span class="mclose">)</span></span></span></span>，即如果我们知道对应输入<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的答案，那么该答案对于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的领域也适用。若在某些领域有几个答案，我们可以组合它们以产生一个尽可能好的答案。</li>
+<li>对于我们学习出的函数<span class="math inline">\(f^*\)</span>我们认为对于小变动<span class="math inline">\(\epsilon\)</span>，有<span class="math inline">\(f^*(x)\approx f^*(x+\epsilon)\)</span>，即如果我们知道对应输入<span class="math inline">\(x\)</span>的答案，那么该答案对于<span class="math inline">\(x\)</span>的领域也适用。若在某些领域有几个答案，我们可以组合它们以产生一个尽可能好的答案。</li>
 <li>但是，在高维空间中，即使是非常平滑的函数，也会在不同维度上有不同的变化方式。如果函数在不同的区间中表现不一样，就很难用一组训练样本去刻画函数。</li>
 </ul>
 <p>那么我们应该怎样有效地表示复杂的函数以及所估计的函数是否可以很好地泛化到新的输入呢？</p>
 <ul>
-<li>一个关键观点是：只要我们通过额外假设生成数据的分布来建立区域间的依赖关系，那么较少的样本<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">)</span></span></span></span>足以描述多如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mn>2</mn><mi>k</mi></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(2^k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>的大量区间。</li>
+<li>一个关键观点是：只要我们通过额外假设生成数据的分布来建立区域间的依赖关系，那么较少的样本<span class="math inline">\(O(k)\)</span>足以描述多如<span class="math inline">\(O(2^k)\)</span>的大量区间。</li>
 </ul>
 <p>一些机器学习算法会提出很强的，针对特定问题的假设，比如周期性等。但是神经网络并不包含这些很强的假设，因此神经网络的泛化能力更强。深度学习的核心思想是<strong>假设数据由因素或特征组合产生</strong>，这些因素或特征组合可能来自多个层级。还有许多通用的假设进一步提高了深度学习算法。这些温和的假设允许了样本数目和可区分区间数目之间的指数增益。<strong>深度学习的分布式表示带来的指数增益有效地解决了维数灾难带来的挑战。</strong></p>
-<h4 id="3-流形学习"><a class="markdownIt-Anchor" href="#3-流形学习"></a> 3. 流形学习</h4>
+<h4 id="流形学习">3. 流形学习</h4>
 <p><strong>流形（manifold）</strong> 指连在一起的区域。数学上它指一组点，且每个点都有其领域。这意味着存在变换能够从一个位置移动到其领域位置。比如对于地球表面这一球状流形，我们可以朝东西南北走。</p>
-<p>在机器学习中，流形只需要考虑少数嵌入在高维空间中的自由度或维数就能很好地近似。每一维都对应着局部的变化方向。<strong>流形学习</strong>算法通过一个假设来克服维数灾难：高维空间中大部分区域都是无效的输入，有意义的输入只分布在包含少量数据点的子集构成的一组流形中。<br />
-当然，数据位于低维流形的假设并不总是对的，但对于特定场景，比如处理图像、声音或者文本时，流形假设是近似对的。首先因为生活中的图像、文本、声音的概率分布是高度集中的，并不是均匀的噪声。其次，我们可以想象的到例如图像的流形领域，它至少包含了旋转，平移，变亮变暗等变换。在大多数应用中可能会涉及多个流形，比如人脸图像的流形不太可能连接到猫的流形。</p>
-<p>当数据位于低维流形中时，使用流形中的坐标而非<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\R^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em;"></span><span class="mord"><span class="mord"><span class="mord mathbb">R</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>中的坐标表示数据更加自然。比如说我们可以认为道路时嵌入在三维空间中的一维流形。我们用一维道路中的地址号码确定地址，而非三维空间中的坐标。提取流形的坐标是很困难的，但很有希望改进很多机器学习算法。</p>
-<p>关于流形学习，更多请看<br />
-<span class="exturl" data-url="aHR0cHM6Ly95aWZkdS5naXRodWIuaW8vMjAxOC8xMS8yNS8lRTYlQjclQjElRTUlQkElQTYlRTUlQUQlQTYlRTQlQjklQTAlRTQlQjglOEUlRTYlQjUlODElRTUlQkQlQTIlRTUlQUQlQTYlRTQlQjklQTAlRUYlQkMlODglRTQlQjglODAlRUYlQkMlODkv">深度学习与流形学习<i class="fa fa-external-link-alt"></i></span><br />
-<span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzI0MDE1NDg2L2Fuc3dlci8yNjUyNDkzNw==">简要介绍一下流形学习的基本思想<i class="fa fa-external-link-alt"></i></span></p>
+<p>在机器学习中，流形只需要考虑少数嵌入在高维空间中的自由度或维数就能很好地近似。每一维都对应着局部的变化方向。<strong>流形学习</strong>算法通过一个假设来克服维数灾难：高维空间中大部分区域都是无效的输入，有意义的输入只分布在包含少量数据点的子集构成的一组流形中。 当然，数据位于低维流形的假设并不总是对的，但对于特定场景，比如处理图像、声音或者文本时，流形假设是近似对的。首先因为生活中的图像、文本、声音的概率分布是高度集中的，并不是均匀的噪声。其次，我们可以想象的到例如图像的流形领域，它至少包含了旋转，平移，变亮变暗等变换。在大多数应用中可能会涉及多个流形，比如人脸图像的流形不太可能连接到猫的流形。</p>
+<p>当数据位于低维流形中时，使用流形中的坐标而非<span class="math inline">\(\R^n\)</span>中的坐标表示数据更加自然。比如说我们可以认为道路时嵌入在三维空间中的一维流形。我们用一维道路中的地址号码确定地址，而非三维空间中的坐标。提取流形的坐标是很困难的，但很有希望改进很多机器学习算法。</p>
+<p>关于流形学习，更多请看 <span class="exturl" data-url="aHR0cHM6Ly95aWZkdS5naXRodWIuaW8vMjAxOC8xMS8yNS8lRTYlQjclQjElRTUlQkElQTYlRTUlQUQlQTYlRTQlQjklQTAlRTQlQjglOEUlRTYlQjUlODElRTUlQkQlQTIlRTUlQUQlQTYlRTQlQjklQTAlRUYlQkMlODglRTQlQjglODAlRUYlQkMlODkv">深度学习与流形学习<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzI0MDE1NDg2L2Fuc3dlci8yNjUyNDkzNw==">简要介绍一下流形学习的基本思想<i class="fa fa-external-link-alt"></i></span></p>
 <hr />
-<p>接下来我们正式进入深度学习的学习。<br />
-<strong>以上内容如有谬误还请告知。</strong></p>
+<p>接下来我们正式进入深度学习的学习。 <strong>以上内容如有谬误还请告知。</strong></p>
 
     </div>
 
@@ -473,13 +469,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">102k</span>
+    <span title="站点总字数">89k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:33</span>
+    <span title="站点阅读时长">1:21</span>
   </span>
 </div>
 <div class="busuanzi-count">
