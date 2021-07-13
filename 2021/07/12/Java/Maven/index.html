@@ -27,16 +27,27 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta property="og:type" content="website">
-<meta property="og:title" content="David Wang">
-<meta property="og:url" content="https://wby1905.github.io/archives/2021/index.html">
+<meta name="description" content="记录一下项目使用的各种东西。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven使用笔记">
+<meta property="og:url" content="https://wby1905.github.io/2021/07/12/Java/Maven/index.html">
 <meta property="og:site_name" content="David Wang">
+<meta property="og:description" content="记录一下项目使用的各种东西。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b94f54388a25331af0aae0457537a5d9.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/68cc4ecd6df44d0b9e377d07413e71c6.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/6cc34567dc3d74050b6243afb8526433.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/3390df174daba72695ba575c8603a7aa.png">
+<meta property="article:published_time" content="2021-07-12T07:09:13.000Z">
+<meta property="article:modified_time" content="2021-07-13T07:26:50.246Z">
 <meta property="article:author" content="David Wang">
+<meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png">
 
 
-<link rel="canonical" href="https://wby1905.github.io/archives/2021/">
+<link rel="canonical" href="https://wby1905.github.io/2021/07/12/Java/Maven/">
 
 
 <script data-pjax class="page-configurations">
@@ -44,11 +55,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
-<title>归档 | David Wang</title>
+<title>Maven使用笔记 | David Wang</title>
   
 
 
@@ -155,7 +166,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -168,6 +179,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E4%BB%8B%E7%BB%8D"><span class="nav-text"> Maven介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEintellij-idea%E9%85%8D%E7%BD%AE"><span class="nav-text"> Maven安装配置（Intellij IDEA配置）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text"> Maven的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text"> Maven项目的结构</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -239,110 +251,213 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
+
+
+<div class="post-block">
   
   
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 17 篇日志。 继续努力。</span>
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2021/07/12/Java/Maven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="David Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Maven使用笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-12 15:09:13" itemprop="dateCreated datePublished" datetime="2021-07-12T15:09:13+08:00">2021-07-12</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-07-13 15:26:50" itemprop="dateModified" datetime="2021-07-13T15:26:50+08:00">2021-07-13</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
       </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>记录一下项目使用的各种东西。</p>
+<a id="more"></a>
+<h1 id="maven介绍"><a class="markdownIt-Anchor" href="#maven介绍"></a> Maven介绍</h1>
+<p>Maven的主要功能是：<strong>项目构建；项目依赖管理；软件项目持续集成；版本管理；项目的站点描述信息管理。</strong></p>
+<p>一个项目可能依赖于其他的项目和第三方的组件才能顺利完成，Maven提供了仓库的概念，让这些依赖项放进仓库中，项目想要从仓库中去取，其他项目组也需要，OK，从仓库中去取，不必每个人去开源项目的站点去苦苦搜寻了。</p>
+<h1 id="maven安装配置intellij-idea配置"><a class="markdownIt-Anchor" href="#maven安装配置intellij-idea配置"></a> Maven安装配置（Intellij IDEA配置）</h1>
+<p><strong>注意！IDEA中自带maven，所以不用下载解压这些步骤，但是需要添加环境变量等</strong><br />
+<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNTg4MzQ5L2FydGljbGUvZGV0YWlscy81MTQ2MTE4Mg==">参考链接<i class="fa fa-external-link-alt"></i></span></p>
+<ol>
+<li>下载Maven<br />
+官方地址：<span class="exturl" data-url="aHR0cDovL21hdmVuLmFwYWNoZS5vcmcvZG93bmxvYWQuY2dp">http://maven.apache.org/download.cgi<i class="fa fa-external-link-alt"></i></span></li>
+<li>在一个自己定义的文件夹中解压<br />
+<img src="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png" alt="" /></li>
+<li>配置本地仓库路径<br />
+<img src="https://img-blog.csdnimg.cn/img_convert/b94f54388a25331af0aae0457537a5d9.png" alt="" /><br />
+<img src="https://img-blog.csdnimg.cn/img_convert/68cc4ecd6df44d0b9e377d07413e71c6.png" alt="" /></li>
+<li>配置环境变量<br />
+将解压得到的maven文件夹中的bin文件夹添加到Path中。<br />
+<img src="https://img-blog.csdnimg.cn/img_convert/6cc34567dc3d74050b6243afb8526433.png" alt="" /></li>
+<li>在编辑器中配置maven<br />
+<img src="https://img-blog.csdnimg.cn/img_convert/3390df174daba72695ba575c8603a7aa.png" alt="" /></li>
+<li>(可选)生成archetype<br />
+如果新建的项目中maven栏里没有各种archetype<br />
+那么需要在cmd中运行</li>
+</ol>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> mvn help:system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>下载相关的资源<br />
+还是不行就</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> mvn archetype:generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>从cmd中创建一个项目，参数默认就行，然后会下载东西。</p>
+<h1 id="maven的使用"><a class="markdownIt-Anchor" href="#maven的使用"></a> Maven的使用</h1>
+<p>java: 错误: 不支持发行版本 5: 原因是项目的jdk与系统的jdk不一致</p>
+<p>在setting.xml里profile里添加：</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>jdk-13<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activation</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activeByDefault</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activeByDefault</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>jdk</span><span class="token punctuation">></span></span>13<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>jdk</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activation</span><span class="token punctuation">></span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project.build.sourceEncoding</span><span class="token punctuation">></span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project.build.sourceEncoding</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.source</span><span class="token punctuation">></span></span>13<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.source</span><span class="token punctuation">></span></span>
+         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>maven.compiler.target</span><span class="token punctuation">></span></span>13<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>maven.compiler.target</span><span class="token punctuation">></span></span> 
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span> 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!--</span> <span class="token attr-name">jdk自行选择--!</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="maven项目的结构"><a class="markdownIt-Anchor" href="#maven项目的结构"></a> Maven项目的结构</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vSmVmZnJleVN1bi9hcmNoaXZlLzIwMTMvMDMvMTQvMjk2MDU3My5odG1s">参考链接<i class="fa fa-external-link-alt"></i></span></p>
+<ul>
+<li>pom.xml，maven就是通过这个文件来来管理整个project
+<ul>
+<li>modelVersion： 这个XML文件所使用的POM格式的版本</li>
+<li>groupId： 相当于这个project的所有者或者机构的一个标识，一般是com.company.xxx这种格式</li>
+<li>artifactId：  这个project最后所生成的文档(jar、war)的名字，比如对于junit这个开源的project，它的artifactId就是junit</li>
+<li>packaging： 这个project的打包的类型，一般是war、jar等值</li>
+<li>version： project的版本</li>
+<li>name： project的名字，生成文档等内容的时候会用的这个名字</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>待补充……</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-13T10:56:06+08:00"
-              content="2021-07-13">
-          07-13
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/13/Python/Flask/" itemprop="url">
-            <span itemprop="name">Flask学习记录</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          
 
-      
-    </header>
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>David Wang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wby1905.github.io/2021/07/12/Java/Maven/" title="Maven使用笔记">https://wby1905.github.io/2021/07/12/Java/Maven/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/04/28/Unity/UnityIssue/" rel="prev" title="Unity使用时遇到的问题">
+                  <i class="fa fa-chevron-left"></i> Unity使用时遇到的问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/12/Java/Countour/" rel="next" title="java绘制等值线">
+                  java绘制等值线 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-12T15:09:13+08:00"
-              content="2021-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/12/Java/Countour/" itemprop="url">
-            <span itemprop="name">java绘制等值线</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-12T15:09:13+08:00"
-              content="2021-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/07/12/Java/Maven/" itemprop="url">
-            <span itemprop="name">Maven使用笔记</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-04-28T13:36:27+08:00"
-              content="2021-04-28">
-          04-28
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/04/28/Unity/UnityIssue/" itemprop="url">
-            <span itemprop="name">Unity使用时遇到的问题</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
+
+
+
+
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MjI2OS8yODc0OA"></div>
   </div>
   
-  
-  
-
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -498,6 +613,21 @@ document.addEventListener('pjax:success', () => {
 
 
 
+<script>
+NexT.utils.loadComments('#lv-container', () => {
+  window.livereOptions = {
+    refer: "2021/07/12/Java/Maven/"
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
 
     </div>
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body>
