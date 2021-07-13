@@ -179,7 +179,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E4%BB%8B%E7%BB%8D"><span class="nav-text"> Maven介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEintellij-idea%E9%85%8D%E7%BD%AE"><span class="nav-text"> Maven安装配置（Intellij IDEA配置）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text"> Maven的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text"> Maven项目的结构</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E4%BB%8B%E7%BB%8D"><span class="nav-text">Maven介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEintellij-idea%E9%85%8D%E7%BD%AE"><span class="nav-text">Maven安装配置（Intellij IDEA配置）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">Maven的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">Maven项目的结构</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -320,7 +320,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>1.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -340,35 +340,16 @@
     <div class="post-body" itemprop="articleBody">
         <p>记录一下项目使用的各种东西。</p>
 <a id="more"></a>
-<h1 id="maven介绍"><a class="markdownIt-Anchor" href="#maven介绍"></a> Maven介绍</h1>
+<h1 id="maven介绍">Maven介绍</h1>
 <p>Maven的主要功能是：<strong>项目构建；项目依赖管理；软件项目持续集成；版本管理；项目的站点描述信息管理。</strong></p>
 <p>一个项目可能依赖于其他的项目和第三方的组件才能顺利完成，Maven提供了仓库的概念，让这些依赖项放进仓库中，项目想要从仓库中去取，其他项目组也需要，OK，从仓库中去取，不必每个人去开源项目的站点去苦苦搜寻了。</p>
-<h1 id="maven安装配置intellij-idea配置"><a class="markdownIt-Anchor" href="#maven安装配置intellij-idea配置"></a> Maven安装配置（Intellij IDEA配置）</h1>
-<p><strong>注意！IDEA中自带maven，所以不用下载解压这些步骤，但是需要添加环境变量等</strong><br />
-<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNTg4MzQ5L2FydGljbGUvZGV0YWlscy81MTQ2MTE4Mg==">参考链接<i class="fa fa-external-link-alt"></i></span></p>
-<ol>
-<li>下载Maven<br />
-官方地址：<span class="exturl" data-url="aHR0cDovL21hdmVuLmFwYWNoZS5vcmcvZG93bmxvYWQuY2dp">http://maven.apache.org/download.cgi<i class="fa fa-external-link-alt"></i></span></li>
-<li>在一个自己定义的文件夹中解压<br />
-<img src="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png" alt="" /></li>
-<li>配置本地仓库路径<br />
-<img src="https://img-blog.csdnimg.cn/img_convert/b94f54388a25331af0aae0457537a5d9.png" alt="" /><br />
-<img src="https://img-blog.csdnimg.cn/img_convert/68cc4ecd6df44d0b9e377d07413e71c6.png" alt="" /></li>
-<li>配置环境变量<br />
-将解压得到的maven文件夹中的bin文件夹添加到Path中。<br />
-<img src="https://img-blog.csdnimg.cn/img_convert/6cc34567dc3d74050b6243afb8526433.png" alt="" /></li>
-<li>在编辑器中配置maven<br />
-<img src="https://img-blog.csdnimg.cn/img_convert/3390df174daba72695ba575c8603a7aa.png" alt="" /></li>
-<li>(可选)生成archetype<br />
-如果新建的项目中maven栏里没有各种archetype<br />
-那么需要在cmd中运行</li>
-</ol>
+<h1 id="maven安装配置intellij-idea配置">Maven安装配置（Intellij IDEA配置）</h1>
+<p><strong>注意！IDEA中自带maven，所以不用下载解压这些步骤，但是需要添加环境变量等</strong> <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNTg4MzQ5L2FydGljbGUvZGV0YWlscy81MTQ2MTE4Mg==">参考链接<i class="fa fa-external-link-alt"></i></span> 1. 下载Maven 官方地址：<span class="exturl" data-url="aHR0cDovL21hdmVuLmFwYWNoZS5vcmcvZG93bmxvYWQuY2dp">http://maven.apache.org/download.cgi<i class="fa fa-external-link-alt"></i></span> 2. 在一个自己定义的文件夹中解压 <img src="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png" /> 3. 配置本地仓库路径 <img src="https://img-blog.csdnimg.cn/img_convert/b94f54388a25331af0aae0457537a5d9.png" /> <img src="https://img-blog.csdnimg.cn/img_convert/68cc4ecd6df44d0b9e377d07413e71c6.png" /> 4. 配置环境变量 将解压得到的maven文件夹中的bin文件夹添加到Path中。 <img src="https://img-blog.csdnimg.cn/img_convert/6cc34567dc3d74050b6243afb8526433.png" /> 5. 在编辑器中配置maven <img src="https://img-blog.csdnimg.cn/img_convert/3390df174daba72695ba575c8603a7aa.png" /> 6. (可选)生成archetype 如果新建的项目中maven栏里没有各种archetype 那么需要在cmd中运行</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> mvn help:system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>下载相关的资源<br />
-还是不行就</p>
+<p>下载相关的资源 还是不行就</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> mvn archetype:generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>从cmd中创建一个项目，参数默认就行，然后会下载东西。</p>
-<h1 id="maven的使用"><a class="markdownIt-Anchor" href="#maven的使用"></a> Maven的使用</h1>
+<h1 id="maven的使用">Maven的使用</h1>
 <p>java: 错误: 不支持发行版本 5: 原因是项目的jdk与系统的jdk不一致</p>
 <p>在setting.xml里profile里添加：</p>
 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">></span></span>
@@ -385,20 +366,8 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!--</span> <span class="token attr-name">jdk自行选择--!</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="maven项目的结构"><a class="markdownIt-Anchor" href="#maven项目的结构"></a> Maven项目的结构</h2>
-<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vSmVmZnJleVN1bi9hcmNoaXZlLzIwMTMvMDMvMTQvMjk2MDU3My5odG1s">参考链接<i class="fa fa-external-link-alt"></i></span></p>
-<ul>
-<li>pom.xml，maven就是通过这个文件来来管理整个project
-<ul>
-<li>modelVersion： 这个XML文件所使用的POM格式的版本</li>
-<li>groupId： 相当于这个project的所有者或者机构的一个标识，一般是com.company.xxx这种格式</li>
-<li>artifactId：  这个project最后所生成的文档(jar、war)的名字，比如对于junit这个开源的project，它的artifactId就是junit</li>
-<li>packaging： 这个project的打包的类型，一般是war、jar等值</li>
-<li>version： project的版本</li>
-<li>name： project的名字，生成文档等内容的时候会用的这个名字</li>
-</ul>
-</li>
-</ul>
+<h2 id="maven项目的结构">Maven项目的结构</h2>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vSmVmZnJleVN1bi9hcmNoaXZlLzIwMTMvMDMvMTQvMjk2MDU3My5odG1s">参考链接<i class="fa fa-external-link-alt"></i></span> * pom.xml，maven就是通过这个文件来来管理整个project - modelVersion： 这个XML文件所使用的POM格式的版本 - groupId： 相当于这个project的所有者或者机构的一个标识，一般是com.company.xxx这种格式 - artifactId： 这个project最后所生成的文档(jar、war)的名字，比如对于junit这个开源的project，它的artifactId就是junit - packaging： 这个project的打包的类型，一般是war、jar等值 - version： project的版本 - name： project的名字，生成文档等内容的时候会用的这个名字</p>
 <hr />
 <p>待补充……</p>
 
@@ -500,13 +469,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">112k</span>
+    <span title="站点总字数">99k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:42</span>
+    <span title="站点阅读时长">1:30</span>
   </span>
 </div>
 <div class="busuanzi-count">
