@@ -29,21 +29,21 @@
   </script>
 <meta name="description" content="记录一下项目使用的各种东西。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java绘制等值线">
-<meta property="og:url" content="https://wby1905.github.io/2021/07/12/Java/Countour/index.html">
+<meta property="og:title" content="java绘制地形、等值线">
+<meta property="og:url" content="https://wby1905.github.io/2021/07/12/Java/Contour/index.html">
 <meta property="og:site_name" content="David Wang">
 <meta property="og:description" content="记录一下项目使用的各种东西。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://docs.geotools.org/latest/userguide/_images/new_project_screen.png">
 <meta property="article:published_time" content="2021-07-12T07:09:13.000Z">
-<meta property="article:modified_time" content="2021-07-13T07:26:45.947Z">
+<meta property="article:modified_time" content="2021-07-24T03:16:43.308Z">
 <meta property="article:author" content="David Wang">
 <meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://docs.geotools.org/latest/userguide/_images/new_project_screen.png">
 
 
-<link rel="canonical" href="https://wby1905.github.io/2021/07/12/Java/Countour/">
+<link rel="canonical" href="https://wby1905.github.io/2021/07/12/Java/Contour/">
 
 
 <script data-pjax class="page-configurations">
@@ -55,7 +55,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>java绘制等值线 | David Wang</title>
+<title>java绘制地形、等值线 | David Wang</title>
   
 
 
@@ -142,8 +142,8 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">22</span></a></li>
         <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
   </ul>
 </nav>
@@ -175,7 +175,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven%E9%85%8D%E7%BD%AEidea"><span class="nav-text">Maven配置(IDEA)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wcountour"><span class="nav-text">wCountour</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#geotools"><span class="nav-text">Geotools</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven%E9%85%8D%E7%BD%AEidea"><span class="nav-text">Maven配置(IDEA)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAshapefile"><span class="nav-text">创建shapefile</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#wcontour"><span class="nav-text">wContour</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-text">基本用法：</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -191,14 +191,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -258,7 +258,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2021/07/12/Java/Countour/">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2021/07/12/Java/Contour/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
@@ -271,7 +271,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          java绘制等值线
+          java绘制地形、等值线
         </h1>
 
         <div class="post-meta-container">
@@ -289,7 +289,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-13 15:26:45" itemprop="dateModified" datetime="2021-07-13T15:26:45+08:00">2021-07-13</time>
+        <time title="修改时间：2021-07-24 11:16:43" itemprop="dateModified" datetime="2021-07-24T11:16:43+08:00">2021-07-24</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -316,14 +316,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.5k</span>
+      <span>4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -336,18 +336,25 @@
     <div class="post-body" itemprop="articleBody">
         <p>记录一下项目使用的各种东西。</p>
 <a id="more"></a>
-<p>为了便于版本管理，这里使用maven进行安装，因此不需要从官网上下载jar包。 # Geotools 主要参考<span class="exturl" data-url="aHR0cDovL2RvY3MuZ2VvdG9vbHMub3JnL2xhdGVzdC91c2VyZ3VpZGUvdHV0b3JpYWwvaW5kZXguaHRtbA==">Geotools官网教程<i class="fa fa-external-link-alt"></i></span></p>
+<p>为了便于版本管理，这里使用maven进行安装，因此不需要从官网上下载jar包。</p>
+<h1 id="geotools">Geotools</h1>
+<p>主要参考<span class="exturl" data-url="aHR0cDovL2RvY3MuZ2VvdG9vbHMub3JnL2xhdGVzdC91c2VyZ3VpZGUvdHV0b3JpYWwvaW5kZXguaHRtbA==">Geotools官网教程<i class="fa fa-external-link-alt"></i></span></p>
 <h2 id="maven配置idea">Maven配置(IDEA)</h2>
 <ol type="1">
 <li>先创建一个maven的quickstart样本 <img src="http://docs.geotools.org/latest/userguide/_images/new_project_screen.png" /></li>
 <li>然后需要为pom.xml添加geotools包</li>
 </ol>
 <ul>
-<li>properties中添加(版本自定) <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
+<li>properties中添加(版本自定)</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project.build.sourceEncoding</span><span class="token punctuation">></span></span>UTF-8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project.build.sourceEncoding</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>geotools.version</span><span class="token punctuation">></span></span>26-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>geotools.version</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li>dependencies中添加 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>dependencies中添加</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>junit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
@@ -364,9 +371,11 @@
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>gt-swing<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>$&#123;geotools.version&#125;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>添加外部仓库repositories</p>
-<p><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repositories</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>添加外部仓库repositories</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repositories</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repository</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">></span></span>osgeo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>OSGeo Release Repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
@@ -381,9 +390,11 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>snapshots</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>snapshots</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>releases</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">></span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>releases</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repository</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repositories</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> ## 创建shapefile <strong>geotools可视化需要shapefile(.shp)</strong></p></li>
-</ul>
-<p>pom.xml 需要这些东西 <pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repositories</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="创建shapefile">创建shapefile</h2>
+<p><strong>geotools可视化需要shapefile(.shp)</strong></p>
+<p>pom.xml 需要这些东西</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.geotools<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>gt-shapefile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
@@ -410,8 +421,70 @@
      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>snapshots</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>snapshots</span><span class="token punctuation">></span></span>
      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>releases</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">></span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>releases</span><span class="token punctuation">></span></span>
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repository</span><span class="token punctuation">></span></span>
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repositories</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> ......由于教程有很多，就不再搬运到这里了。 geotools个人认为适用于复杂的地形图，是一个较为成熟复杂的平台。</p>
-<h1 id="wcountour">wCountour</h1>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repositories</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>...... 由于教程有很多，就不再搬运到这里了。 geotools适用于绘制复杂的地形图，是一个较为成熟复杂的平台。</p>
+<h1 id="wcontour">wContour</h1>
+<h2 id="基本用法">基本用法：</h2>
+<ol type="1">
+<li>准备好数据：需要提供地图的行列数以及数据，数据是由三部分组成：</li>
+</ol>
+<ul>
+<li>_X代表所有数据的X坐标</li>
+<li>_Y代表所有数据的Y坐标</li>
+<li>_gridData 代表所有每个点上的值 对于grid data(每个点都是网格上的坐标)直接赋值即可，对于discrete data需要进行插值：</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 首先我们需要读入</span>
+<span class="token comment">// 第一维是X坐标，第二维是Y坐标，第三维是值</span>
+<span class="token keyword">double</span> _discreteData<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">[</span>dataNum<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">;</span>
+
+<span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> _X <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">double</span><span class="token punctuation">[</span>cols<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span> _Y <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">double</span><span class="token punctuation">[</span>rows<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 根据行列数生成每个格点的坐标，前四个参数代表了横纵坐标的起始和终止</span>
+<span class="token class-name">Interpolate</span><span class="token punctuation">.</span><span class="token class-name">CreateGridXY_Num</span><span class="token punctuation">(</span><span class="token class-name">Xlb</span><span class="token punctuation">,</span> <span class="token class-name">Ylb</span><span class="token punctuation">,</span> <span class="token class-name">Xrt</span><span class="token punctuation">,</span> <span class="token class-name">Yrt</span><span class="token punctuation">,</span> _X<span class="token punctuation">,</span> _Y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 接下来进行插值，第四个参数指周围节点数，第五个指半径，第六个是对没有值的格点进行赋值（一般-9999）</span>
+<span class="token comment">// 还有其他的插值方法。</span>
+_gridData <span class="token operator">=</span> <span class="token class-name">Interpolate</span><span class="token punctuation">.</span><span class="token class-name">Interpolation_IDW_Radius</span><span class="token punctuation">(</span>_discreteData<span class="token punctuation">,</span> _X<span class="token punctuation">,</span> _Y<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">,</span> _undefData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2" type="1">
+<li>之后需要设置刻度，即等高线的每条线的值</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">double</span> _CValues <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">double</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">&#123;</span><span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="3" type="1">
+<li>然后开始生成等高线</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> nc <span class="token operator">=</span> _CValues<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> S1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>_gridData<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">[</span>_gridData<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 生成当前数据的边界线</span>
+_borders <span class="token operator">=</span> <span class="token class-name">Contour</span><span class="token punctuation">.</span><span class="token function">tracingBorders</span><span class="token punctuation">(</span>_gridData<span class="token punctuation">,</span> _X<span class="token punctuation">,</span> _Y<span class="token punctuation">,</span> S1<span class="token punctuation">,</span> _undefData<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 生成当前数据的等值线</span>
+_contourLines <span class="token operator">=</span> <span class="token class-name">Contour</span><span class="token punctuation">.</span><span class="token function">tracingContourLines</span><span class="token punctuation">(</span>_gridData<span class="token punctuation">,</span> _X<span class="token punctuation">,</span> _Y<span class="token punctuation">,</span> nc<span class="token punctuation">,</span> _CValues<span class="token punctuation">,</span> _undefData<span class="token punctuation">,</span> _borders<span class="token punctuation">,</span> S1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+_contourLines <span class="token operator">=</span> <span class="token class-name">Contour</span><span class="token punctuation">.</span><span class="token function">smoothLines</span><span class="token punctuation">(</span>_contourLines<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="4" type="1">
+<li>现在获得了等值线，还可以继续生成登高面：</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">_contourPolygons <span class="token operator">=</span> <span class="token class-name">Contour</span><span class="token punctuation">.</span><span class="token function">tracingPolygons</span><span class="token punctuation">(</span>_gridData<span class="token punctuation">,</span> _contourLines<span class="token punctuation">,</span> _borders<span class="token punctuation">,</span> _CValues<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol start="5" type="1">
+<li>如果想要截取生成某一范围的等值线，首先需要生成 List&lt;List<PointD>&gt; 形式的截线，然后</li>
+</ol>
+<ul>
+<li>截取等高线：</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">  _clipContourLines <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">PolyLine</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span> <span class="token class-name">PointD</span><span class="token punctuation">></span></span> cLine <span class="token operator">:</span> _clipLines<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    _clipContourLines<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token class-name">Contour</span><span class="token punctuation">.</span><span class="token function">clipPolylines</span><span class="token punctuation">(</span>_contourLines<span class="token punctuation">,</span> cLine<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>截取等高面 ···java</p>
+<pre><code>_clipContourPolygons = new ArrayList&lt;wContour.Global.Polygon&gt;();
+
+for (List&lt;PointD&gt; cLine : _clipLines) &#123;
+    _clipContourPolygons.addAll(Contour.clipPolygons(_contourPolygons, cLine));
+&#125;</code></pre></li>
+</ul>
+<p>``` 6. 之后就可以调用swing.canvas等等来绘制了，_ContourLines包含了所需要的点的坐标</p>
 <hr />
 <p>待补充……</p>
 
@@ -431,7 +504,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wby1905.github.io/2021/07/12/Java/Countour/" title="java绘制等值线">https://wby1905.github.io/2021/07/12/Java/Countour/</a>
+      <a href="https://wby1905.github.io/2021/07/12/Java/Contour/" title="java绘制地形、等值线">https://wby1905.github.io/2021/07/12/Java/Contour/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -513,13 +586,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">99k</span>
+    <span title="站点总字数">125k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:30</span>
+    <span title="站点阅读时长">1:54</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -629,7 +702,7 @@ document.addEventListener('pjax:success', () => {
 <script>
 NexT.utils.loadComments('#lv-container', () => {
   window.livereOptions = {
-    refer: "2021/07/12/Java/Countour/"
+    refer: "2021/07/12/Java/Contour/"
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
