@@ -139,7 +139,7 @@
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a></li>
         <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
   </ul>
 </nav>
@@ -186,7 +186,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -209,7 +209,7 @@
         <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dieTE5MDU=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wby1905"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOjIwMTgzMTI0MDZAZW1haWwuY3VmZS5lZHUuY24=" title="E-Mail → mailto:2018312406@email.cufe.edu.cn"><i class="fa fa-envelope fa-fw"></i></span>
+        <span class="exturl" data-url="bWFpbHRvOndieTE5MDVAcXEuY29t" title="E-Mail → mailto:wby1905@qq.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;wby1905"><i class="fab fa-cuttlefish fa-fw"></i></span>
@@ -327,17 +327,17 @@
 <ol type="1">
 <li>查看当前文件夹下空间占用</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ du -sh *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">du</span> -sh *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="2" type="1">
 <li>内存占用</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ free -h<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">free</span> -h<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ol start="3" type="1">
 <li><p>内存清除 如果cached过大接近total数就需要清除缓存了</p>
 <p>缓存清除命令： echo 1 &gt; /proc/sys/vm/drop_caches --释放网页缓存 echo 2 &gt; /proc/sys/vm/drop_caches --释放目录项和索引 echo 3 &gt; /proc/sys/vm/drop_caches --释放网页缓存，目录项和索引</p></li>
 <li><p>系统占用：top</p></li>
 <li><p>回收站的位置 $HOME/.local/share/Trash/</p></li>
-<li><p>解压.tar.gz <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">tar -zxvf xx.tar.gz -C 文件夹<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> 解压.gz：gzip -d xx.gz</p></li>
+<li><p>解压.tar.gz <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">tar</span> -zxvf xx.tar.gz -C 文件夹<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre> 解压.gz：gzip -d xx.gz</p></li>
 </ol>
 
     </div>
@@ -372,13 +372,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/07/19/Python/Django/" rel="prev" title="Django官方教程">
-                  <i class="fa fa-chevron-left"></i> Django官方教程
+                <a href="/2021/07/19/Python/Django/DjangoAdmin/" rel="prev" title="Django ModelAdmin">
+                  <i class="fa fa-chevron-left"></i> Django ModelAdmin
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/07/23/Linux/SVN/" rel="next" title="Linux服务器搭建SVN">
-                  Linux服务器搭建SVN <i class="fa fa-chevron-right"></i>
+                <a href="/2021/07/23/Linux/SVN/" rel="next" title="Linux 服务器搭建 SVN 并通过 Windows 客户端使用">
+                  Linux 服务器搭建 SVN 并通过 Windows 客户端使用 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -438,13 +438,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">125k</span>
+    <span title="站点总字数">129k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:54</span>
+    <span title="站点阅读时长">1:57</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -27,23 +27,21 @@
     var NexT = window.NexT || {};
     var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="如果 Unity 启动过程中提示有compilation errors 进入安全模式，查看控制台报错，解决对应脚本错误">
+<meta name="description" content="django 配置后台管理界面">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Unity使用时遇到的问题">
-<meta property="og:url" content="https://wby1905.github.io/2021/04/28/Unity/UnityIssue/index.html">
+<meta property="og:title" content="Django ModelAdmin">
+<meta property="og:url" content="https://wby1905.github.io/2021/07/19/Python/Django/DjangoAdmin/index.html">
 <meta property="og:site_name" content="David Wang">
-<meta property="og:description" content="如果 Unity 启动过程中提示有compilation errors 进入安全模式，查看控制台报错，解决对应脚本错误">
+<meta property="og:description" content="django 配置后台管理界面">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://wby1905.github.io/images/screenshot/UnityDebug.png">
-<meta property="article:published_time" content="2021-04-28T05:36:27.000Z">
-<meta property="article:modified_time" content="2021-05-09T06:10:47.828Z">
+<meta property="article:published_time" content="2021-07-19T02:56:06.000Z">
+<meta property="article:modified_time" content="2021-07-28T03:17:11.527Z">
 <meta property="article:author" content="David Wang">
-<meta property="article:tag" content="Issue">
+<meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://wby1905.github.io/images/screenshot/UnityDebug.png">
 
 
-<link rel="canonical" href="https://wby1905.github.io/2021/04/28/Unity/UnityIssue/">
+<link rel="canonical" href="https://wby1905.github.io/2021/07/19/Python/Django/DjangoAdmin/">
 
 
 <script data-pjax class="page-configurations">
@@ -55,7 +53,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>Unity使用时遇到的问题 | David Wang</title>
+<title>Django ModelAdmin | David Wang</title>
   
 
 
@@ -175,7 +173,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C-unity-%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E6%8F%90%E7%A4%BA%E6%9C%89compilation-errors"><span class="nav-text">如果 Unity 启动过程中提示有compilation errors</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%8A%A5%E9%94%99%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF%E4%BF%A1%E6%81%AF"><span class="nav-text">控制台报错没有错误信息：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%BC%BA%E5%A4%B1"><span class="nav-text">文件缺失：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unity-%E6%89%93%E5%BC%80%E9%A1%B9%E7%9B%AEfatal-error-%E6%98%BE%E7%A4%BA%E6%97%A0%E6%9D%83%E8%AE%BF%E9%97%AEd3dcompiler_47.dll"><span class="nav-text">unity 打开项目Fatal error! 显示无权访问d3dcompiler_47.dll</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E8%AF%91%E9%94%99%E8%AF%AF"><span class="nav-text">编译错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unity-%E6%8F%90%E7%A4%BAthe-script-dont-inherit-a-native-class-that-can-manage-a-script-%E6%88%96-no-monobehaviour-scripts-in-the-file-or-their-names-dont-match-the-file-name"><span class="nav-text">unity 提示The script don‘t inherit a native class that can manage a script 或 no Monobehaviour scripts in the file, or their names don&#39;t match the file name</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vscode-%E7%BC%96%E5%86%99-unity-%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%A0%81%E8%A1%A5%E5%85%A8"><span class="nav-text">VScode 编写 Unity 没有代码补全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#windows-unity%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85%E5%90%8E%E6%89%93%E5%BC%80%E9%97%AA%E9%80%80"><span class="nav-text">Windows Unity项目打包后打开闪退</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8Bunity%E8%AF%A6%E7%BB%86%E5%B4%A9%E6%BA%83%E4%BF%A1%E6%81%AF"><span class="nav-text">查看Unity详细崩溃信息</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#modeladmin"><span class="nav-text">ModelAdmin</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF"><span class="nav-text">自定义模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-text">方法</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -258,7 +256,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2021/04/28/Unity/UnityIssue/">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/2021/07/19/Python/Django/DjangoAdmin/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
@@ -271,7 +269,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Unity使用时遇到的问题
+          Django ModelAdmin
         </h1>
 
         <div class="post-meta-container">
@@ -282,14 +280,14 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-04-28 13:36:27" itemprop="dateCreated datePublished" datetime="2021-04-28T13:36:27+08:00">2021-04-28</time>
+      <time title="创建时间：2021-07-19 10:56:06" itemprop="dateCreated datePublished" datetime="2021-07-19T10:56:06+08:00">2021-07-19</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-05-09 14:10:47" itemprop="dateModified" datetime="2021-05-09T14:10:47+08:00">2021-05-09</time>
+        <time title="修改时间：2021-07-28 11:17:11" itemprop="dateModified" datetime="2021-07-28T11:17:11+08:00">2021-07-28</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -297,7 +295,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
+          <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
         </span>
     </span>
 
@@ -316,14 +314,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.1k</span>
+      <span>1.8k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -334,43 +332,76 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="如果-unity-启动过程中提示有compilation-errors">如果 Unity 启动过程中提示有compilation errors</h1>
-<p>进入安全模式，查看控制台报错，解决对应脚本错误</p>
+        <p>django 配置后台管理界面</p>
 <a id="more"></a>
-<h2 id="控制台报错没有错误信息">控制台报错没有错误信息：</h2>
-<p>查看Unity日志文件，位于</p>
-<blockquote>
-<p>C:/Users/xxx/AppData/Local/Unity/Editor/Editor.log</p>
-</blockquote>
-<p>搜索error, 然后解决相关错误，一般是文件缺失。</p>
-<h1 id="文件缺失">文件缺失：</h1>
-<h2 id="unity-打开项目fatal-error-显示无权访问d3dcompiler_47.dll">unity 打开项目Fatal error! 显示无权访问d3dcompiler_47.dll</h2>
-<p>https://blog.csdn.net/qq_29245693/article/details/115576107</p>
-<p>下载对应dll文件放在System32对应文件夹中</p>
-<h1 id="编译错误">编译错误</h1>
-<h2 id="unity-提示the-script-dont-inherit-a-native-class-that-can-manage-a-script-或-no-monobehaviour-scripts-in-the-file-or-their-names-dont-match-the-file-name">unity 提示The script don‘t inherit a native class that can manage a script 或 no Monobehaviour scripts in the file, or their names don't match the file name</h2>
-<p><strong>注意c#和java一样public类的名字需要和文件名相同</strong>。</p>
-<p>另外注意需要基于 Unity 已有类实现否则 Unity 编译不出来</p>
-<p>最后命名空间不要引入 Unity 无法识别的空间。这时会报</p>
-<blockquote>
-<p>unity 3D error CS0234: The type or namespace name `***' does not exist in the namespace</p>
-</blockquote>
-<h1 id="vscode-编写-unity-没有代码补全">VScode 编写 Unity 没有代码补全</h1>
-<p>查看控制台OmniSharp Log 应该会报错：</p>
-<blockquote>
-<p>The reference assemblies for . NETFramework, Version=v4.7.1 were not found. To resolve this, install the Developer Pack (SDK/Targeting Pack) for this framework version or retarget your application. You can download . NET Framework Developer Packs at https://aka.ms/msbuild/developerpacks</p>
-</blockquote>
-<p>这时需要到.net官网下载v4.7.1的developer pack， 安装后添加注意环境变量</p>
-<p>最后要注意返回项目中调出vscode的控制台ctrl + shift + P 使用 Omnisharp: select project 重新加载项目即可。</p>
-<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MzcxODY0MS9hcnRpY2xlL2RldGFpbHMvMTA5NDc5ODEy">参考链接<i class="fa fa-external-link-alt"></i></span></p>
-<h1 id="windows-unity项目打包后打开闪退">Windows Unity项目打包后打开闪退</h1>
-<h2 id="查看unity详细崩溃信息">查看Unity详细崩溃信息</h2>
-<p>具体位置在</p>
-<blockquote>
-<p>C:/Users/xxxx/AppData/Local/Temp/公司名称/项目名称/error.log</p>
-</blockquote>
-<p>若没有报错日志需要在build settings中设置一下。</p>
-<p><img src="/images/screenshot/UnityDebug.png" /></p>
+<p>Django 的一大特性就是自动生成的后台管理系统，要让自己的 Model 能被编辑，就需要在 admin.py 中注册对应 Model</p>
+<h1 id="modeladmin">ModelAdmin</h1>
+<p>ModelAdmin 类是管理界面中模型的表示，通常在 admin.py 中编写，如果没有显示的修改而是直接注册，就会显示用默认方法表示：</p>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">class</span> <span class="token class-name">AuthorAdmin</span><span class="token punctuation">(</span>admin<span class="token punctuation">.</span>ModelAdmin<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Author<span class="token punctuation">,</span> AuthorAdmin<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>ModelAdmin 中的属性方法都可以被覆写，用于配置自己的管理界面。</p>
+<h2 id="属性">属性</h2>
+<ul>
+<li>actions: 提供的动作列表</li>
+<li>actions_on_top/bottom: 动作栏在哪里出现</li>
+<li>empty_value_display: 显示空字段的默认值</li>
+<li>exclude: 表单中排除的字段</li>
+<li>fields: 修改页面中包含哪些字段或方法(元组)，fields中用()表示同一行应出现的字段</li>
+<li><p>fieldsets: 控制管理员添加和修改的布局，它是一个由多个元组组成的列表，每个元组代表一个部分 元组的格式是 (name, field_options) name 可以为 none</p>
+<ul>
+<li>field_options 作为字典可以有以下键：
+<ul>
+<li>fields: 要在该部分显示修改的字段，同样用括号括起来表示同一行</li>
+<li>classes: 包含额外 CSS 类的列表或元组，如 collapse 折叠，wide 更宽</li>
+<li>description 一个显示在该部分顶部的描述性文字</li>
+</ul></li>
+</ul></li>
+<li>form: 在通常情况下，会为模型动态创建一个 ModelForm，用于创建在页面上显示的表单，也可以提供自己的 form 来添加/更改默认表单，也可以使用 ModelAdmin.get_form() 定制默认的表单。</li>
+<li>list_display: 用来控制哪些字段在变更列表界面显示，它可接受的对象可以是：
+<ul>
+<li>模型字段的名称</li>
+<li>一个接受一个参数（模型实例）的可调用对象，会自动把返回值转移为HTML，</li>
+</ul></li>
+</ul>
+<pre class="line-numbers language-py" data-language="py"><code class="language-py"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>html <span class="token keyword">import</span> format_html
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    first_name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span>
+    last_name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">)</span>
+    color_code <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">)</span>
+
+    <span class="token decorator annotation punctuation">@admin<span class="token punctuation">.</span>display</span>
+    <span class="token keyword">def</span> <span class="token function">colored_name</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> format_html<span class="token punctuation">(</span>
+            <span class="token string">'&lt;span style="color: #&#123;&#125;;">&#123;&#125; &#123;&#125;&lt;/span>'</span><span class="token punctuation">,</span>
+            self<span class="token punctuation">.</span>color_code<span class="token punctuation">,</span>
+            self<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span>
+            self<span class="token punctuation">.</span>last_name<span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">PersonAdmin</span><span class="token punctuation">(</span>admin<span class="token punctuation">.</span>ModelAdmin<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    list_display <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'first_name'</span><span class="token punctuation">,</span> <span class="token string">'last_name'</span><span class="token punctuation">,</span> <span class="token string">'colored_name'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>- 代表模型属性或方法的字符串</code></pre>
+<ul>
+<li>list_display_links: 控制 list_display 中的字段是否链接到更改页面。</li>
+<li>list_filter: 激活过滤器，是一个列表或元组，每个元素可以是：
+<ul>
+<li>一个字段名，且该字段可被过滤</li>
+<li>&quot;__&quot;的跨越查找</li>
+<li>自定义filter</li>
+</ul></li>
+<li>radio_fields: 将外键由选择框变为勾选</li>
+<li>autocomplete_fields: 为外键的选择框添加搜索功能，配合search_fields</li>
+<li>readonly_fields: 只可以读的字段或方法</li>
+<li><p>search_fields: 文本字段，当有人在搜索框查询时就会在这些字段查询。</p></li>
+<li><p>还有一些其他属性不再列出，<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jb250cmliL2FkbWluLw==">这里查询<i class="fa fa-external-link-alt"></i></span></p></li>
+</ul>
+<h3 id="自定义模板">自定义模板</h3>
+<p>这些属性可以使用自己的管理模板 * add_form_template 添加的模板 * change_form_template 变更的模板 * change_list_template 查看列表的模板 * delete_confirmation_template 删除对象确认界面 * delete_selected_confirmation_template 同上 * object_history_template 历史界面 * popup_response_template 弹出界面</p>
+<h2 id="方法">方法</h2>
 
     </div>
 
@@ -388,7 +419,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://wby1905.github.io/2021/04/28/Unity/UnityIssue/" title="Unity使用时遇到的问题">https://wby1905.github.io/2021/04/28/Unity/UnityIssue/</a>
+      <a href="https://wby1905.github.io/2021/07/19/Python/Django/DjangoAdmin/" title="Django ModelAdmin">https://wby1905.github.io/2021/07/19/Python/Django/DjangoAdmin/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
@@ -397,20 +428,20 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/Issue/" rel="tag"><i class="fa fa-tag"></i> Issue</a>
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/12/24/hexo_bugs/" rel="prev" title="Hexo 部署博客时踩过的各种坑">
-                  <i class="fa fa-chevron-left"></i> Hexo 部署博客时踩过的各种坑
+                <a href="/2021/07/19/Python/Django/DjangoQuickStart/" rel="prev" title="Django官方教程">
+                  <i class="fa fa-chevron-left"></i> Django官方教程
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/07/12/Java/Maven/" rel="next" title="Maven使用笔记">
-                  Maven使用笔记 <i class="fa fa-chevron-right"></i>
+                <a href="/2021/07/23/Linux/Utils/" rel="next" title="Linux实用指令">
+                  Linux实用指令 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -586,7 +617,7 @@ document.addEventListener('pjax:success', () => {
 <script>
 NexT.utils.loadComments('#lv-container', () => {
   window.livereOptions = {
-    refer: "2021/04/28/Unity/UnityIssue/"
+    refer: "2021/07/19/Python/Django/DjangoAdmin/"
   };
   (function(d, s) {
     var j, e = d.getElementsByTagName(s)[0];
