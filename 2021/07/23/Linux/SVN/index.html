@@ -320,7 +320,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.5k</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -346,11 +346,11 @@
 <p><span class="exturl" data-url="aHR0cDovL3N1YnZlcnNpb24uYXBhY2hlLm9yZy9wYWNrYWdlcy5odG1s">打包下载<i class="fa fa-external-link-alt"></i></span></p>
 <p><span class="exturl" data-url="aHR0cDovL3N1YnZlcnNpb24uYXBhY2hlLm9yZy9kb3dubG9hZC5jZ2k=">源码下载<i class="fa fa-external-link-alt"></i></span></p>
 <h1 id="创建仓库">创建仓库</h1>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd &#x2F;srv
-sudo mkdir svn
-cd svn
-sudo mkdir tone_src #svn的版本仓库存放目录
-sudo svnadmin create .<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> /srv
+<span class="token function">sudo</span> <span class="token function">mkdir</span> svn
+<span class="token builtin class-name">cd</span> svn
+<span class="token function">sudo</span> <span class="token function">mkdir</span> tone_src <span class="token comment">#svn的版本仓库存放目录</span>
+<span class="token function">sudo</span> svnadmin create <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="配置">配置</h1>
 <p>我们需要修改conf目录下的三个文件，authz, passwd, svnserve.conf</p>
 <h2 id="authz">authz</h2>
@@ -377,7 +377,7 @@ authz<span class="token operator">-</span>db <span class="token operator">=</spa
 # sally <span class="token operator">=</span> sallyssecret
 tone<span class="token operator">=</span>www #设定用户tone的密码是www，是的没错，密码是明文的。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="运行">运行</h1>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ svnserve -d -r &#x2F;srv&#x2F;svn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ svnserve -d -r /srv/svn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="d代表守护模式后台运行">-d代表守护模式（后台运行）</h2>
 <blockquote>
 <p>可以预先在仓库中创建 trunk、branches以及tags文件夹方便版本控制。</p>

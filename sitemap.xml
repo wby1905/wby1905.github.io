@@ -205,16 +205,21 @@
 
   
   <url>
-    <loc>https://wby1905.github.io/tags/Issue/</loc>
-    <lastmod>2021-08-18</lastmod>
-  </url>
-  
-  <url>
     <loc>https://wby1905.github.io/tags/Note/</loc>
     <lastmod>2021-08-18</lastmod>
   </url>
   
+  <url>
+    <loc>https://wby1905.github.io/tags/Issue/</loc>
+    <lastmod>2021-08-18</lastmod>
+  </url>
+  
 
+  
+  <url>
+    <loc>https://wby1905.github.io/categories/Java/</loc>
+    <lastmod>2021-08-18</lastmod>
+  </url>
   
   <url>
     <loc>https://wby1905.github.io/categories/Hexo/</loc>
@@ -227,7 +232,7 @@
   </url>
   
   <url>
-    <loc>https://wby1905.github.io/categories/Unity/</loc>
+    <loc>https://wby1905.github.io/categories/DeepLearning/</loc>
     <lastmod>2021-08-18</lastmod>
   </url>
   
@@ -242,12 +247,7 @@
   </url>
   
   <url>
-    <loc>https://wby1905.github.io/categories/Java/</loc>
-    <lastmod>2021-08-18</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://wby1905.github.io/categories/DeepLearning/</loc>
+    <loc>https://wby1905.github.io/categories/Unity/</loc>
     <lastmod>2021-08-18</lastmod>
   </url>
   
