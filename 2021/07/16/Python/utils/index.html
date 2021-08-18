@@ -35,7 +35,7 @@
 <meta property="og:description" content="记录Python的各种">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-16T02:56:06.000Z">
-<meta property="article:modified_time" content="2021-07-16T03:36:49.651Z">
+<meta property="article:modified_time" content="2021-08-10T03:23:08.289Z">
 <meta property="article:author" content="David Wang">
 <meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
@@ -140,8 +140,8 @@
         <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
         <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">6</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
         <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
   </ul>
 </nav>
@@ -160,7 +160,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -173,6 +173,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#yaml-%E8%BD%AC-excel"><span class="nav-text">yaml 转 excel</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -188,14 +189,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -278,10 +279,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2021-07-16 10:56:06 / 修改时间：11:36:49" itemprop="dateCreated datePublished" datetime="2021-07-16T10:56:06+08:00">2021-07-16</time>
+      <time title="创建时间：2021-07-16 10:56:06" itemprop="dateCreated datePublished" datetime="2021-07-16T10:56:06+08:00">2021-07-16</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-10 11:23:08" itemprop="dateModified" datetime="2021-08-10T11:23:08+08:00">2021-08-10</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -307,7 +314,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>11</span>
+      <span>414</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -327,6 +334,24 @@
     <div class="post-body" itemprop="articleBody">
         <p>记录Python的各种</p>
 <a id="more"></a>
+<h1 id="yaml-转-excel">yaml 转 excel</h1>
+<pre class="line-numbers language-Python" data-language="Python"><code class="language-Python">import os
+import yaml
+import xlwt
+
+ymls &#x3D; os.listdir(&#39;.&#x2F;&#39;)
+workbook &#x3D; xlwt.Workbook(encoding&#x3D;&#39;utf-8&#39;)
+
+for q in ymls:
+    if &#39;yml&#39; not in q:
+        continue
+    with open(q, encoding&#x3D;&#39;utf-8&#39;) as f:
+        d &#x3D; yaml.load(f)
+        sheet &#x3D; workbook.add_sheet(d[&#39;categories&#39;][0])
+        for i, pair in enumerate(d[&#39;conversations&#39;]):
+            sheet.write(i, pair)
+
+workbook.save(&#39;converted.xls&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
     </div>
 
@@ -426,13 +451,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">129k</span>
+    <span title="站点总字数">130k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:57</span>
+    <span title="站点阅读时长">1:58</span>
   </span>
 </div>
 <div class="busuanzi-count">
