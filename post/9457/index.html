@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_package_v0.16/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_package_v0.16/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_package_v0.16/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicon_package_v0.16/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="E5_oJyOQ5RvQGA-x0lmKWVNE9UJXlhFL1ASert_Xom0">
+  <meta name="baidu-site-verification" content="code-bLe3SNdKvP">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Archivo:300,300italic,400,400italic,700,700italic%7CMonda:300,300italic,400,400italic,700,700italic%7CNoticia+Text:300,300italic,400,400italic,700,700italic%7CNoto+Sans+SC:300,300italic,400,400italic,700,700italic%7Cconsolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="以下内容由我的CSDN博客迁移。 正值假期，决定恶补机器学习、深度学习及相关领域（顺便开个博客）。首先学习一下数学基础以及数值计算的方法（主要参考《深度学习》）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习数学基础以及数值计算数值优化方法">
+<meta property="og:url" content="https://wby1905.github.io/post/9457/index.html">
+<meta property="og:site_name" content="David Wang">
+<meta property="og:description" content="以下内容由我的CSDN博客迁移。 正值假期，决定恶补机器学习、深度学习及相关领域（顺便开个博客）。首先学习一下数学基础以及数值计算的方法（主要参考《深度学习》）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020011400155645.png#pic_center">
+<meta property="article:published_time" content="2020-01-14T13:31:43.000Z">
+<meta property="article:modified_time" content="2021-04-28T05:25:11.463Z">
+<meta property="article:author" content="David Wang">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020011400155645.png#pic_center">
+
+
+<link rel="canonical" href="https://wby1905.github.io/post/9457/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>机器学习数学基础以及数值计算数值优化方法 | David Wang</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband">
+  <a target="_blank" rel="noopener" href="https://github.com/wby1905" class="github-corner" aria-label="View source on GitHub">
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+  <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+  <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+  <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  </div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">David Wang</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Wang's Blog</p>
+      <img class="custom-logo-image" src="/images/qingge.webp" alt="David Wang">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80"><span class="nav-text">一、数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0"><span class="nav-text">1.线性代数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="nav-text">2.概率论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E8%AE%BA"><span class="nav-text">3.信息论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%95%B0%E5%80%BC%E8%AE%A1%E7%AE%97"><span class="nav-text">二、数值计算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%BA%A2%E5%87%BA"><span class="nav-text">1. 溢出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%97%85%E6%80%81%E6%9D%A1%E4%BB%B6"><span class="nav-text">2. 病态条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%A2%AF%E5%BA%A6%E7%9A%84%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95"><span class="nav-text">3. 基于梯度的优化方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jacobian%E5%92%8Chessian%E7%9F%A9%E9%98%B5"><span class="nav-text">4.Jacobian和Hessian矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96"><span class="nav-text">5. 约束优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E5%AF%B9%E5%81%B6%E6%80%A7"><span class="nav-text">6. 拉格朗日对偶性</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="David Wang"
+      src="/images/lusun.gif">
+  <p class="site-author-name" itemprop="name">David Wang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dieTE5MDU=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wby1905"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOndieTE5MDVAcXEuY29t" title="E-Mail → mailto:wby1905@qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;wby1905"><i class="fab fa-cuttlefish fa-fw"></i></span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/9457/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="David Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          机器学习数学基础以及数值计算数值优化方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-14 21:31:43" itemprop="dateCreated datePublished" datetime="2020-01-14T21:31:43+08:00">2020-01-14</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-28 13:25:11" itemprop="dateModified" datetime="2021-04-28T13:25:11+08:00">2021-04-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>7.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>以下内容由我的<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDUvYXJ0aWNsZS9kZXRhaWxzLzEwMzk1NzQ3MA==">CSDN博客<i class="fa fa-external-link-alt"></i></span>迁移。</p>
+<p>正值假期，决定恶补机器学习、深度学习及相关领域（顺便开个博客）。首先学习一下数学基础以及数值计算的方法（主要参考《深度学习》）</p>
+<a id="more"></a>
+<h2 id="一数学基础">一、数学基础</h2>
+<p>这里简单复习一下机器学习相关的数学</p>
+<h3 id="线性代数">1.线性代数</h3>
+<p><strong>范数</strong> 衡量一个向量的大小,对Lp范数，有： <span class="math display">\[\left\| x\right\| _{p}=\left( \sum_{i}\left| x_{i}\right| ^{p}\right) ^{\dfrac {1}{p}}\]</span> 其中 <span class="math inline">\(p\in \mathbb{R} , p\geq1\)</span>. 对一切范数（包括Lp），满足下列性质：</p>
+<ul>
+<li><p><span class="math inline">\(t\left( x\right) =0\Rightarrow x=0;\)</span></p></li>
+<li><p><span class="math inline">\(f\left( x+y\right) \leq f\left( x\right) +f\left( y\right);\)</span>(三角不等式）</p></li>
+<li><p><span class="math inline">\(\forall \alpha \in \mathbb{R} ,f\left( ax\right) =\left| a\right| f\left( x\right).\)</span></p></li>
+</ul>
+<ol type="1">
+<li>L0范数指的是向量中非零元素的个数</li>
+<li>L1范数可以用于机器学习中0与非0元素之间的差异十分重要时。也能让模型变得更加稀疏。（常替代L0）</li>
+<li><strong>最大范数</strong>：L∞范数 表示向量中具有最大幅值元素的绝对值。<span class="math inline">\(\left\| x\right\| _{\infty }=\max_{i}\left| x\right|_i\)</span></li>
+<li>要衡量矩阵的大小，最常用的是使用<strong>Frobenius范数</strong>,即<span class="math inline">\(\left\| A\right\| _{F}=\sqrt {\sum_{i,j}A^{2} _{i,j}}\)</span>.</li>
+</ol>
+<p>进一步学习： <span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC80YmFkMzhmZTA3ZTY=">L0、L1、L2范数在机器学习中的应用<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lhbmdwYW4wMTEvYXJ0aWNsZS9kZXRhaWxzLzc5NDYxODQ2">范数对于数学的意义？1范数、2范数、无穷范数<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>正交矩阵</strong> 行向量和列向量是分别<strong>标准正交</strong>的方阵 <span class="math display">\[\begin{aligned}AA^{T}=I;\\ A^{-1}=A^{T}\end{aligned}\]</span></p>
+<p><strong>特征分解</strong> 特征分解可以知晓一些矩阵隐含的性质。</p>
+<ul>
+<li>特征向量：与<span class="math inline">\(A\)</span>相乘后相当于对该向量进行缩放的非零向量<span class="math inline">\(v\)</span> <span class="math display">\[Av=\lambda v\]</span> 其中λ为特征向量对应的特征值。（通常指右特征向量） 由于<span class="math inline">\(kv\)</span>与<span class="math inline">\(v\)</span>y特征值相同，一般情况下只考虑单位特征向量。</li>
+<li>若<span class="math inline">\(A\)</span>有n个线性无关的特征向量<span class="math inline">\(\left\{ v^{(1)},v^{(2)},\ldots ,v^{\left( n\right) }\right\}\)</span>，对应n个特征值<span class="math inline">\(\{\lambda_1,\lambda_2,\ldots,\lambda_n\}\)</span>。将特征向量连接成一个矩阵，使得每一列都是一个特征向量<span class="math inline">\(V=[v^{(1)},v^{(2)},\ldots ,v^{( n)}]\)</span>特征值也连接成一个向量λ。 <strong><span class="math inline">\(A\)</span>的特征分解</strong>指 <span class="math display">\[A=Vdiag\left( \lambda \right) V^{-1}\]</span></li>
+</ul>
+<p>机器学习中通常不会遇到复数的特征分解，一般我们会处理实对称矩阵，它一定可以分解为<span class="math inline">\(A=Q\Lambda Q^{T}\)</span> 其中<span class="math inline">\(Q\)</span>为正交矩阵，由<span class="math inline">\(A\)</span>的特征向量组成。</p>
+<ul>
+<li>矩阵是奇异的等价于矩阵含零特征值</li>
+<li>矩阵特征值非负称半正定矩阵，满足<span class="math inline">\(\forall x, x^TAx\geq0\)</span>.</li>
+</ul>
+<p><strong>奇异值分解(SVD)</strong> 另一种分解矩阵的方式，将矩阵分解为<strong>奇异向量</strong>和<strong>奇异值</strong>。每个实数矩阵都有奇异值分解，因此它比特征分解应用更广。<span class="math display">\[A=UDV^T\]</span></p>
+<p>若<span class="math inline">\(A\)</span>是<span class="math inline">\(m\times n\)</span>,则<span class="math inline">\(D\)</span>是<span class="math inline">\(m\times m\)</span>，<span class="math inline">\(U\)</span>是<span class="math inline">\(m\times n\)</span>，<span class="math inline">\(V\)</span>是<span class="math inline">\(n\times n\)</span>。</p>
+<ul>
+<li><span class="math inline">\(U、V\)</span>是正交矩阵，两者的列向量分别是左奇异向量和右奇异向量。事实上，<span class="math inline">\(D\)</span>就是<span class="math inline">\(AA^T\)</span>的特征向量，<span class="math inline">\(V\)</span>就是<span class="math inline">\(A^TA\)</span>的特征向量。</li>
+<li><span class="math inline">\(D\)</span>称为奇异值，为对角矩阵（不一定方阵），事实上是<span class="math inline">\(A^TA\)</span>或<span class="math inline">\(AA^T\)</span>的特征值的平方根。</li>
+</ul>
+<p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pob25na2VqaW5nd2FuZy9hcnRpY2xlL2RldGFpbHMvNDMwNTM1MTM=">奇异值分解(SVD)原理详解及推导<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>Moore-Penrose伪逆</strong> 对于非方矩阵，若希望求方程<span class="math inline">\(Ax=y\)</span>，也就是要找一矩阵使得 <span class="math inline">\(x=By\)</span>，这时可以用伪逆去求解。 定义为<span class="math display">\[A^{+}=\lim _{\alpha\searrow 0}(A^TA+\alpha I)^{-1}A^T\]</span></p>
+<p>但实际上使用下面这个公式计算 <span class="math display">\[A^+=VD^+U^T \Leftrightarrow A^+=(svd (A))^+\]</span></p>
+<p>其中<span class="math inline">\(D^+\)</span>是非零元素取倒数再转置得到的。</p>
+<ul>
+<li>当<span class="math inline">\(A\)</span>的行数多于列数时，可能没有解。此时通过伪逆得到的<span class="math inline">\(x\)</span>使得<span class="math inline">\(Ax\)</span>与<span class="math inline">\(y\)</span>的欧氏距离最小。</li>
+<li>当<span class="math inline">\(A\)</span>的行数少于列数时。此时通过伪逆得到的<span class="math inline">\(x=A^+y\)</span>是所有可行解中L2范数最小的。</li>
+</ul>
+<p><strong>迹运算</strong> <span class="math display">\[Tr(A) = \sum_{i}A_{i,i}\]</span> 有些矩阵运算可以通过矩阵乘法和迹运算表示，省去了求和符号。 eg :<br />
+<span class="math display">\[\|A\|_F=\sqrt{Tr(AA^T)}\]</span></p>
+<p>性质：</p>
+<ul>
+<li><span class="math inline">\(Tr(A) =Tr(A^T)\)</span></li>
+<li><span class="math inline">\(Tr(ABC)=Tr(BAC)\)</span> 循环置换 尽管形状变了但值依然不变。</li>
+<li><span class="math inline">\(Tr(AB)=Tr(BA)\)</span></li>
+<li>对标量 <span class="math inline">\(Tr(a)=a\)</span></li>
+</ul>
+<p><strong>行列式</strong> 记作<span class="math inline">\(det(A)\)</span>,将方阵映射到实数，等于特征值的乘积。可以衡量矩阵参与矩阵乘法后空间扩大或缩小了多少。若行列式是0.则可认为空间至少沿着某一维完全收缩了。若是1则转换保持空间体积不变。</p>
+<p><strong>一个机器学习算法应用小实例：主成分分析</strong> <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzQxMTIwNzg5P3NvcnQ9Y3JlYXRlZA==">如何通俗易懂地讲解什么是 PCA 主成分分析？<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="概率论">2.概率论</h3>
+<p><strong>基本概念</strong></p>
+<ul>
+<li>频率派概率：概率直接与频率关联</li>
+<li>贝叶斯概率：涉及确定性水平</li>
+<li>概率质量函数（PMF)：离散型随机变量的概率分布</li>
+<li>概率密度函数（PDF)：连续型随机变量的概率分布</li>
+<li><span class="math inline">\(x⊥y\)</span>表示两个事件相互独立，<span class="math inline">\(x⊥y|z\)</span>表示二者条件独立</li>
+<li>期望：<span class="math inline">\(x\)</span>由<span class="math inline">\(P\)</span>生成，当<span class="math inline">\(f\)</span>作用于<span class="math inline">\(x\)</span>时，<span class="math inline">\(f(x)\)</span>的平均值</li>
+<li>方差：随机变量函数呈现的差异大小</li>
+<li>协方差：两个变量的线性相关强度 随机向量<span class="math inline">\(x \in\mathbb{R}^n\)</span>的协方差矩阵是<span class="math inline">\(n\times n\)</span>的矩阵并且有 <span class="math display">\[Cov(x)_{i,j}=Cov(x_i,x_j)\]</span></li>
+</ul>
+<p><strong>高斯分布</strong> 当缺乏对某个实数分布的先验知识时，正态分布是默认的较好的选择。原因：</p>
+<ul>
+<li>中心极限定理说明很多独立的随机变量的和近似服从于正态分布。</li>
+<li>在具有相同方差的所有可能的概率分布中，正态分布在实数上具有最大的不确定性。（熵最大）</li>
+</ul>
+<figure>
+<img src="https://img-blog.csdnimg.cn/2020011400155645.png#pic_center" alt="多维正态分布" /><figcaption>多维正态分布</figcaption>
+</figure>
+<p><strong>混合分布</strong> 通过简单的概率分布的组合来生成更丰富的分布 eg(组件的分布取决于一个范畴分布）: <span class="math display">\[P(x)=\sum_{i}P(c=i)P(x|c=i)\]</span> <strong>高斯混合模型（GMM)</strong> 是一个万能近似器，即任何概率密度都可以用足够多组件的GMM来逼近。</p>
+<p>注意：概率论的一些结论对于连续型随机变量实际上由测度论得只能是几乎处处成立</p>
+<h3 id="信息论">3.信息论</h3>
+<p>我们使用信息论来描述概率分布或量化概率分布的相似性。</p>
+<ul>
+<li>信息论的基本思想：一个较不可能的事的发生比一个很可能的事情的发生会提供更多信息。为了量化信息，规定：
+<ol type="1">
+<li>非常可能发生的事情信息量很少，且极端情况下无信息量。</li>
+<li>较不可能发生的事提供更多信息。</li>
+<li>独立事件有增量的信息。</li>
+</ol></li>
+<li>规定一个事件<span class="math inline">\(x\)</span>的<strong>自信息</strong>为：<span class="math inline">\(I(x)=-\log P(x)\)</span> 这里令log为自然对数，因此自信息的单位是奈特（nats)。（以2为底的单位就是比特或者香农）</li>
+<li>对于整个概率分布的不确定性总量，我们用<strong>香农熵</strong>衡量： <span class="math display">\[H(x)=\mathbb{E}_{x\sim P}[I(x)]=-\mathbb{E}_{x\sim P}[\log P(x)]\]</span> 也记作<span class="math inline">\(H(P)\)</span>。一个分布的香农熵是指遵循这个分布的事件所产生的期望信息总量。x是连续的时候，香农熵又被称为<strong>微分熵</strong></li>
+<li><p>若对于一个随机变量x有两个单独的概率分布<span class="math inline">\(P(x)、Q(x)\)</span>我们可以用<strong>KL 散度</strong>衡量两个分布的差异： <span class="math display">\[D_{KL}(P\| Q)=\mathbb{E}_{x\sim P}[\log \dfrac{P(x)}{Q(x)}]\]</span></p>
+KL散度是非对称的，但由于它非负，常被用来测量两个分布的“距离”，这意味着如果要令一个分布<span class="math inline">\(q\)</span>近似分布<span class="math inline">\(p\)</span>，那么抉择是最小化<span class="math inline">\(D_{KL}(P\| Q)\)</span>或者<span class="math inline">\(D_{KL}(Q\| P)\)</span>是很重要的</li>
+<li><strong>交叉熵</strong>：<span class="math inline">\(H(P,Q)=H(P)+D_{KL}(P\| Q)=-\mathbb{E}_{x\sim P}\log Q(x)\)</span>针对Q的最小化交叉熵过程相当于最小化KL散度。</li>
+<li><p>信息论中规定<span class="math inline">\(\lim _{x\rightarrow 0}x\log x=0\)</span></p></li>
+</ul>
+<h2 id="二数值计算">二、数值计算</h2>
+<h3 id="溢出">1. 溢出</h3>
+<p>计算机表示实数总会有一些误差，因此我们在设计算法时应该考虑到最小化舍入误差的积累。</p>
+<ul>
+<li><strong>下溢</strong>：当接近0的数被舍为0时发生。很多函数在输入为0时会发生严重错误。</li>
+<li><p><strong>上溢</strong>：当大量级的数被近似为<span class="math inline">\(\infty\)</span>时发生</p>
+<p>很多底层的库在设计时就考虑了很多溢出的情况，可以自动保持数值稳定。</p></li>
+</ul>
+<h3 id="病态条件">2. 病态条件</h3>
+<p><strong>条件数</strong>指函数对于输入的微小变化而变化的快慢程度。当条件数很大时，舍入误差会对数值造成很大的影响。此时就是病态条件。 <span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC84MjA1NzQwOQ==">[数值计算] 条件数<i class="fa fa-external-link-alt"></i></span></p>
+<h3 id="基于梯度的优化方法">3. 基于梯度的优化方法</h3>
+<p>我们常常会最小化多变量输入函数<span class="math inline">\(f:\mathbb{R^n\rightarrow R}\)</span>，函数输出是一个标量，此时这个函数称为目标函数或者准则（机器学习中也叫损失函数等）</p>
+<ul>
+<li><strong>梯度</strong>是针对一个向量求导的导数，包含所有偏导，记为<span class="math inline">\(\nabla_x f(\boldsymbol{x})\)</span></li>
+<li>对于单位向量<span class="math inline">\(\boldsymbol{u}\)</span>的<strong>方向导数</strong>是函数<span class="math inline">\(f\)</span>在<span class="math inline">\(\boldsymbol{u}\)</span>方向上的斜率，即<span class="math inline">\(f(x+\alpha u)\)</span>关于α的导数（α=0时取得）。即<span class="math inline">\(\dfrac {\partial }{\partial \alpha }f(\boldsymbol{x}+\alpha \boldsymbol{u})=\boldsymbol{u}^T\nabla_x f(\boldsymbol{x})\)</span></li>
+</ul>
+<p>为了最小化<span class="math inline">\(f\)</span>，我们要找到使它下降最快的方向，计算方向导数： <span class="math display">\[\min_{u,u^Tu=1}\boldsymbol{u}^T\nabla_x f(\boldsymbol{x})=\min_u \cos \theta\]</span></p>
+<p>即<span class="math inline">\(\boldsymbol{u}\)</span>与梯度方向相反时取得最小。因此这被称为<strong>梯度下降法</strong>或者<strong>最速下降法</strong> <span class="math display">\[x^\prime=x-\epsilon\nabla_x f(\boldsymbol{x})\]</span></p>
+<p>其中<span class="math inline">\(\epsilon\)</span>为学习率，确定步长大小。</p>
+<ul>
+<li>梯度下降也可以扩展到离散空间，此时称为<strong>爬山算法</strong></li>
+</ul>
+<h3 id="jacobian和hessian矩阵">4.Jacobian和Hessian矩阵</h3>
+<p>对于输入和输出都为向量的函数，它的所有偏导数的矩阵称为Jacobian矩阵。定义为<span class="math inline">\(J_{i,j}=\dfrac{\partial}{\partial x_j}f(\boldsymbol{x})_i\)</span> 有时我们也会考察二阶导数，它反映了只基于梯度信息的梯度下降步骤的效果，也是对曲率的衡量。负曲率使函数下降更快，正曲率更慢。 <span class="math inline">\(H(f)(\boldsymbol{x})_{i,j}=\dfrac{\partial^2}{\partial x_i \partial x_j}f(\boldsymbol{x})\)</span> 相当于梯度的Jacobian矩阵。</p>
+<ul>
+<li>在深度学习中，Hessian矩阵大多为实对称矩阵，因此可将其分解为一组特征值和特征向量的正交基。在方向<span class="math inline">\(\boldsymbol{d}\)</span>上的二阶导数可以写成<span class="math inline">\(\boldsymbol{d}^T\boldsymbol{Hd}\)</span>。通过方向二阶导数可以预期一个梯度的下降步骤表现得多好。</li>
+<li>二阶导数还可以用于确定临界点是否局部极值点或是鞍点，当一阶导为0而二阶导非0时就是极值点，而二阶导也为0时不能确定。这称为<strong>二阶导数测试</strong>。</li>
+<li>在多维情况下我们观察Hessian矩阵的特征值，若是正定矩阵则为极小值。然而多数情况下特征值由正有负，则该点应当是鞍点。 另外，每个方向的二阶导数是不相同的。Hessian矩阵的条件数衡量这些二阶导数的变化范围。可以避免梯度下降步长太大以至于冲过最小点，又不至于使步长太小使曲率小的方向进展不明显。</li>
+</ul>
+<p>因此我们可以用Hessian矩阵的信息来指导搜索（直接找到局部最优点），主要有牛顿法等。现实中Hessian矩阵很难计算，因此有许多近似方法，具体不在这里详述了。这类二阶优化算法很容易被吸引到鞍点。 <span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC80NTIyMTAxMw==">牛顿法、拟牛顿法（BFGS），L-BFGS算法<i class="fa fa-external-link-alt"></i></span></p>
+<p>注：由于深度学习中的函数族十分复杂，因此深度学习算法往往缺乏理论保证（炼丹).可以通过限制函数或其导数满足<strong>Lipschitz连续</strong>,其中<span class="math inline">\(\mathcal{L}\)</span>称为<strong>Lipchitz常数</strong>，满足： <span class="math display">\[||\nabla f(x) - \nabla f(y)|| \leq \mathcal{L} || x - y||,~~~x,y\in R^n\]</span> 可以描述为：函数<span class="math inline">\(f(x)\)</span>二次可微，且Hessian矩阵在 <span class="math inline">\(R^n\)</span>上有界。Lipschitz连续对分析复杂函数非常有用，因为它可以近似将优化复杂函数的问题，转化为二次规划问题。 同时很多优化问题可以经过微小的修改就满足利普希茨连续。</p>
+<ul>
+<li>另外还有一个特定的领域<strong>凸优化</strong>，通过更强的限制使得凸函数有且全部都是最小值。然而深度学习中很多问题不能凸优化，仅适用于算法的子程序。但凸优化的分析思路对于证明深度学习算法的收敛性很有用。 深入了解： <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hiaW53b3JsZC9hcnRpY2xlL2RldGFpbHMvNzkxMTMyMTg=">深度学习/机器学习入门基础数学知识整理（三）：凸优化，Hessian，牛顿法<i class="fa fa-external-link-alt"></i></span> <span class="exturl" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3F1ZXN0aW9uLzI0NjQxNTc1">为什么凸优化这么重要？<i class="fa fa-external-link-alt"></i></span></li>
+</ul>
+<h3 id="约束优化">5. 约束优化</h3>
+<p>若希望在x的某些集合中寻找<span class="math inline">\(f(x)\)</span>的最大或最小值，称为约束优化，集合<span class="math inline">\(\mathbb{S}\)</span>内的点x称为可行点</p>
+<ul>
+<li>一种简单的想法是将约束考虑在内并对梯度下降进行修改，即将梯度下降的结果投影回 <span class="math inline">\(\mathbb{S}\)</span> 内</li>
+<li>另一种是设计一个不同的无约束优化问题，使其解可以转化为原始优化问题的解。 <strong>Karush-Kuhn-Tucker(KKT)方法</strong>是一个通用的方法，是对Lagrange乘子法的推广.
+<ul>
+<li><strong>广义Lagragian</strong>定义为 <span class="math display">\[L(\boldsymbol{x,\lambda,\alpha})=f(\boldsymbol{x})+\sum_i\lambda_ig^{(i)}(\boldsymbol{x})+\sum_j\alpha_jh^{(j)}(\boldsymbol{x})\]</span></li>
+</ul>
+其中<span class="math inline">\(g^{(i)}\)</span>为等式约束，<span class="math inline">\(h^{(j)}\)</span>为不等式约束（<span class="math inline">\(h^{(j)}(x)\leq0\)</span>）。<span class="math inline">\(\alpha_j、\lambda_i\)</span>称为KKT乘子。</li>
+</ul>
+<p>因此我们可以通过求解<span class="math inline">\(\boldsymbol{\min_x\max_\lambda\max_{\alpha,\alpha\geq0}}L(\boldsymbol{x,\lambda,\alpha})\)</span>来获得与<span class="math inline">\(\min_{x\in \mathbb{S}}f(x)\)</span>相同的解（只要有一个不使<span class="math inline">\(f(x)\)</span>取无穷的可行点）。对于最大化相当于求负的最小化。</p>
+<ul>
+<li><strong>KKT条件</strong> 确定一个点是最优点的必要条件，但不一定是充分条件。具体有：
+<ol type="1">
+<li>广义Lagrangian的梯度为零。</li>
+<li>所有关于x和KKT乘子的约束都满足 3. 不等式约束显示的”互补松弛性“：<span class="math inline">\(\boldsymbol{\alpha\odot h(x)=0}\)</span>. 即对每一对<span class="math inline">\(\alpha、h(x)\)</span>，必有一个是活跃的（为零）</li>
+</ol></li>
+</ul>
+<h4 id="拉格朗日对偶性">6. 拉格朗日对偶性</h4>
+<p>在约束最优化问题中，我们常利用拉格朗日对偶性将原始问题转换为对偶问题。</p>
+<ul>
+<li>原始问题： <span class="math display">\[\boldsymbol{\min_x\max_\lambda\max_{\alpha,\alpha\geq0}}L(\boldsymbol{x,\lambda,\alpha})\]</span> 称为广义拉格朗日函数的极小极大问题，记<span class="math inline">\(p^*\)</span>为原始问题的最优值。</li>
+<li><p>对偶问题： <span class="math display">\[\boldsymbol{\max_\lambda\max_{\alpha,\alpha\geq0}\min_x}L(\boldsymbol{x,\lambda,\alpha})\]</span> 称为广义拉格朗日函数的极大极小问题，记<span class="math inline">\(d^*\)</span>为对偶问题的最优值</p></li>
+<li><p>原始问题与对偶问题的关系： <strong>定理1</strong>：若原始问题和对偶问题都有最优值，则 <span class="math display">\[d^*=\boldsymbol{\max_{\lambda,\alpha:\alpha\geq0}\min_x}L(\boldsymbol{x,\lambda,\alpha})\leq\boldsymbol{\min_x\max_{\lambda,\alpha:\alpha\geq0}}L(\boldsymbol{x,\lambda,\alpha})=p^*\]</span></p></li>
+</ul>
+<p><strong>推论1</strong>：当<span class="math inline">\(d^*=p^*\)</span>时，它们都取相同的最优点。 在某些条件下，原始问题和对偶问题的最优值相等，具体有：</p>
+<ul>
+<li><strong>定理2</strong>：若函数<span class="math inline">\(f(x)\)</span>和不等式约束<span class="math inline">\(h^{(j)}\)</span>是凸函数，等式约束<span class="math inline">\(g^{(i)}\)</span>是仿射函数（即最高次数为1的多项式函数）；并且假设不等式约束是严格可行的，即存在<span class="math inline">\(x\)</span>,对所有<span class="math inline">\(i\)</span>有<span class="math inline">\(h^{(j)}&lt;0\)</span>成立。则存在<span class="math inline">\(x^*,\lambda^*,\alpha^*\)</span>，使得<span class="math inline">\(p^*=d^*=L(x^*,\lambda^*,\alpha^*)\)</span></li>
+<li><strong>定理3</strong>：若函数<span class="math inline">\(f(x)\)</span>和不等式约束<span class="math inline">\(h^{(j)}\)</span>是凸函数，等式约束<span class="math inline">\(g^{(i)}\)</span>是仿射函数（即最高次数为1的多项式函数）；并且假设不等式约束是严格可行的。那么<span class="math inline">\(x^*,\lambda^*,\alpha^*\)</span>是<strong>原始问题和对偶问题的解的充分必要条件是<span class="math inline">\(x^*,\lambda^*,\alpha^*\)</span>满足KKT条件。</strong></li>
+</ul>
+<p><strong>简单应用：线性最小二乘</strong> <span class="exturl" data-url="aHR0cHM6Ly9iYWlrZS5iYWlkdS5jb20vaXRlbS8lRTYlOUMlODAlRTUlQjAlOEYlRTQlQkElOEMlRTQlQjklOTglRTYlQjMlOTUvMjUyMjM0Nj9mcj1hbGFkZGlu">最小二乘法<i class="fa fa-external-link-alt"></i></span>#也可以简单的使用梯度下降求解 <span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC9iZjZlYzU2ZTI2YmQ=">线性最小二乘和非线性最小二乘<i class="fa fa-external-link-alt"></i></span></p>
+<hr />
+<p><strong>以上内容如有谬误还请告知。之后还会持续更新（应该）</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>David Wang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wby1905.github.io/post/9457/" title="机器学习数学基础以及数值计算数值优化方法">https://wby1905.github.io/post/9457/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/ed66/" rel="next" title="机器学习基本概念、统计学基本概念简单介绍">
+                  机器学习基本概念、统计学基本概念简单介绍 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MjI2OS8yODc0OA"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">David Wang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">131k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:59</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+  <script src="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.css">
+
+
+
+<script>
+NexT.utils.loadComments('#lv-container', () => {
+  window.livereOptions = {
+    refer: "post/9457/"
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body>
+</html>

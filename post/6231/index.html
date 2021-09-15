@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_package_v0.16/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_package_v0.16/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_package_v0.16/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/favicon_package_v0.16/safari-pinned-tab.svg" color="#222">
+  <meta name="google-site-verification" content="E5_oJyOQ5RvQGA-x0lmKWVNE9UJXlhFL1ASert_Xom0">
+  <meta name="baidu-site-verification" content="code-bLe3SNdKvP">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Archivo:300,300italic,400,400italic,700,700italic%7CMonda:300,300italic,400,400italic,700,700italic%7CNoticia+Text:300,300italic,400,400italic,700,700italic%7CNoto+Sans+SC:300,300italic,400,400italic,700,700italic%7Cconsolas:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css">
+  <script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+  </script>
+<meta name="description" content="以下内容由我的CSDN博客迁移。 有关支持向量机的理解在网上已经有很多了，我在这里写一下我的学习笔记。（主要参考《统计学习方法》以及部分博客）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支持向量机以及核方法">
+<meta property="og:url" content="https://wby1905.github.io/post/6231/index.html">
+<meta property="og:site_name" content="David Wang">
+<meta property="og:description" content="以下内容由我的CSDN博客迁移。 有关支持向量机的理解在网上已经有很多了，我在这里写一下我的学习笔记。（主要参考《统计学习方法》以及部分博客）">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdn.net/20140829134124453">
+<meta property="og:image" content="https://img-blog.csdn.net/20140829141714944#pic_center">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWctbXkuY3Nkbi5uZXQvdXBsb2Fkcy8yMDEzMDEvMTEvMTM1NzgzNzYwNV81ODMwLnBuZw?x-oss-process=image/format,png">
+<meta property="og:image" content="https://img-blog.csdn.net/20140830002108254">
+<meta property="og:image" content="https://img-my.csdn.net/uploads/201304/05/1365177311_5726.png">
+<meta property="article:published_time" content="2020-01-25T16:42:03.000Z">
+<meta property="article:modified_time" content="2021-04-28T05:25:15.387Z">
+<meta property="article:author" content="David Wang">
+<meta property="article:tag" content="Note">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20140829134124453">
+
+
+<link rel="canonical" href="https://wby1905.github.io/post/6231/">
+
+
+<script data-pjax class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<title>支持向量机以及核方法 | David Wang</title>
+  
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband">
+  <a target="_blank" rel="noopener" href="https://github.com/wby1905" class="github-corner" aria-label="View source on GitHub">
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+  <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+  <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+  <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+  </div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">David Wang</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Wang's Blog</p>
+      <img class="custom-logo-image" src="/images/qingge.webp" alt="David Wang">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AF%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="nav-text">一、什么是支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%B4%E9%9A%94%E5%87%BD%E6%95%B0%E9%97%B4%E9%9A%94%E5%92%8C%E5%87%A0%E4%BD%95%E9%97%B4%E9%9A%94"><span class="nav-text">1. 间隔（函数间隔和几何间隔）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A1%AC%E9%97%B4%E9%9A%94%E6%9C%80%E5%A4%A7%E5%8C%96"><span class="nav-text">2.（硬）间隔最大化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%A4%A7%E9%97%B4%E9%9A%94%E7%9A%84%E7%A1%AE%E5%AE%9A%E6%80%A7"><span class="nav-text">3. 最大间隔的确定性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E5%92%8C%E9%97%B4%E9%9A%94%E8%BE%B9%E7%95%8C"><span class="nav-text">4. 支持向量和间隔边界</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E9%97%B4%E9%9A%94"><span class="nav-text">5. 软间隔</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%80%8E%E4%B9%88%E6%B1%82%E8%A7%A3%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="nav-text">二、怎么求解支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E5%8F%AF%E5%88%86%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="nav-text">1. 线性可分支持向量机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BA%BF%E6%80%A7%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="nav-text">2. 线性支持向量机</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%A0%B8%E6%8A%80%E5%B7%A7%E5%8F%8A%E9%9D%9E%E7%BA%BF%E6%80%A7svm"><span class="nav-text">三、核技巧及非线性SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="nav-text">1. 非线性分类问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="nav-text">2. 核函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7svm"><span class="nav-text">3. 非线性SVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E4%B8%BA%E6%A0%B8%E5%87%BD%E6%95%B0%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="nav-text">4. 成为核函数的条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="nav-text">5. 常用的核函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E7%90%86%E8%A7%A3"><span class="nav-text">四、支持向量机的进一步理解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E7%9A%84%E5%8F%A6%E4%B8%80%E7%A7%8D%E8%A7%A3%E9%87%8A"><span class="nav-text">1. 支持向量机的另一种解释</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#smo%E7%AE%97%E6%B3%95"><span class="nav-text">2. SMO算法</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="David Wang"
+      src="/images/lusun.gif">
+  <p class="site-author-name" itemprop="name">David Wang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dieTE5MDU=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wby1905"><i class="fab fa-github fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="bWFpbHRvOndieTE5MDVAcXEuY29t" title="E-Mail → mailto:wby1905@qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+      </span>
+      <span class="links-of-author-item">
+        <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;wby1905"><i class="fab fa-cuttlefish fa-fw"></i></span>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/6231/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/lusun.gif">
+      <meta itemprop="name" content="David Wang">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="David Wang">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          支持向量机以及核方法
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-26 00:42:03" itemprop="dateCreated datePublished" datetime="2020-01-26T00:42:03+08:00">2020-01-26</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-04-28 13:25:15" itemprop="dateModified" datetime="2021-04-28T13:25:15+08:00">2021-04-28</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>9.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>以下内容由我的<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDUvYXJ0aWNsZS9kZXRhaWxzLzEwNDA1NzU4Nw==">CSDN博客<i class="fa fa-external-link-alt"></i></span>迁移。</p>
+<p>有关支持向量机的理解在网上已经有很多了，我在这里写一下我的学习笔记。（主要参考《统计学习方法》以及部分博客） <a id="more"></a></p>
+<p>支持向量机包含线性可分的支持向量机、线性支持向量机、非线性支持向量机，让我们从简单到复杂来学习它。</p>
+<h2 id="一什么是支持向量机">一、什么是支持向量机</h2>
+<p><strong>支持向量机（support vector machines, SVM）</strong> 是一种二分类模型。它的基本定义是在特征空间上的间隔最大的线性分类器。借助核技巧，支持向量机成为实质上的非线性分类器。基本的学习策略就是寻找最大化的间隔。</p>
+<p>让我们先从线性可分的数据集中获取一些基本概念</p>
+<h4 id="间隔函数间隔和几何间隔">1. 间隔（函数间隔和几何间隔）</h4>
+<p><img src="https://img-blog.csdn.net/20140829134124453" width=200></p>
+<p>如图，这是一个线性可分的二分类(分为{+1， -1}两类)问题，其中有一个超平面分隔了两类。我们可以认为某点距离超平面越远，它为对应的类别的确信度就越高。即：对于给定的超平面<span class="math inline">\(\boldsymbol{w\cdot x +b=0}\)</span>; 点<span class="math inline">\(\boldsymbol x_0\)</span>距离该平面的远近可以相对的使用 <span class="math inline">\(|\boldsymbol{w\cdot x_0+b}|\)</span>来表示。而<span class="math inline">\(\boldsymbol{w\cdot x +b}\)</span>的符号与类标记的符号y是否一致就可以表示分类的正确性。因此给出函数间隔(functional margin)的概念：</p>
+<ul>
+<li><p><strong>函数间隔</strong>：对于给定的训练集<span class="math inline">\(T\)</span>和超平面<span class="math inline">\((w, b)\)</span>，定义超平面关于样本点<span class="math inline">\((x_i, y_i)\)</span>的函数间隔为</p>
+<p><span class="math display">\[\hat \gamma_i=y_i(w\cdot x_i +b)\]</span> 定义超平面关于数据集T的函数间隔为所有样本点中函数间隔的最小值。 <span class="math display">\[\hat \gamma=\min_{i=1, \dots, N}\hat \gamma_i\]</span> 函数间隔可以表示分类预测的准确性以及确信度。</p></li>
+</ul>
+<p>但是我们不难发现若成比例的增长超平面的参数，超平面不会改变，这对我们要优化参数找到最大间隔造成了不便，因此我们可以对参数进行某些8约束，如规范化，使得<span class="math inline">\(\|w\|=1\)</span>（这里视为L2范数）从而使得间隔是确定的。也就是几何间隔（geometric margin）：</p>
+<ul>
+<li><p><strong>几何间隔</strong>：对于给定的训练集<span class="math inline">\(T\)</span>和超平面<span class="math inline">\((w, b)\)</span>，定义超平面关于样本点<span class="math inline">\((x_i, y_i)\)</span>的几何间隔为：</p>
+<p><span class="math display">\[\gamma_i=y_i(\dfrac{w}{\|w\|}\cdot x_i +\dfrac{b}{\|w\|})\]</span> 定义超平面关于数据集T的几何间隔为所有样本点中几何间隔的最小值。也就是我们直观上理解的点到超平面的距离。</p></li>
+</ul>
+<h4 id="硬间隔最大化">2.（硬）间隔最大化</h4>
+<p>支持向量机所寻找的就是所有可分割两类的超平面中，几何间隔最大的超平面。 即下面的约束最优化问题： <span class="math display">\[ \begin{aligned} &amp;\max_{w, b} ~~~~~\gamma\\ &amp;~~\text{s.t.}~~~y_i(\dfrac{w}{\|w\|}\cdot x_i +\dfrac{b}{\|w\|})\ge \gamma, ~~~i=1, 2, \dots, N \end{aligned}\]</span> 转换为函数间隔，我们得到 <span class="math display">\[\begin{aligned} &amp;\max_{w, b} ~~~~~\dfrac{\hat \gamma}{\|w\|}\\ &amp;~~\text{s.t.}~~~y_i(w\cdot x_i +b)\ge \hat \gamma, ~~~i=1, 2, \dots, N \end{aligned} \]</span></p>
+<ul>
+<li>由于函数间隔的放缩对于最大间隔没有影响，因此我们这里可以认为函数间隔<span class="math inline">\(\hat \gamma=1\)</span>.</li>
+<li>同时，我们可以将最大化<span class="math inline">\(\dfrac{1}{\|w\|}\)</span>，转化为最小化凸函数<span class="math inline">\(\dfrac{1}{2}\|w\|^2\)</span>两者是等价的。因此，上面的约束优化问题等价于下面这个凸二次规划问题：</li>
+</ul>
+<p><span class="math display">\[\begin{aligned} &amp;\min_{w, b} ~~~~~\dfrac{1}{2}\|w\|^2\\ &amp;~~\text{s.t.}~~~y_i(w\cdot x_i +b)- 1\ge 0, ~~~i=1, 2, \dots, N \end{aligned}\]</span></p>
+<blockquote>
+<p>注：凸优化问题是指目标函数和约束函数都是连续可微的凸函数，且等式约束是仿射函数。</p>
+</blockquote>
+<p>求解出优化问题的最优解<span class="math inline">\(w^*, b^*\)</span>后，我们就可以得到分离超平面，以及决策函数：<span class="math inline">\(f(x)=\text{sign} (w^* \cdot x +b^*)\)</span></p>
+<h4 id="最大间隔的确定性">3. 最大间隔的确定性</h4>
+<p>这里主要解释证明一下为什么支持向量机有如下定理：</p>
+<ul>
+<li><strong>最大间隔分离超平面的存在唯一性</strong>：若训练数据集线性可分，则可将数据集中的样本点完全正确分开的最大间隔分离超平面存在且唯一。</li>
+</ul>
+<ol type="1">
+<li>存在性：由于数据集线性可分，则根据最优化问题，我们一定可以找到可行解。又由于目标函数有下界，因此最优化问题一定有解。由于正负两类的存在，最优解<span class="math inline">\(w^*\)</span>一定不为0。综上我们可以得出分离超平面的可行性。</li>
+<li><p>唯一性：</p>
+<ul>
+<li>运用反证法，假设最优化问题存在两个最优解<span class="math inline">\((w_1^*, b_1^*)\)</span>和<span class="math inline">\((w_2^*, b_2^*)\)</span>。显然由目标函数，我们得到<span class="math inline">\(\|w_1^*\|=\|w^*_2\|=c\)</span>.</li>
+<li>令<span class="math inline">\(w={w_1^*+w_2^* \over 2}, b={b_1^*+b_2^* \over 2}\)</span>。有<span class="math inline">\(\|w\|=c\)</span>，即<span class="math inline">\(\|w^*_1\|={\|w_2^*\|+\\|w_1^*\| \over 2}\)</span>, 由此我们推知<span class="math inline">\(w_1^*=w_2^*\)</span>。</li>
+<li>对于两个最优解<span class="math inline">\((w^*, b_1^*), (w^*, b_2^*)\)</span>, 对于训练集中所有的负类<span class="math inline">\((y=-1)\)</span>，假设<span class="math inline">\(x_1^\prime, x_2^\prime\)</span>是使得约束函数等号成立的点，同样假设<span class="math inline">\(x_1&#39;&#39;, x_2&#39;&#39;\)</span>为正类中使得约束函数等号成立的点。根据约束函数，我们可以解出<span class="math inline">\(b_i^*\)</span>: <span class="math display">\[b_i^*=-{1 \over 2}(w^*\cdot x_i&#39;+w^*\cdot x_i&#39;&#39;), ~~~i=1, 2\\ \Downarrow \\ b_1^*-b_2^*=-{1\over 2}[w^*\cdot (x_1&#39;-x_2&#39;)+w^*\cdot (x_1&#39;&#39;-x_2&#39;&#39;)]\]</span></li>
+</ul>
+<p>又因为根据不等式约束 <span class="math display">\[w^*\cdot x_2&#39;+b_1^*\geqslant1=w^*\cdot x_1&#39;+b_1^* \\ w^*\cdot x_1&#39;+b_2^*\geqslant1=w^*\cdot x_2&#39;+b_2^*\]</span> 两式可以推出<span class="math inline">\(w^*\cdot (x_1&#39;-x_2&#39;)=0\)</span>, 同理，<span class="math inline">\(w^*\cdot (x_1&#39;&#39;-x_2&#39;&#39;)=0\)</span>. 因此我们最终得到：<span class="math inline">\(b_1^*-b_2^*=0\)</span></p>
+<ul>
+<li>由<span class="math inline">\(w_1^*=w_2^*, b_1^*=b_2^*\)</span>，最大分割超平面的唯一性得证。</li>
+</ul></li>
+</ol>
+<h4 id="支持向量和间隔边界">4. 支持向量和间隔边界</h4>
+<p><strong>支持向量</strong>就是使不等式约束等号成立的点，即： <span class="math display">\[y_i(w\cdot x_i+b)-1=0\]</span> 因此对于所有正类和负类，所有都支持向量在超平面<span class="math inline">\(w\cdot x +b=\pm 1\)</span>上。如图所示，</p>
+<p><img src='https://img-blog.csdn.net/20140829141714944#pic_center' width=400></p>
+<p>两个超平面之间形成一条长带，分离超平面位于它们中央。长带的宽度，称为<strong>间隔</strong>。间隔大小为<span class="math inline">\(2\over \|w\|\)</span>。同时两个支持向量超平面称为间隔边界。</p>
+<h4 id="软间隔">5. 软间隔</h4>
+<p>对于线性不可分的数据集，通常情况下，训练数据中有一些特异点，将这些特异点去除后，剩下大部分的样本点组成的集合是线性可分的。</p>
+<ul>
+<li><p>为了解决某些样本点不能满足函数间隔大于1的约束条件，我们可以对每个样本点引入一个松弛变量<span class="math inline">\(\xi_i\geqslant0\)</span>, 使函数间隔加上松弛变量大于等于1. 即约束条件变为：</p>
+<p><span class="math display">\[y_i(w\cdot x_i+b)\geqslant1-\xi_i\]</span> 与此同时，对于每个松弛向量，我们都支付一个代价。即把目标函数变为： <span class="math display">\[{1\over 2}\|w\|^2+C\sum^N_{i=1}\xi_i\]</span> 这里<span class="math inline">\(C&gt;0\)</span>称为惩罚参数，由具体应用决定。<span class="math inline">\(C\)</span>值很大时对于误分类的惩罚增大。因此对于线性不可分的训练数据集，我们的学习策略是软间隔最大化。</p></li>
+<li><p>线性不可分的支持向量机的学习问题变为如下凸二次规划问题：</p></li>
+</ul>
+<p><span class="math display">\[\begin{aligned}\min_{w, b, \xi}~~~~~~&amp;{1\over2}\|w\|^2+C\sum_{i=1}^N\xi_i\\
+\text{s.t.}~~~~~~ &amp;y_i(w\cdot x_i+b)\geqslant1-\xi_i, ~~i=1, 2, \dots, N \\&amp; \xi_i\geqslant0, ~~i=1, 2, \dots, N \end{aligned}\]</span></p>
+<ul>
+<li>注意：此时可以证明<span class="math inline">\(w\)</span>的解是唯一的，但<span class="math inline">\(b\)</span>的解不唯一，而是存在于一个区间。</li>
+<li>此优化问题就是线性支持向量机的通用定义。</li>
+</ul>
+<h2 id="二怎么求解支持向量机">二、怎么求解支持向量机</h2>
+<h4 id="线性可分支持向量机">1. 线性可分支持向量机</h4>
+<p>对于线性可分支持向量机的凸二次规划问题，我们可以构造广义拉格朗日函数： <span class="math display">\[\mathcal{L}={1\over 2}\|w\|^2-\sum_{i=1}^N\alpha_i[y_i(w\cdot x_i+b)-1]\]</span> 其中<span class="math inline">\(\alpha=(\alpha_1, \alpha_2, \dots, \alpha_N)^T\)</span>为拉格朗日乘子向量。 对于原始问题：<span class="math inline">\(\min_{w, b}\max_\alpha \mathcal{L}(\boldsymbol{w, b, \alpha})\)</span>, 由于这是一个凸二次规划问题，因此我们可以运用拉格朗日的对偶性，求解对偶问题来得到原始问题的最优解： <span class="math display">\[\max_\alpha\min_{w, b}\mathcal L(\boldsymbol{w, b, \alpha})\]</span> 具体求解过程如下：</p>
+<ol type="1">
+<li>求<span class="math inline">\(\min_{w,b}\mathcal L(\boldsymbol{w,b,\alpha})\)</span>:</li>
+</ol>
+<p>对拉格朗日函数求梯度并令其等于零： <span class="math display">\[\nabla_w\mathcal L(\boldsymbol{w, b, \alpha})=w-\sum_{i=1}^N\alpha_iy_ix_i=0\\ \nabla_b\mathcal L(\boldsymbol{w, b, \alpha})=-\sum_{i=1}^N\alpha_iy_i=0\]</span> 得到： <span class="math display">\[w=\sum_{i=1}^N\alpha_iy_ix_i, ~~~~~\sum_{i=1}^N\alpha_iy_i=0\]</span> 代入函数中，得到：</p>
+<p><span class="math display">\[\begin{aligned}\mathcal L(\boldsymbol{w, b, \alpha})&amp;={1\over 2}\sum_{i=1}^N\sum_{j-1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)-\sum_{i=1}^N\alpha_iy_i\bigg ( \bigg(\sum_{j=1}^N\alpha_jy_jx_j\bigg )\cdot x_i +b\bigg )+\sum^N_{i=1}\alpha_i\\ &amp;=-{1\over 2}\sum_{i=1}^N\sum_{j-1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)+\sum^N_{i=1}\alpha_i\end{aligned}\]</span> 具体推导见图：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWctbXkuY3Nkbi5uZXQvdXBsb2Fkcy8yMDEzMDEvMTEvMTM1NzgzNzYwNV81ODMwLnBuZw?x-oss-process=image/format,png" /></p>
+<p>由此我们求出了 <span class="math display">\[\min_{w, b}\mathcal L(\boldsymbol{w, b, \alpha})=-{1\over 2}\sum_{i=1}^N\sum_{j-1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)+\sum^N_{i=1}\alpha_i\]</span></p>
+<ol start="2" type="1">
+<li>求对偶问题</li>
+</ol>
+<p><span class="math display">\[\begin{aligned}\min_\alpha~~&amp;{1\over 2}\sum_{i=1}^N\sum_{j-1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)+\sum^N_{i=1}\\ \text{s.t.}~~&amp;\sum_{i=1}^N\alpha_iy_i=0\\ &amp;\alpha_i\geqslant0, i=1, 2, \dots, N\end{aligned}\]</span> 根据拉格朗日对偶问题与原始问题等价的条件成立（KKT条件）： <span class="math display">\[\begin{aligned}\nabla_w\mathcal L(\boldsymbol{w^*, b^*, \alpha^*})&amp;=w^*-\sum_{i=1}^N\alpha^*_iy_ix_i=0\\ \nabla_b\mathcal L(\boldsymbol{w^*, b^*, \alpha^*})&amp;=-\sum_{i=1}^N\alpha^*_iy_i=0\\ \alpha^*_i(y_i(w^*\cdot x_i+b^*)-1)&amp;=0, ~~~i=1, 2, \dots, N \\ y_i(w^*\cdot x_i+b^*)-1&amp;\geqslant0\\ \alpha_i&amp;\geqslant0, ~~~~~i=1, 2, \dots, N \end{aligned} \]</span> 由此得 <span class="math display">\[w^*=\sum_i\alpha_i^*y_ix_i\]</span> 因此至少有一个<span class="math inline">\(\alpha^*_j&gt;0(w^*\neq0)\)</span>，对于此点，有<span class="math inline">\(y_j(w^*\cdot x_j+b^*)-1=0\)</span>。由此我们可以求出 <span class="math display">\[b^*=y_j-\sum_{i=1}^N\alpha_i^*y_i(x_i\cdot x_j)\]</span> 从而得到了我们的分离超平面： <span class="math display">\[\sum_{i=1}^N\alpha_i^*y_i(x\cdot x_i)+b^*=0\]</span> 也就是说，分类只依赖于输入<span class="math inline">\(x\)</span>和训练样本输入的内积。</p>
+<p>以上就是线性可分的支持向量机学习的基本算法。</p>
+<h4 id="线性支持向量机">2. 线性支持向量机</h4>
+<p>同之前一样，我们构造广义拉格朗日函数： <span class="math display">\[\mathcal L(\boldsymbol{w, b, \xi, \alpha, \mu} )={1\over 2}\|w\|^2+C\sum^N_{i=1}\xi_i-\sum^N_{i=1}\alpha_i(y_i(w\cdot x_i+b)-1+\xi_i)-\sum^N_{i=1}\mu_i\xi_i\]</span> 其中<span class="math inline">\(\alpha_i\geqslant0, \mu_i\geqslant0.\)</span> 首先，我们求<span class="math inline">\(\min_{w, b, \xi} \mathcal L(\boldsymbol{w, b, \xi, \alpha, \mu} )\)</span>, 对<span class="math inline">\(w, b, \xi\)</span>求梯度并令其为零。其中前两个与之前一样。 <span class="math display">\[\nabla_w\mathcal L(\boldsymbol{w, b, \xi, \alpha, \mu} )=w-\sum_{i=1}^N\alpha_iy_ix_i=0\\ \nabla_b\mathcal L(\boldsymbol{w, b, \xi, \alpha, \mu} )=-\sum_{i=1}^N\alpha_iy_i=0\\
+\nabla_{\xi_i}\mathcal L(\boldsymbol{w, b, \xi, \alpha, \mu} )=C-\alpha_i-\mu_i=0\]</span> 代入函数中，会发现得到与之前一样的形式： <span class="math display">\[\min_{w, b, \xi}\mathcal L(\boldsymbol{w, b, \xi, \alpha, \mu}) =-{1\over 2}\sum_{i=1}^N\sum_{j-1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)+\sum^N_{i=1}\alpha_i\]</span> 因此对偶问题为： <span class="math display">\[\begin{aligned}\min_\alpha~~&amp;{1\over 2}\sum_{i=1}^N\sum_{j-1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)-\sum^N_{i=1}\alpha_i\\ 
+\text{s.t.}~~&amp;\sum_{i=1}^N\alpha_iy_i=0\\
+&amp;C-\alpha_i-\mu_i=0\\
+ &amp;\alpha_i\geqslant0\\
+&amp;\mu_i\geqslant0, i=1, 2, \dots, N\end{aligned}\]</span> 将约束条件合并，我们可以得到<span class="math display">\[0\leqslant \alpha_i\leqslant C\]</span></p>
+<p>对于原始问题和对偶问题等价性的证明，也与之前类似，证明其满足KKT条件即可。 分离超平面： <span class="math display">\[\sum_{i=1}^N\alpha_i^*y_i(x\cdot x_i)+b^*=0\]</span></p>
+<p>在决定分离超平面时，只有支持向量起作用，而其他实例点不起作用。<strong>由于支持向量在确定分离超平面中起到决定性作用，所以将这种分类模型成为“支持向量机”。</strong></p>
+<h2 id="三核技巧及非线性svm">三、核技巧及非线性SVM</h2>
+<p>上面只是介绍了线性支持向量机，对于非线性的分类问题，我们可以使用非线性支持向量机，它使用了核技巧。核技巧适用于很多统计学习问题，是十分重要的方法。</p>
+<h4 id="非线性分类问题">1. 非线性分类问题</h4>
+<p><img src="https://img-blog.csdn.net/20140830002108254" /></p>
+<p>非线性问题是指利用非线性模型才能很好分类的问题，如左图所示，我们无法用直线将正负实例分开，但可以用一条椭圆曲线分开。一般来说，对于给定的数据集，其中，实例<span class="math inline">\(x_i\in\mathcal X=\R^n\)</span>, 对应的标记有两类<span class="math inline">\(y_i\in\mathcal Y=\{-1, +1\}, i=1, 2, \dots, N\)</span>。如果能用<span class="math inline">\(\R^n\)</span>中的一个<strong>超曲面</strong>将正负例正确分开，则称这个问题为非线性可分问题。</p>
+<p>但是如果我们将数据集重新映射到一个高维的空间，如右图，我们可以发现有一个超平面将两个类别正确分类。因此我们对于非线性的分类问题，我们往往采用将其重新映射到更高维的空间，以使非线性的问题变换为线性分类问题。然后我们就可以在新空间里用线性分类学习方法从训练数据中学习分类模型。</p>
+<h4 id="核函数">2. 核函数</h4>
+<p>定义：设<span class="math inline">\(\mathcal X\)</span>是输入空间（欧氏空间<span class="math inline">\(\R^n\)</span>的子集或离散集合），又设<span class="math inline">\(\mathcal H\)</span>为特征空间（希尔伯特空间），如果存在一个从<span class="math inline">\(\mathcal X\)</span>到<span class="math inline">\(\mathcal H\)</span>的映射 <span class="math display">\[\phi(x):\mathcal{X\rightarrow H}\]</span> 使得对所有<span class="math inline">\(x, z\in\mathcal X\)</span>, 函数<span class="math inline">\(K(x, z)\)</span>满足条件 <span class="math display">\[K(z, x)=\phi(x)\cdot \phi(z)\]</span> 则称<span class="math inline">\(K(x, z)\)</span>为核函数，<span class="math inline">\(\phi\)</span>为映射函数，式中为两函数的内积。</p>
+<ul>
+<li>简单来说，可以认为<strong>核函数的输入是原空间的两个向量，它的输出是映射到高维空间的两个向量的内积</strong>，因此我们<strong>不用去求复杂的映射函数<span class="math inline">\(\phi\)</span>而直接获取映射后两个向量的内积。</strong></li>
+</ul>
+<p>关于核函数的更通俗的理解，可以看看《<span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC83MDQyNmYxYTQ2OGU=">关于核函数的一些思考<i class="fa fa-external-link-alt"></i></span>》</p>
+<h4 id="非线性svm">3. 非线性SVM</h4>
+<p>之前求解出的对偶问题中，我们发现<strong>无论是目标函数还是决策函数都只涉及向量的内积</strong>，因此我们考虑可以使用核函数代替，以此来实现非线性支持向量机的学习。</p>
+<p>此时对偶问题的目标函数变为 <span class="math display">\[W(\alpha)={1\over 2}\sum_{i=1}^N\sum_{j-1}^N\alpha_i\alpha_jy_iy_j(x_i\cdot x_j)-\sum^N_{i=1}\alpha_i\]</span></p>
+<p>同样，分类决策函数变为 <span class="math display">\[f(x)=\text{sign}\bigg (\sum_{i=1}^{N_s} \alpha_i^*y_iK(x_i, x)+b^*\bigg )\]</span></p>
+<h4 id="成为核函数的条件">4. 成为核函数的条件</h4>
+<p>如果我们已知映射函数<span class="math inline">\(\phi\)</span>那么我们就可以通过<span class="math inline">\(\phi(x)\cdot \phi(z)\)</span>直接求得核函数。但实际上我们很难去学习映射函数，那么我们怎样才能不用构造映射函数而直接判断一个给定的函数<span class="math inline">\(K(x, z)\)</span>是否核函数呢？</p>
+<p>我们通常所说的核函数就是正定核函数，对于它的进一步理解，建议看一下<span class="exturl" data-url="aHR0cHM6Ly9wZW9wbGUuZWVjcy5iZXJrZWxleS5lZHUvfmJhcnRsZXR0L2NvdXJzZXMvMjgxYi1zcDA4LzcucGRm">这篇教程<i class="fa fa-external-link-alt"></i></span></p>
+<ul>
+<li><p><strong>正定核的充要条件</strong>：设<span class="math inline">\(K:\mathcal{X\times X}\rightarrow \R\)</span>是对称函数，则<span class="math inline">\(K(x, z)\)</span>为正定核函数的充要条件是对任意<span class="math inline">\(x_i\in\mathcal X, x=1, 2, \dots, m, ~~~K(x, z)\)</span>对应的Gram矩阵：</p>
+<p><span class="math display">\[K=[K(x_i, x_j)]_{m\times m}\]</span> 是半正定矩阵。</p></li>
+<li><p>由此我们可以写出<strong>正定核的等价定义：</strong> 设<span class="math inline">\(\mathcal{X}\subset \R^n, K(x, z)\)</span>是定义在<span class="math inline">\(\mathcal{X\times X}\)</span>上的对称函数，如果对任意<span class="math inline">\(x_i\in \mathcal{X}, i=1, 2, \dots, m, K(x, z)\)</span>对应的Gram矩阵是半正定矩阵，则称<span class="math inline">\(K(x, z)\)</span>是正定核。</p>
+<p>这一定义对于构造核函数时很有用。但对于具体函数我们不容易检验它是否为正定核函数。在实际问题中我们往往应用已有的核函数。</p></li>
+<li><p>另外，由Mercer定理我们可以得到Mercer核，正定核比它更具有一般性。</p></li>
+</ul>
+<h4 id="常用的核函数">5. 常用的核函数</h4>
+<ol type="1">
+<li><p>多项式核函数</p>
+<p><span class="math display">\[K(x, z)=(x\cdot z+1)^p\]</span> 对应的支持向量机是一个p次多项式分类器。</p></li>
+<li><p>高斯核函数（RBF）</p>
+<p><span class="math display">\[K(x, z)=\exp\bigg (-\dfrac{\|x-z\|^2}{2\sigma^2}\bigg )\]</span> 对应高斯径向基函数分类器，会将原始空间映射为无穷维空间。通过调控参数，高斯核实际上具有相当高的灵活性，也是使用最广泛的核函数之一。</p></li>
+</ol>
+<h2 id="四支持向量机的进一步理解">四、支持向量机的进一步理解</h2>
+<h4 id="支持向量机的另一种解释">1. 支持向量机的另一种解释</h4>
+<p>支持向量机还有一种解释，就是最小化以下目标函数： <span class="math display">\[\sum^N_{i=1}[1-y_i(w\cdot x_i+b)]_++\lambda\|w\|^2\]</span> 即<strong>SVM能够同时实现经验风险和结构风险的最小化，从而达到在统计样本量较少的情况下，能获得良好统计规律的目的。</strong></p>
+<p>其中第一项是经验风险，称为合页损失函数（hinge loss）即 <span class="math display">\[[z]_+\begin{cases}z, z&gt;0\\0, z\leqslant 0\end{cases}\]</span> 当样本点被正确分类且函数间隔大于1时，损失是0，否则会产生损失。目标函数第二项时正则化项，也是结构风险。</p>
+<h4 id="smo算法">2. SMO算法</h4>
+<p>SMO算法是两变量支持向量机学习的一种快速算法，不断地将原二次规划问题分解为只有两个变量的二次规划子问题，并对子问题进行解析求解，直到所有变量满足KKT条件位置。证明不在这里详述了，但它具体的学习步骤如图：</p>
+<p><img src='https://img-my.csdn.net/uploads/201304/05/1365177311_5726.png'></p>
+<p>对于SMO的更深入的理解，请参阅：1、<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RlY2hxL2FydGljbGUvZGV0YWlscy82MTcxNjg4">SVM算法实现<i class="fa fa-external-link-alt"></i></span>，2 、<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vamVycnlsZWFkL2FyY2hpdmUvMjAxMS8wMy8xOC8xOTg4NDE5Lmh0bWw=">SMO优化算法<i class="fa fa-external-link-alt"></i></span></p>
+<p><strong>以上内容如有谬误还请告知。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>David Wang
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://wby1905.github.io/post/6231/" title="支持向量机以及核方法">https://wby1905.github.io/post/6231/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Note/" rel="tag"><i class="fa fa-tag"></i> Note</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/fe74/" rel="prev" title="逻辑回归/logistic回归、广义线性模型与最大熵模型">
+                  <i class="fa fa-chevron-left"></i> 逻辑回归/logistic回归、广义线性模型与最大熵模型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/e686/" rel="next" title="从传统机器学习走向深度学习">
+                  从传统机器学习走向深度学习 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments">
+    <div id="lv-container" data-id="city" data-uid="MTAyMC81MjI2OS8yODc0OA"></div>
+  </div>
+  
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">David Wang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">131k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:59</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="//cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/@next-theme/pjax@0.4.0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4.0.7/dist/browser/pangu.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script><script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '.page-configurations',
+    '.main-inner',
+    '.post-toc-wrap',
+    '.languages',
+    '.pjax'
+  ],
+  analytics: false,
+  cacheBust: false,
+  scrollRestoration: false,
+  scrollTo: !CONFIG.bookmark.enable
+});
+
+document.addEventListener('pjax:success', () => {
+  pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  const hasTOC = document.querySelector('.post-toc');
+  document.querySelector('.sidebar-inner').classList.toggle('sidebar-nav-active', hasTOC);
+  document.querySelector(hasTOC ? '.sidebar-nav-toc' : '.sidebar-nav-overview').click();
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+  
+
+
+
+
+
+  <script>
+    NProgress.configure({
+      showSpinner: true
+    });
+    NProgress.start();
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        NProgress.inc(0.8);
+      }
+      if (document.readyState === 'complete') {
+        NProgress.done();
+      }
+    });
+    document.addEventListener('pjax:send', () => {
+      NProgress.start();
+    });
+    document.addEventListener('pjax:success', () => {
+      NProgress.done();
+    });
+  </script>
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+    <div class="pjax">
+
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+  <script src="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.js"></script>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/copy-tex.min.css">
+
+
+
+<script>
+NexT.utils.loadComments('#lv-container', () => {
+  window.livereOptions = {
+    refer: "post/6231/"
+  };
+  (function(d, s) {
+    var j, e = d.getElementsByTagName(s)[0];
+    if (typeof LivereTower === 'function') { return; }
+    j = d.createElement(s);
+    j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+    j.async = true;
+    e.parentNode.insertBefore(j, e);
+  })(document, 'script');
+});
+</script>
+
+    </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
