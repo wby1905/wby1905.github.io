@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="En">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -25,36 +25,23 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 <meta name="description" content="以下内容由我的CSDN博客迁移。 之前学习了基本的深度学习与神经网络模型，让我们开始学习一些进阶的东西。个人对于生成对抗网络很感兴趣，就学习它吧。（主要参考李宏毅的GAN教程，以及其他一些博客）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GAN的基本概念">
 <meta property="og:url" content="https://wby1905.github.io/post/77c8/index.html">
-<meta property="og:site_name" content="David Wang">
+<meta property="og:site_name" content="Boyuan Wang">
 <meta property="og:description" content="以下内容由我的CSDN博客迁移。 之前学习了基本的深度学习与神经网络模型，让我们开始学习一些进阶的东西。个人对于生成对抗网络很感兴趣，就学习它吧。（主要参考李宏毅的GAN教程，以及其他一些博客）">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213151652142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213153020560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213153721438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213154231681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213154503703.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213155830679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/202002131603547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213160719659.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213160829813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/2020021316130559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213162145481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213162331531.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
+<meta property="og:locale">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200213172156128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200213182217403.gif">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20200213180326272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
-<meta property="article:published_time" content="2020-02-13T10:42:20.000Z">
-<meta property="article:modified_time" content="2021-04-28T05:25:21.114Z">
-<meta property="article:author" content="David Wang">
+<meta property="article:published_time" content="2020-02-13T23:42:20.000Z">
+<meta property="article:modified_time" content="2021-09-15T08:44:39.830Z">
+<meta property="article:author" content="Boyuan Wang">
 <meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200213151652142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200213172156128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70">
 
 
 <link rel="canonical" href="https://wby1905.github.io/post/77c8/">
@@ -66,10 +53,10 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'En'
   };
 </script>
-<title>GAN的基本概念 | David Wang</title>
+<title>GAN的基本概念 | Boyuan Wang</title>
   
 
 
@@ -125,7 +112,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -136,11 +123,11 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">David Wang</h1>
+      <h1 class="site-title">Boyuan Wang</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Wang's Blog</p>
-      <img class="custom-logo-image" src="/images/qingge.webp" alt="David Wang">
+      <img class="custom-logo-image" src="/images/qingge.webp" alt="Boyuan Wang">
   </div>
 
   <div class="site-nav-right">
@@ -153,12 +140,12 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
-        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات<span class="badge">25</span></a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>خريطة الموقع</a></li>
   </ul>
 </nav>
 
@@ -179,25 +166,26 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          文章目录
+          المحتويات
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          عام
         </li>
       </ul>
 
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-text">1. 生成器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E5%88%AB%E5%99%A8"><span class="nav-text">2. 判别器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E5%88%A4%E5%88%AB%E5%99%A8%E7%9A%84%E7%BB%93%E5%90%88%E6%89%8D%E8%83%BD%E5%90%84%E5%B0%BD%E6%89%80%E8%83%BD"><span class="nav-text">3. 生成器与判别器的结合才能各尽所能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89gan-%E5%AE%9E%E8%B7%B5%E7%94%9F%E6%88%90%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F"><span class="nav-text">三、GAN 实践：生成动漫头像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E8%AE%AD%E7%BB%83-gan-%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="nav-text">四、训练 GAN 的技巧</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-text">1. 生成器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%A4%E5%88%AB%E5%99%A8"><span class="nav-text">2. 判别器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E5%88%A4%E5%88%AB%E5%99%A8%E7%9A%84%E7%BB%93%E5%90%88%E6%89%8D%E8%83%BD%E5%90%84%E5%B0%BD%E6%89%80%E8%83%BD"><span class="nav-text">3.
+生成器与判别器的结合才能各尽所能</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89gan-%E5%AE%9E%E8%B7%B5%E7%94%9F%E6%88%90%E5%8A%A8%E6%BC%AB%E5%A4%B4%E5%83%8F"><span class="nav-text">三、GAN 实践：生成动漫头像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E8%AE%AD%E7%BB%83-gan-%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="nav-text">四、训练 GAN 的技巧</span></a></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="David Wang"
+    <img class="site-author-image" itemprop="image" alt="Boyuan Wang"
       src="/images/lusun.gif">
-  <p class="site-author-name" itemprop="name">David Wang</p>
+  <p class="site-author-name" itemprop="name">Boyuan Wang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
@@ -206,20 +194,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">25</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
         <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">التصنيفات</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">الوسوم</span></a>
       </div>
   </nav>
 </div>
@@ -228,7 +216,7 @@
         <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dieTE5MDU=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wby1905"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOndieTE5MDVAcXEuY29t" title="E-Mail → mailto:wby1905@qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <span class="exturl" data-url="bWFpbHRvOmJveXVhbndhbmdfZGF2aWRAZm94bWFpbC5jb20=" title="E-Mail → mailto:boyuanwang_david@foxmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;wby1905"><i class="fab fa-cuttlefish fa-fw"></i></span>
@@ -271,17 +259,17 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="En">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/77c8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
-      <meta itemprop="name" content="David Wang">
+      <meta itemprop="name" content="Boyuan Wang">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="David Wang">
+      <meta itemprop="name" content="Boyuan Wang">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -294,50 +282,50 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">نُشر في</span>
 
-      <time title="创建时间：2020-02-13 18:42:20" itemprop="dateCreated datePublished" datetime="2020-02-13T18:42:20+08:00">2020-02-13</time>
+      <time title="أُنشأ: 2020-02-13 18:42:20" itemprop="dateCreated datePublished" datetime="2020-02-13T18:42:20-05:00">2020-02-13</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-04-28 13:25:21" itemprop="dateModified" datetime="2021-04-28T13:25:21+08:00">2021-04-28</time>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-09-15 04:44:39" itemprop="dateModified" datetime="2021-09-15T04:44:39-04:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">في</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
     </span>
 
   
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+    <span class="post-meta-item" title="مشاهدات" id="busuanzi_container_page_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
-      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="post-meta-item-text">مشاهدات: </span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="عدد الحروف في المقال">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">عدد الحروف في المقال: </span>
       <span>9.1k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="زمن القراءة">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span class="post-meta-item-text">زمن القراءة &asymp;</span>
+      <span>8 دقائق.</span>
     </span>
 </div>
 
@@ -348,24 +336,91 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>以下内容由我的<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDUvYXJ0aWNsZS9kZXRhaWxzLzEwNDE4NDMyOQ==">CSDN博客<i class="fa fa-external-link-alt"></i></span>迁移。</p>
+        <p>以下内容由我的<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/details/104184329">CSDN博客</a>迁移。</p>
 <p>之前学习了基本的深度学习与神经网络模型，让我们开始学习一些进阶的东西。个人对于生成对抗网络很感兴趣，就学习它吧。（主要参考李宏毅的GAN教程，以及其他一些博客）</p>
 <a id="more"></a>
-<p><strong>生成对抗网络（Generative Adversial Network， GAN）</strong> ，是很有创新性的一种模型。它提供了一种思想就是对抗训练，让两个或多个模型间互相促进，犹如自然选择一般进行进化。近年来有关 GAN 的应用越来越多，可以前往<span class="exturl" data-url="aHR0cHM6Ly90aGlzeGRvZXNub3RleGlzdC5jb20v">thisxdoesnotexist.com/<i class="fa fa-external-link-alt"></i></span>，里面有许多有趣的项目。同时关于 GAN 的论文也越来越多：<img src="https://img-blog.csdnimg.cn/20200213151652142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 甚至在“GAN”前加上两个字母都有重复的名字(例如LSGAN), github 上有一个 <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hpbmR1cHVyYXZpbmFzaC90aGUtZ2FuLXpvbw==">the-gan-zoo<i class="fa fa-external-link-alt"></i></span> 里面汇集了很多的 GAN 模型及论文。</p>
-<p>随着 GAN 的研究不断发展，它不仅能够应用于图像生成，还能够生成文章，生成语音等等，总之 GAN 的应用可以充分发挥你的想象力。</p>
-<p>这一节我们说一说最基本的 GAN 的思想并实现成二次元头像。 ## 一、基本思想 GAN 主要由两部分组成：<strong>生成器(Generator)</strong> 和 <strong>判别器(Discriminitor)</strong></p>
+<p><strong>生成对抗网络（Generative Adversial Network， GAN）</strong>
+，是很有创新性的一种模型。它提供了一种思想就是对抗训练，让两个或多个模型间互相促进，犹如自然选择一般进行进化。近年来有关
+GAN 的应用越来越多，可以前往<a
+target="_blank" rel="noopener" href="https://thisxdoesnotexist.com/">thisxdoesnotexist.com/</a>，里面有许多有趣的项目。同时关于
+GAN 的论文也越来越多：<img
+src="https://img-blog.csdnimg.cn/20200213151652142.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+甚至在“GAN”前加上两个字母都有重复的名字(例如LSGAN), github 上有一个 <a
+target="_blank" rel="noopener" href="https://github.com/hindupuravinash/the-gan-zoo">the-gan-zoo</a>
+里面汇集了很多的 GAN 模型及论文。</p>
+<p>随着 GAN
+的研究不断发展，它不仅能够应用于图像生成，还能够生成文章，生成语音等等，总之
+GAN 的应用可以充分发挥你的想象力。</p>
+<p>这一节我们说一说最基本的 GAN 的思想并实现成二次元头像。 ##
+一、基本思想 GAN 主要由两部分组成：<strong>生成器(Generator)</strong> 和
+<strong>判别器(Discriminitor)</strong></p>
 <h4 id="生成器">1. 生成器</h4>
-<p><img src="https://img-blog.csdnimg.cn/20200213153020560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 最基本的生成器的就是输入一些随机向量，然后它就可以生成一些对应的图片或是句子。向量的每个维度都代表了一些特征，譬如头发颜色，有无眼镜等等。 <img src="https://img-blog.csdnimg.cn/20200213153721438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 生成器本质上就是一个神经网络，它将特征值映射到目标任务上。</p>
+<p><img
+src="https://img-blog.csdnimg.cn/20200213153020560.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+最基本的生成器的就是输入一些随机向量，然后它就可以生成一些对应的图片或是句子。向量的每个维度都代表了一些特征，譬如头发颜色，有无眼镜等等。
+<img
+src="https://img-blog.csdnimg.cn/20200213153721438.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+生成器本质上就是一个神经网络，它将特征值映射到目标任务上。</p>
 <h4 id="判别器">2. 判别器</h4>
-<p>判别器的作用就是分辨给定的图片或数据是来自真实数据分布生成的还是生成器所生成的假数据，它会给一个评分。<img src="https://img-blog.csdnimg.cn/20200213154231681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> #### 3. 对抗训练 生成器和判别器之间需要进行对抗训练，也就是说，生成器要尽可能“骗过”判别器，而判别器要尽可能识别出生成器的假样本。两者相互对抗，最后共同进化。 <img src="https://img-blog.csdnimg.cn/20200213154503703.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> #### 4. 训练过程 具体的训练过程如下：</p>
-<p>在每个循环中： + 首先我们需要从真实分布中采集出 m 个真实样本，给它们标为 1 （即表示为真实标签），同时随机生成 m 个向量，投入生成器中生成 m 个假样本记作 0 （即假标签）。 + 将真实标签的数据和假标签的数据都喂入判别器中，计算出它的 Loss ，并反向传播进行梯度优化。 + 固定住判别器的权重，然后将之前生成的假样本的标签改为 1 ，即对于生成器来说这种假样本在判别器中的真实性应该是越真实越好。然后重新喂入判别器中，进行反向传播梯度优化。</p>
-<p>至于 Loss 的选择有许多，对于最基本的 GAN, 它采用了 BCELoss，即二类交叉熵损失。因此，具体过程如图： <img src="https://img-blog.csdnimg.cn/20200213155830679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> ## 二、对抗训练的好处 为什么需要对抗训练？为什么判别器或者生成器不能自主学习？让我们分情况说明。 #### 1. 仅有生成器的学习 仅有生成器的学习思想与自编码器相当。我们可以依照 Auto-encoder 的训练过程进行训练，此时的 Decoder 可以看作是生成器。<img src="https://img-blog.csdnimg.cn/202002131603547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 但是自编码器仅仅要求还原的图片与原图片尽可能像就行，而没有考虑到邻近像素间的差异（即人眼的感受）。例如对于目标 <img src="https://img-blog.csdnimg.cn/20200213160719659.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 以下四个生成图前两个与原目标仅有一个像素的差异，后两个有六个像素差异，<img src="https://img-blog.csdnimg.cn/20200213160829813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 然而直观来看，我们可以一眼就感觉出前两个生成的效果并不好。</p>
-<p>自编码器并不能很好的考虑到邻近像素的相关性，可能需要很深的网络才可以，因此只有生成器并不能很好的完成生成任务，需要一个判别器帮助判断像素间是否符合直观感受。 #### 2. 只有判别器的学习 如果我们有一个表现很好的判别器 D(x) 。我们可以解决以下的问题来实现生成： <img src="https://img-blog.csdnimg.cn/2020021316130559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 然而这需要我们列举出全部可能的x，这几乎是不可能的事情。</p>
-<p>此外，即便我们可以列举出全部的 x ，但是由于来自于真实分布的数据必然全部都是真实的，不存在假的样本，因此我们无法去获取假的真实样本。</p>
-<h4 id="生成器与判别器的结合才能各尽所能">3. 生成器与判别器的结合才能各尽所能</h4>
-<p>生成器和判别器各有优缺点： <img src="https://img-blog.csdnimg.cn/20200213162145481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 因此只有两者结合起来对抗训练才能互相补充，发挥特长。 <img src="https://img-blog.csdnimg.cn/20200213162331531.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /> 如图。从判别器的角度来看，生成器事实上就是一种列举 x 的有效手段，并且可以产生出假的样本；同时从生成器的角度看，判别器可以帮助判断生成器生成的是否符合直观，可以注意到不同部分的关联。</p>
+<p>判别器的作用就是分辨给定的图片或数据是来自真实数据分布生成的还是生成器所生成的假数据，它会给一个评分。<img
+src="https://img-blog.csdnimg.cn/20200213154231681.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" /> #### 3. 对抗训练
+生成器和判别器之间需要进行对抗训练，也就是说，生成器要尽可能“骗过”判别器，而判别器要尽可能识别出生成器的假样本。两者相互对抗，最后共同进化。
+<img
+src="https://img-blog.csdnimg.cn/20200213154503703.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" /> #### 4. 训练过程 具体的训练过程如下：</p>
+<p>在每个循环中： + 首先我们需要从真实分布中采集出 m
+个真实样本，给它们标为 1 （即表示为真实标签），同时随机生成 m
+个向量，投入生成器中生成 m 个假样本记作 0 （即假标签）。 +
+将真实标签的数据和假标签的数据都喂入判别器中，计算出它的 Loss
+，并反向传播进行梯度优化。 +
+固定住判别器的权重，然后将之前生成的假样本的标签改为 1
+，即对于生成器来说这种假样本在判别器中的真实性应该是越真实越好。然后重新喂入判别器中，进行反向传播梯度优化。</p>
+<p>至于 Loss 的选择有许多，对于最基本的 GAN, 它采用了
+BCELoss，即二类交叉熵损失。因此，具体过程如图： <img
+src="https://img-blog.csdnimg.cn/20200213155830679.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" /> ## 二、对抗训练的好处
+为什么需要对抗训练？为什么判别器或者生成器不能自主学习？让我们分情况说明。
+#### 1. 仅有生成器的学习
+仅有生成器的学习思想与自编码器相当。我们可以依照 Auto-encoder
+的训练过程进行训练，此时的 Decoder 可以看作是生成器。<img
+src="https://img-blog.csdnimg.cn/202002131603547.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+但是自编码器仅仅要求还原的图片与原图片尽可能像就行，而没有考虑到邻近像素间的差异（即人眼的感受）。例如对于目标
+<img
+src="https://img-blog.csdnimg.cn/20200213160719659.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+以下四个生成图前两个与原目标仅有一个像素的差异，后两个有六个像素差异，<img
+src="https://img-blog.csdnimg.cn/20200213160829813.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+然而直观来看，我们可以一眼就感觉出前两个生成的效果并不好。</p>
+<p>自编码器并不能很好的考虑到邻近像素的相关性，可能需要很深的网络才可以，因此只有生成器并不能很好的完成生成任务，需要一个判别器帮助判断像素间是否符合直观感受。
+#### 2. 只有判别器的学习 如果我们有一个表现很好的判别器 D(x)
+。我们可以解决以下的问题来实现生成： <img
+src="https://img-blog.csdnimg.cn/2020021316130559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+然而这需要我们列举出全部可能的x，这几乎是不可能的事情。</p>
+<p>此外，即便我们可以列举出全部的 x
+，但是由于来自于真实分布的数据必然全部都是真实的，不存在假的样本，因此我们无法去获取假的真实样本。</p>
+<h4 id="生成器与判别器的结合才能各尽所能">3.
+生成器与判别器的结合才能各尽所能</h4>
+<p>生成器和判别器各有优缺点： <img
+src="https://img-blog.csdnimg.cn/20200213162145481.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+因此只有两者结合起来对抗训练才能互相补充，发挥特长。 <img
+src="https://img-blog.csdnimg.cn/20200213162331531.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" />
+如图。从判别器的角度来看，生成器事实上就是一种列举 x
+的有效手段，并且可以产生出假的样本；同时从生成器的角度看，判别器可以帮助判断生成器生成的是否符合直观，可以注意到不同部分的关联。</p>
 <h2 id="三gan-实践生成动漫头像">三、GAN 实践：生成动漫头像</h2>
-<p>这里我使用 pytorch 简单地搭建了一个 DCGAN 网络，来实现生成一些二次元头像。（就是李宏毅课的作业 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vcHJlc2VudGF0aW9uL2QvMVVkTFhIY3UtcHZ2WWtOdlpJV1Q3dEZidUdPMkh6SHVBWmhjQTBYZHJ0ZDgvZWRpdCNzbGlkZT1pZC5nMzk5ODc5NDc0M18yMV8xMg==">HW3-1<i class="fa fa-external-link-alt"></i></span>，我还主要参考了<span class="exturl" data-url="aHR0cHM6Ly9weXRvcmNoLm9yZy90dXRvcmlhbHMvYmVnaW5uZXIvZGNnYW5fZmFjZXNfdHV0b3JpYWwuaHRtbA==">torch官网的这篇教程<i class="fa fa-external-link-alt"></i></span>）</p>
+<p>这里我使用 pytorch 简单地搭建了一个 DCGAN
+网络，来实现生成一些二次元头像。（就是李宏毅课的作业 <a
+target="_blank" rel="noopener" href="https://docs.google.com/presentation/d/1UdLXHcu-pvvYkNvZIWT7tFbuGO2HzHuAZhcA0Xdrtd8/edit#slide=id.g3998794743_21_12">HW3-1</a>，我还主要参考了<a
+target="_blank" rel="noopener" href="https://pytorch.org/tutorials/beginner/dcgan_faces_tutorial.html">torch官网的这篇教程</a>）</p>
 <p>首先让我们导入相关的库，设置一个 seed</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">import</span> torch
@@ -383,7 +438,9 @@
 <span class="token comment"># 设置 seed</span>
 seed <span class="token operator">=</span> <span class="token number">2020</span>
 torch<span class="token punctuation">.</span>manual_seed<span class="token punctuation">(</span>seed<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>接着定义一些超参数: root : 数据存放地址 lr : 学习率 batch_size : 批量 input_size : 随机向量的长度 image_size : 图像的大小 epochs : 迭代次数 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 超参数</span>
+<p>接着定义一些超参数: root : 数据存放地址 lr : 学习率 batch_size : 批量
+input_size : 随机向量的长度 image_size : 图像的大小 epochs : 迭代次数
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 超参数</span>
 root <span class="token operator">=</span> <span class="token string">r'data'</span>
 lr <span class="token operator">=</span> <span class="token number">0.0006</span>
 batch_size <span class="token operator">=</span> <span class="token number">64</span>
@@ -409,7 +466,8 @@ plt<span class="token punctuation">.</span>axis<span class="token punctuation">(
 plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"Training Images"</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>
     np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span>vutils<span class="token punctuation">.</span>make_grid<span class="token punctuation">(</span>real_batch<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>to<span class="token punctuation">(</span>device<span class="token punctuation">)</span><span class="token punctuation">.</span>cpu<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> normalize<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                 <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> 输出： <img src='https://img-blog.csdnimg.cn/20200213172156128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=300></p>
+                 <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre> 输出：
+<img src='https://img-blog.csdnimg.cn/20200213172156128.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70' width=300></p>
 <p>按照之前学习的流程，首先我们定义初始化：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">weights_init</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">:</span>
     classname <span class="token operator">=</span> m<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__
@@ -576,7 +634,8 @@ ims <span class="token operator">=</span> <span class="token punctuation">[</spa
 ani <span class="token operator">=</span> animation<span class="token punctuation">.</span>ArtistAnimation<span class="token punctuation">(</span>fig<span class="token punctuation">,</span> ims<span class="token punctuation">,</span> interval<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span> repeat_delay<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span> blit<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 <span class="token keyword">from</span> IPython<span class="token punctuation">.</span>display <span class="token keyword">import</span> HTML
 HTML<span class="token punctuation">(</span>ani<span class="token punctuation">.</span>to_jshtml<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>如图所示，我们可以看到生成器的进步： <img src='https://img-blog.csdnimg.cn/20200213182217403.gif' width=350></p>
+<p>如图所示，我们可以看到生成器的进步：
+<img src='https://img-blog.csdnimg.cn/20200213182217403.gif' width=350></p>
 <p>最后再对比一下：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># Grab a batch of real images from the dataloader</span>
 real_batch <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">(</span><span class="token builtin">iter</span><span class="token punctuation">(</span>dataloader<span class="token punctuation">)</span><span class="token punctuation">)</span>
@@ -594,34 +653,77 @@ plt<span class="token punctuation">.</span>axis<span class="token punctuation">(
 plt<span class="token punctuation">.</span>title<span class="token punctuation">(</span><span class="token string">"Fake Images"</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>imshow<span class="token punctuation">(</span>np<span class="token punctuation">.</span>transpose<span class="token punctuation">(</span>img_list<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 plt<span class="token punctuation">.</span>show<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>最后得到的结果 <img src="https://img-blog.csdnimg.cn/20200213180326272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></p>
-<p>我们于是便得到了一个二次元头像生成器，虽然效果并不怎么好，但毕竟是最基本的GAN 架构，之后我们再继续学习更好的模型。</p>
+<p>最后得到的结果 <img
+src="https://img-blog.csdnimg.cn/20200213180326272.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=,size_16,color_FFFFFF,t_70"
+alt="在这里插入图片描述" /></p>
+<p>我们于是便得到了一个二次元头像生成器，虽然效果并不怎么好，但毕竟是最基本的GAN
+架构，之后我们再继续学习更好的模型。</p>
 <h2 id="四训练-gan-的技巧">四、训练 GAN 的技巧</h2>
-<p>在训练 GAN 的过程中，我深刻体会到了深度炼丹确实名副其实。学习率，初始化的改变，都有可能使得梯度爆炸或者梯度归零，使得判别器和生成器的 loss 区别很大。有可能判别器 loss 为 0 而生成器的 loss 不断增大，没有减少的趋势，又或者是二者反过来，每次我都会感到深度玄学的神秘。</p>
+<p>在训练 GAN
+的过程中，我深刻体会到了深度炼丹确实名副其实。学习率，初始化的改变，都有可能使得梯度爆炸或者梯度归零，使得判别器和生成器的
+loss 区别很大。有可能判别器 loss 为 0 而生成器的 loss
+不断增大，没有减少的趋势，又或者是二者反过来，每次我都会感到深度玄学的神秘。</p>
 <p>训练 GAN 有很多技巧，我这里给出一些博客上的：</p>
 <ol type="1">
-<li><p><strong>更大的kernel，更多的filter</strong> 大的kernel能够覆盖更多的像素，也因此能够获得过多的信息。在CIFAR-10数据上，使用5<em>5的kernel能够得到很好的效果，而使用3</em>3的kernel会导致判别器的损失函数快速跌落至0。对于生成器，顶层更大的kernel某种程度上来说能够保证平滑，对于底层改变kernel的大小不会有什么影响。 filter数目的增加将极大增加网络的参数量，通常来说，filter的数目越多越好。在上面的实验中，我使用了128个filter。当使用很少的filter时，尤其生成器包含很少的filter时，生成的图像会特别模糊。所以，更多的filter能够获取更多的信息，并最终保证生成的图像具有足够的清晰度。</p></li>
-<li><p><strong>更改样本标签</strong> 在训练判别器时，这个操作非常有用。0或者1的标签，我们称之为hard label，这种标签可能会使得判别器的损失值迅速跌落至0。所以我们使用了soft label，对于标签为0的样本，其标签设置为（0,0.1)内的随机数；而对于标签为1的样本，其标签设置为（0.9,1）内的随机数。当然，这个操作在训练生成器的时候不需要做。 在训练样本的标签上加入随机噪声，也能提升模型效果。进入判别器中5%的图像，随机地翻转其标签，即真的猫图片标记成假的，生成的猫图片标记为真的猫图片，也能够提升一些效果。</p></li>
-<li><p><strong>Batch normalization</strong> 加入batch normalization能够使得生成的图像更加细腻，但当kernel和filter的数目设置不对，或者判别器的损失函数快速跌落至0时，增加BN没有什么作用。</p></li>
-<li><p><strong>不要early stopping</strong> 刚刚接触GAN的训练时，一个常见的错误：当我们发现损失值不变时，或者生成的图像一直模糊时，通常会终止训练，调整模型。这个时候我们也要注意一下，GAN的训练通常非常耗时，所以有时候多等一等会有意想不到的“收获”。 值得注意的是，当判别器的损失值快速接近0时，通常生成器很难学到任何东西了，就需要及时终止训练，修改网络、重新训练。</p></li>
-<li><strong>规范化输入</strong>
+<li><p><strong>更大的kernel，更多的filter</strong>
+大的kernel能够覆盖更多的像素，也因此能够获得过多的信息。在CIFAR-10数据上，使用5<em>5的kernel能够得到很好的效果，而使用3</em>3的kernel会导致判别器的损失函数快速跌落至0。对于生成器，顶层更大的kernel某种程度上来说能够保证平滑，对于底层改变kernel的大小不会有什么影响。
+filter数目的增加将极大增加网络的参数量，通常来说，filter的数目越多越好。在上面的实验中，我使用了128个filter。当使用很少的filter时，尤其生成器包含很少的filter时，生成的图像会特别模糊。所以，更多的filter能够获取更多的信息，并最终保证生成的图像具有足够的清晰度。</p></li>
+<li><p><strong>更改样本标签</strong>
+在训练判别器时，这个操作非常有用。0或者1的标签，我们称之为hard
+label，这种标签可能会使得判别器的损失值迅速跌落至0。所以我们使用了soft
+label，对于标签为0的样本，其标签设置为（0,0.1)内的随机数；而对于标签为1的样本，其标签设置为（0.9,1）内的随机数。当然，这个操作在训练生成器的时候不需要做。
+在训练样本的标签上加入随机噪声，也能提升模型效果。进入判别器中5%的图像，随机地翻转其标签，即真的猫图片标记成假的，生成的猫图片标记为真的猫图片，也能够提升一些效果。</p></li>
+<li><p><strong>Batch normalization</strong> 加入batch
+normalization能够使得生成的图像更加细腻，但当kernel和filter的数目设置不对，或者判别器的损失函数快速跌落至0时，增加BN没有什么作用。</p></li>
+<li><p><strong>不要early stopping</strong>
+刚刚接触GAN的训练时，一个常见的错误：当我们发现损失值不变时，或者生成的图像一直模糊时，通常会终止训练，调整模型。这个时候我们也要注意一下，GAN的训练通常非常耗时，所以有时候多等一等会有意想不到的“收获”。
+值得注意的是，当判别器的损失值快速接近0时，通常生成器很难学到任何东西了，就需要及时终止训练，修改网络、重新训练。</p></li>
+<li><p><strong>规范化输入</strong></p>
 <ul>
 <li>将输入图片规范化到-1到1之间</li>
-<li>生成器最后一层的输出使用tanh激活函数 毋庸置疑规范化是最重要的，未经处理的图片是没有办法收敛的。图片规范化一种简单的方法是（images-127.5）/127.5，然后送到判别器去训练，同理生成的图片也要经过判别器，所以生成器的输出也是-1到1之间（和原图的区间范围保持一致） 这里有一个坑，因为生成的图是-1到1之间，需要再经过处理回到0-255区间才能正常显示。经过测试matplotlib似乎没法显示-1-1的图，而scipy.misc可以，所以写GAN我通常结合scipy.misc来看结果。</li>
+<li>生成器最后一层的输出使用tanh激活函数
+毋庸置疑规范化是最重要的，未经处理的图片是没有办法收敛的。图片规范化一种简单的方法是（images-127.5）/127.5，然后送到判别器去训练，同理生成的图片也要经过判别器，所以生成器的输出也是-1到1之间（和原图的区间范围保持一致）
+这里有一个坑，因为生成的图是-1到1之间，需要再经过处理回到0-255区间才能正常显示。经过测试matplotlib似乎没法显示-1-1的图，而scipy.misc可以，所以写GAN我通常结合scipy.misc来看结果。</li>
 </ul></li>
-<li><p><strong>用修正的损失函数</strong> 在GAN论文里用min (log 1-D)来优化G，实际上max（log D）更好 实际代码中用反转标签来训练G更方便，即把生成图片当成real的标签来训练 损失函数恐怕是一个超级热门的研究点，参照当前的研究进展，很多实验中已经很少用到上面提到的交叉熵损失了，因为效率实在太低而且不稳定。</p></li>
-<li><p><strong>使用一个具有球形结构的随机噪声</strong> 不要使用均匀分布，而是从高斯分布中采样 Tom White的论文<span class="exturl" data-url="aHR0cHM6Ly9saW5rLnpoaWh1LmNvbS8/dGFyZ2V0PWh0dHBzOi8vYXJ4aXYub3JnL2Ficy8xNjA5LjA0NDY4">Sampling Generative Networks<i class="fa fa-external-link-alt"></i></span>，项目代码<span class="exturl" data-url="aHR0cHM6Ly9saW5rLnpoaWh1LmNvbS8/dGFyZ2V0PWh0dHBzOi8vZ2l0aHViLmNvbS9kcmlibmV0L3BsYXQ=">https://github.com/dribnet/plat<i class="fa fa-external-link-alt"></i></span>中查看更多的细节</p></li>
-<li><strong>避免引入稀疏梯度：ReLU，MaxPool</strong> GAN的稳定性会因为引入稀疏梯度受到很大影响 尽量使用<strong>LeakyReLU</strong>作为激活函数 对于下采样，使用：<strong>Average Pooling或者Conv2d + stride</strong> 对于上采样，使用：<strong>PixelShuffle或者ConvTranspose2d + stride</strong> PixelShuffle的原文：<span class="exturl" data-url="aHR0cHM6Ly9saW5rLnpoaWh1LmNvbS8/dGFyZ2V0PWh0dHBzOi8vYXJ4aXYub3JnL2Ficy8xNjA5LjA1MTU4">[1609.05158] Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network<i class="fa fa-external-link-alt"></i></span> 建议使用全卷积，避免使用任何pooling，因为使用pooling会损失信息，这对于GAN训练很不好。当然如果计算资源不够，该用pooling还是要用的。</li>
+<li><p><strong>用修正的损失函数</strong> 在GAN论文里用min (log
+1-D)来优化G，实际上max（log D）更好
+实际代码中用反转标签来训练G更方便，即把生成图片当成real的标签来训练
+损失函数恐怕是一个超级热门的研究点，参照当前的研究进展，很多实验中已经很少用到上面提到的交叉熵损失了，因为效率实在太低而且不稳定。</p></li>
+<li><p><strong>使用一个具有球形结构的随机噪声</strong>
+不要使用均匀分布，而是从高斯分布中采样 Tom White的论文<a
+href="https://link.zhihu.com/?target=https://arxiv.org/abs/1609.04468">Sampling
+Generative Networks</a>，项目代码<a
+href="https://link.zhihu.com/?target=https://github.com/dribnet/plat">https://github.com/dribnet/plat</a>中查看更多的细节</p></li>
+<li><p><strong>避免引入稀疏梯度：ReLU，MaxPool</strong>
+GAN的稳定性会因为引入稀疏梯度受到很大影响
+尽量使用<strong>LeakyReLU</strong>作为激活函数
+对于下采样，使用：<strong>Average Pooling或者Conv2d + stride</strong>
+对于上采样，使用：<strong>PixelShuffle或者ConvTranspose2d +
+stride</strong> PixelShuffle的原文：<a
+href="https://link.zhihu.com/?target=https://arxiv.org/abs/1609.05158">[1609.05158]
+Real-Time Single Image and Video Super-Resolution Using an Efficient
+Sub-Pixel Convolutional Neural Network</a>
+建议使用全卷积，避免使用任何pooling，因为使用pooling会损失信息，这对于GAN训练很不好。当然如果计算资源不够，该用pooling还是要用的。</p></li>
 <li><p><strong>如果你还有图片的类别标签，训练判别器在判别真伪的同时对其分类</strong></p></li>
-<li><p><strong>早早的追踪到训练失败的信号</strong> 例如D的loss稳定下降，变得很小，或者稳定上升，变得很大。这些都是网络没有balance的信号 这一点其实更需要自己实际训练当中的经验，而且每个人的习惯不一样，例如在一定epoch的时候，输出generated image到路径看一看，一般看到全是噪声，基本可以停止训练了，再往下训练也不会有改善。所以不要把时间浪费在无谓，病态的梯度更新上。</p></li>
-<li><p><strong>训练和测试阶段，在G中使用DropOut</strong> 使用DropOut也是为了引入一定的噪声 在生成器的某几层中使用DropOut，而且测试和训练阶段都要做 常规的Dropout是测试阶段关闭的，而GAN里面，测试阶段同样也要使用Dropout</p></li>
+<li><p><strong>早早的追踪到训练失败的信号</strong>
+例如D的loss稳定下降，变得很小，或者稳定上升，变得很大。这些都是网络没有balance的信号
+这一点其实更需要自己实际训练当中的经验，而且每个人的习惯不一样，例如在一定epoch的时候，输出generated
+image到路径看一看，一般看到全是噪声，基本可以停止训练了，再往下训练也不会有改善。所以不要把时间浪费在无谓，病态的梯度更新上。</p></li>
+<li><p><strong>训练和测试阶段，在G中使用DropOut</strong>
+使用DropOut也是为了引入一定的噪声
+在生成器的某几层中使用DropOut，而且测试和训练阶段都要做
+常规的Dropout是测试阶段关闭的，而GAN里面，测试阶段同样也要使用Dropout</p></li>
 </ol>
 <p>当然这些技巧可能在现在已经过时了，但是对于我这种小白来说还是比较有用的。</p>
-<p>参考链接： <span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC81MjQwNDY0Nw==">GAN的使用技巧与注意事项笔记<i class="fa fa-external-link-alt"></i></span></p>
-<p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC8yODQ4NzYzMw==">怎样训练一个GAN？一些小技巧让GAN更好的工作<i class="fa fa-external-link-alt"></i></span></p>
-<p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC83NDY2MzA0OA==">训练GAN的一些骚操作<i class="fa fa-external-link-alt"></i></span></p>
+<p>参考链接： <a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52404647">GAN的使用技巧与注意事项笔记</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28487633">怎样训练一个GAN？一些小技巧让GAN更好的工作</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/74663048">训练GAN的一些骚操作</a></p>
 <hr />
-<p><strong>以上内容如有谬误还请告知。 代码部分可能结果不一样。</strong></p>
+<p><strong>以上内容如有谬误还请告知。
+代码部分可能结果不一样。</strong></p>
 
     </div>
 
@@ -635,14 +737,14 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>本文作者： </strong>David Wang
+      <strong>مؤلف المقال:  </strong>Boyuan Wang
   </li>
   <li class="post-copyright-link">
-      <strong>本文链接：</strong>
+      <strong>رابط المقال: </strong>
       <a href="https://wby1905.github.io/post/77c8/" title="GAN的基本概念">https://wby1905.github.io/post/77c8/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+    <strong>حقوق الملكية:  </strong>حميع المقالات في هذه المدوّنة منشورة تحت رخصة <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> إلا عند التنويه بخلافه.
   </li>
 </ul>
 </div>
@@ -710,24 +812,24 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
 
 <div class="copyright">
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">David Wang</span>
+  <span class="author" itemprop="copyrightHolder">Boyuan Wang</span>
 </div>
 <div class="wordcount">
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">131k</span>
+    <span title="مُجمل عدد الحروف">131k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:59</span>
+    <span title="مُجمل زمن القراءة">1:59</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -735,7 +837,7 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
-      <span class="site-uv" title="总访客量">
+      <span class="site-uv" title="إجمالي الزوار">
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
@@ -743,12 +845,12 @@ plt<span class="token punctuation">.</span>show<span class="token punctuation">(
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
-      <span class="site-pv" title="总访问量">
+      <span class="site-pv" title="إجمالي المشاهدات">
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  <div class="powered-by">تطبيق الموقع <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
   </div>
 
     </div>

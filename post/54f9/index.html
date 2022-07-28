@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="En">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -25,26 +25,20 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 <meta name="description" content="记录一下项目使用的各种东西。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maven使用笔记">
 <meta property="og:url" content="https://wby1905.github.io/post/54f9/index.html">
-<meta property="og:site_name" content="David Wang">
+<meta property="og:site_name" content="Boyuan Wang">
 <meta property="og:description" content="记录一下项目使用的各种东西。">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/b94f54388a25331af0aae0457537a5d9.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/68cc4ecd6df44d0b9e377d07413e71c6.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/6cc34567dc3d74050b6243afb8526433.png">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/3390df174daba72695ba575c8603a7aa.png">
-<meta property="article:published_time" content="2021-07-12T07:09:13.000Z">
-<meta property="article:modified_time" content="2021-07-13T07:26:50.246Z">
-<meta property="article:author" content="David Wang">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-12T19:09:13.000Z">
+<meta property="article:modified_time" content="2021-09-15T08:44:39.803Z">
+<meta property="article:author" content="Boyuan Wang">
 <meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png">
 
 
 <link rel="canonical" href="https://wby1905.github.io/post/54f9/">
@@ -56,10 +50,10 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'En'
   };
 </script>
-<title>Maven使用笔记 | David Wang</title>
+<title>Maven使用笔记 | Boyuan Wang</title>
   
 
 
@@ -115,7 +109,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -126,11 +120,11 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">David Wang</h1>
+      <h1 class="site-title">Boyuan Wang</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Wang's Blog</p>
-      <img class="custom-logo-image" src="/images/qingge.webp" alt="David Wang">
+      <img class="custom-logo-image" src="/images/qingge.webp" alt="Boyuan Wang">
   </div>
 
   <div class="site-nav-right">
@@ -143,12 +137,12 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
-        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات<span class="badge">25</span></a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>خريطة الموقع</a></li>
   </ul>
 </nav>
 
@@ -169,25 +163,26 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          文章目录
+          المحتويات
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          عام
         </li>
       </ul>
 
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E4%BB%8B%E7%BB%8D"><span class="nav-text">Maven介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEintellij-idea%E9%85%8D%E7%BD%AE"><span class="nav-text">Maven安装配置（Intellij IDEA配置）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">Maven的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">Maven项目的结构</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E4%BB%8B%E7%BB%8D"><span class="nav-text">Maven介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEintellij-idea%E9%85%8D%E7%BD%AE"><span class="nav-text">Maven安装配置（Intellij
+IDEA配置）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#maven%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">Maven的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E7%BB%93%E6%9E%84"><span class="nav-text">Maven项目的结构</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="David Wang"
+    <img class="site-author-image" itemprop="image" alt="Boyuan Wang"
       src="/images/lusun.gif">
-  <p class="site-author-name" itemprop="name">David Wang</p>
+  <p class="site-author-name" itemprop="name">Boyuan Wang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
@@ -196,20 +191,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">25</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
         <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">التصنيفات</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">الوسوم</span></a>
       </div>
   </nav>
 </div>
@@ -218,7 +213,7 @@
         <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dieTE5MDU=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wby1905"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOndieTE5MDVAcXEuY29t" title="E-Mail → mailto:wby1905@qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <span class="exturl" data-url="bWFpbHRvOmJveXVhbndhbmdfZGF2aWRAZm94bWFpbC5jb20=" title="E-Mail → mailto:boyuanwang_david@foxmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;wby1905"><i class="fab fa-cuttlefish fa-fw"></i></span>
@@ -261,17 +256,17 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="En">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/54f9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
-      <meta itemprop="name" content="David Wang">
+      <meta itemprop="name" content="Boyuan Wang">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="David Wang">
+      <meta itemprop="name" content="Boyuan Wang">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -284,50 +279,50 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">نُشر في</span>
 
-      <time title="创建时间：2021-07-12 15:09:13" itemprop="dateCreated datePublished" datetime="2021-07-12T15:09:13+08:00">2021-07-12</time>
+      <time title="أُنشأ: 2021-07-12 15:09:13" itemprop="dateCreated datePublished" datetime="2021-07-12T15:09:13-04:00">2021-07-12</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-07-13 15:26:50" itemprop="dateModified" datetime="2021-07-13T15:26:50+08:00">2021-07-13</time>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-09-15 04:44:39" itemprop="dateModified" datetime="2021-09-15T04:44:39-04:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">في</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
         </span>
     </span>
 
   
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+    <span class="post-meta-item" title="مشاهدات" id="busuanzi_container_page_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
-      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="post-meta-item-text">مشاهدات: </span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="عدد الحروف في المقال">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">عدد الحروف في المقال: </span>
       <span>1.3k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="زمن القراءة">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span class="post-meta-item-text">زمن القراءة &asymp;</span>
+      <span>1 دقائق.</span>
     </span>
 </div>
 
@@ -343,8 +338,25 @@
 <h1 id="maven介绍">Maven介绍</h1>
 <p>Maven的主要功能是：<strong>项目构建；项目依赖管理；软件项目持续集成；版本管理；项目的站点描述信息管理。</strong></p>
 <p>一个项目可能依赖于其他的项目和第三方的组件才能顺利完成，Maven提供了仓库的概念，让这些依赖项放进仓库中，项目想要从仓库中去取，其他项目组也需要，OK，从仓库中去取，不必每个人去开源项目的站点去苦苦搜寻了。</p>
-<h1 id="maven安装配置intellij-idea配置">Maven安装配置（Intellij IDEA配置）</h1>
-<p><strong>注意！IDEA中自带maven，所以不用下载解压这些步骤，但是需要添加环境变量等</strong> <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzMyNTg4MzQ5L2FydGljbGUvZGV0YWlscy81MTQ2MTE4Mg==">参考链接<i class="fa fa-external-link-alt"></i></span> 1. 下载Maven 官方地址：<span class="exturl" data-url="aHR0cDovL21hdmVuLmFwYWNoZS5vcmcvZG93bmxvYWQuY2dp">http://maven.apache.org/download.cgi<i class="fa fa-external-link-alt"></i></span> 2. 在一个自己定义的文件夹中解压 <img src="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png" /> 3. 配置本地仓库路径 <img src="https://img-blog.csdnimg.cn/img_convert/b94f54388a25331af0aae0457537a5d9.png" /> <img src="https://img-blog.csdnimg.cn/img_convert/68cc4ecd6df44d0b9e377d07413e71c6.png" /> 4. 配置环境变量 将解压得到的maven文件夹中的bin文件夹添加到Path中。 <img src="https://img-blog.csdnimg.cn/img_convert/6cc34567dc3d74050b6243afb8526433.png" /> 5. 在编辑器中配置maven <img src="https://img-blog.csdnimg.cn/img_convert/3390df174daba72695ba575c8603a7aa.png" /> 6. (可选)生成archetype 如果新建的项目中maven栏里没有各种archetype 那么需要在cmd中运行</p>
+<h1 id="maven安装配置intellij-idea配置">Maven安装配置（Intellij
+IDEA配置）</h1>
+<p><strong>注意！IDEA中自带maven，所以不用下载解压这些步骤，但是需要添加环境变量等</strong>
+<a
+target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32588349/article/details/51461182">参考链接</a>
+1. 下载Maven 官方地址：<a
+target="_blank" rel="noopener" href="http://maven.apache.org/download.cgi">http://maven.apache.org/download.cgi</a>
+2. 在一个自己定义的文件夹中解压 <img
+src="https://img-blog.csdnimg.cn/img_convert/6fed3a0d2d1b99c1dc11806f6e26890d.png" />
+3. 配置本地仓库路径 <img
+src="https://img-blog.csdnimg.cn/img_convert/b94f54388a25331af0aae0457537a5d9.png" />
+<img
+src="https://img-blog.csdnimg.cn/img_convert/68cc4ecd6df44d0b9e377d07413e71c6.png" />
+4. 配置环境变量 将解压得到的maven文件夹中的bin文件夹添加到Path中。 <img
+src="https://img-blog.csdnimg.cn/img_convert/6cc34567dc3d74050b6243afb8526433.png" />
+5. 在编辑器中配置maven <img
+src="https://img-blog.csdnimg.cn/img_convert/3390df174daba72695ba575c8603a7aa.png" />
+6. (可选)生成archetype 如果新建的项目中maven栏里没有各种archetype
+那么需要在cmd中运行</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> mvn help:system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>下载相关的资源 还是不行就</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">></span> mvn archetype:generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -367,7 +379,16 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>!--</span> <span class="token attr-name">jdk自行选择--!</span><span class="token punctuation">></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="maven项目的结构">Maven项目的结构</h2>
-<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vSmVmZnJleVN1bi9hcmNoaXZlLzIwMTMvMDMvMTQvMjk2MDU3My5odG1s">参考链接<i class="fa fa-external-link-alt"></i></span> * pom.xml，maven就是通过这个文件来来管理整个project - modelVersion： 这个XML文件所使用的POM格式的版本 - groupId： 相当于这个project的所有者或者机构的一个标识，一般是com.company.xxx这种格式 - artifactId： 这个project最后所生成的文档(jar、war)的名字，比如对于junit这个开源的project，它的artifactId就是junit - packaging： 这个project的打包的类型，一般是war、jar等值 - version： project的版本 - name： project的名字，生成文档等内容的时候会用的这个名字</p>
+<p><a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/JeffreySun/archive/2013/03/14/2960573.html">参考链接</a>
+* pom.xml，maven就是通过这个文件来来管理整个project - modelVersion：
+这个XML文件所使用的POM格式的版本 - groupId：
+相当于这个project的所有者或者机构的一个标识，一般是com.company.xxx这种格式
+- artifactId：
+这个project最后所生成的文档(jar、war)的名字，比如对于junit这个开源的project，它的artifactId就是junit
+- packaging： 这个project的打包的类型，一般是war、jar等值 - version：
+project的版本 - name：
+project的名字，生成文档等内容的时候会用的这个名字</p>
 <hr />
 <p>待补充……</p>
 
@@ -383,14 +404,14 @@
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>本文作者： </strong>David Wang
+      <strong>مؤلف المقال:  </strong>Boyuan Wang
   </li>
   <li class="post-copyright-link">
-      <strong>本文链接：</strong>
+      <strong>رابط المقال: </strong>
       <a href="https://wby1905.github.io/post/54f9/" title="Maven使用笔记">https://wby1905.github.io/post/54f9/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+    <strong>حقوق الملكية:  </strong>حميع المقالات في هذه المدوّنة منشورة تحت رخصة <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> إلا عند التنويه بخلافه.
   </li>
 </ul>
 </div>
@@ -458,24 +479,24 @@
 
 <div class="copyright">
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">David Wang</span>
+  <span class="author" itemprop="copyrightHolder">Boyuan Wang</span>
 </div>
 <div class="wordcount">
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">131k</span>
+    <span title="مُجمل عدد الحروف">131k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:59</span>
+    <span title="مُجمل زمن القراءة">1:59</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -483,7 +504,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
-      <span class="site-uv" title="总访客量">
+      <span class="site-uv" title="إجمالي الزوار">
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
@@ -491,12 +512,12 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
-      <span class="site-pv" title="总访问量">
+      <span class="site-pv" title="إجمالي المشاهدات">
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  <div class="powered-by">تطبيق الموقع <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
   </div>
 
     </div>

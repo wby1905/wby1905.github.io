@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="En">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -25,25 +25,21 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 <meta name="description" content="django学习记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django官方教程">
 <meta property="og:url" content="https://wby1905.github.io/post/b469/index.html">
-<meta property="og:site_name" content="David Wang">
+<meta property="og:site_name" content="Boyuan Wang">
 <meta property="og:description" content="django学习记录">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale">
 <meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2020/05/1589776521-2356-JxrlTyMyPgYnQpOV.png">
-<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2020/05/1589777036-2760-fs1oSv4dOWAwC5yW.png">
-<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2020/05/django-orm1.png">
-<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2020/05/orm-object.png">
-<meta property="og:image" content="https://docs.djangoproject.com/zh-hans/3.2/_images/admin02.png">
 <meta property="og:image" content="https://docs.djangoproject.com/zh-hans/3.2/_images/admin10t.png">
 <meta property="og:image" content="https://docs.djangoproject.com/zh-hans/3.2/_images/admin11t.png">
-<meta property="article:published_time" content="2021-07-19T02:56:06.000Z">
-<meta property="article:modified_time" content="2021-08-18T01:29:21.525Z">
-<meta property="article:author" content="David Wang">
+<meta property="article:published_time" content="2021-07-19T14:56:06.000Z">
+<meta property="article:modified_time" content="2021-09-15T08:44:39.847Z">
+<meta property="article:author" content="Boyuan Wang">
 <meta property="article:tag" content="Note">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2020/05/1589776521-2356-JxrlTyMyPgYnQpOV.png">
@@ -58,10 +54,10 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'En'
   };
 </script>
-<title>Django官方教程 | David Wang</title>
+<title>Django官方教程 | Boyuan Wang</title>
   
 
 
@@ -117,7 +113,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -128,11 +124,11 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">David Wang</h1>
+      <h1 class="site-title">Boyuan Wang</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Wang's Blog</p>
-      <img class="custom-logo-image" src="/images/qingge.webp" alt="David Wang">
+      <img class="custom-logo-image" src="/images/qingge.webp" alt="Boyuan Wang">
   </div>
 
   <div class="site-nav-right">
@@ -145,12 +141,12 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
-        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات<span class="badge">25</span></a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>خريطة الموقع</a></li>
   </ul>
 </nav>
 
@@ -171,10 +167,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          文章目录
+          المحتويات
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          عام
         </li>
       </ul>
 
@@ -187,9 +183,9 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="David Wang"
+    <img class="site-author-image" itemprop="image" alt="Boyuan Wang"
       src="/images/lusun.gif">
-  <p class="site-author-name" itemprop="name">David Wang</p>
+  <p class="site-author-name" itemprop="name">Boyuan Wang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
@@ -198,20 +194,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">25</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
         <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">التصنيفات</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">الوسوم</span></a>
       </div>
   </nav>
 </div>
@@ -220,7 +216,7 @@
         <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3dieTE5MDU=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wby1905"><i class="fab fa-github fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
-        <span class="exturl" data-url="bWFpbHRvOndieTE5MDVAcXEuY29t" title="E-Mail → mailto:wby1905@qq.com"><i class="fa fa-envelope fa-fw"></i></span>
+        <span class="exturl" data-url="bWFpbHRvOmJveXVhbndhbmdfZGF2aWRAZm94bWFpbC5jb20=" title="E-Mail → mailto:boyuanwang_david@foxmail.com"><i class="fa fa-envelope fa-fw"></i></span>
       </span>
       <span class="links-of-author-item">
         <span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dieTE5MDU=" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;wby1905"><i class="fab fa-cuttlefish fa-fw"></i></span>
@@ -263,17 +259,17 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="En">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/b469/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/lusun.gif">
-      <meta itemprop="name" content="David Wang">
+      <meta itemprop="name" content="Boyuan Wang">
       <meta itemprop="description" content="">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="David Wang">
+      <meta itemprop="name" content="Boyuan Wang">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
@@ -286,50 +282,50 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">نُشر في</span>
 
-      <time title="创建时间：2021-07-19 10:56:06" itemprop="dateCreated datePublished" datetime="2021-07-19T10:56:06+08:00">2021-07-19</time>
+      <time title="أُنشأ: 2021-07-19 10:56:06" itemprop="dateCreated datePublished" datetime="2021-07-19T10:56:06-04:00">2021-07-19</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-18 09:29:21" itemprop="dateModified" datetime="2021-08-18T09:29:21+08:00">2021-08-18</time>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2021-09-15 04:44:39" itemprop="dateModified" datetime="2021-09-15T04:44:39-04:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">في</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Python-Django/" itemprop="url" rel="index"><span itemprop="name">Python, Django</span></a>
         </span>
     </span>
 
   
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+    <span class="post-meta-item" title="مشاهدات" id="busuanzi_container_page_pv" style="display: none;">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
-      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="post-meta-item-text">مشاهدات: </span>
       <span id="busuanzi_value_page_pv"></span>
     </span>
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="عدد الحروف في المقال">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">عدد الحروف في المقال: </span>
       <span>20k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="زمن القراءة">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>18 分钟</span>
+      <span class="post-meta-item-text">زمن القراءة &asymp;</span>
+      <span>18 دقائق.</span>
     </span>
 </div>
 
@@ -342,7 +338,10 @@
     <div class="post-body" itemprop="articleBody">
         <p>django学习记录</p>
 <a id="more"></a>
-<p>参考<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL2VuLzMuMi8=">Django documentation<i class="fa fa-external-link-alt"></i></span>、<span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS9kamFuZ28vZGphbmdvLWludHJvLmh0bWw=">Django 简介<i class="fa fa-external-link-alt"></i></span></p>
+<p>参考<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL2VuLzMuMi8=">Django
+documentation<i class="fa fa-external-link-alt"></i></span>、<a
+target="_blank" rel="noopener" href="https://www.runoob.com/django/django-intro.html">Django
+简介</a></p>
 <h1 id="初识django">初识Django</h1>
 <h2 id="特点">特点</h2>
 <ul>
@@ -352,25 +351,36 @@
 <li>基于MTV模型</li>
 </ul>
 <h2 id="mvc与mtv">MVC与MTV</h2>
-<p>MVC 模式（Model–view–controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+<p>MVC
+模式（Model–view–controller）是软件工程中的一种软件架构模式，把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
 <p><img src="https://www.runoob.com/wp-content/uploads/2020/05/1589776521-2356-JxrlTyMyPgYnQpOV.png" alt="img" style="zoom:50%; " /></p>
 <p>MTV本质上与MVC相似，也是为了保持各个组件的松耦合关系。</p>
 <ul>
-<li>M 表示模型（Model）：编写程序应有的功能，负责业务对象与数据库的映射(ORM)。</li>
+<li>M
+表示模型（Model）：编写程序应有的功能，负责业务对象与数据库的映射(ORM)。</li>
 <li>T 表示模板 (Template)：负责如何把页面(html)展示给用户。</li>
-<li>V 表示视图（View）：负责业务逻辑，并在适当时候调用 Model和 Template。</li>
+<li>V 表示视图（View）：负责业务逻辑，并在适当时候调用 Model和
+Template。</li>
 </ul>
 <figure>
-<img src="https://www.runoob.com/wp-content/uploads/2020/05/1589777036-2760-fs1oSv4dOWAwC5yW.png" alt="img" /><figcaption>img</figcaption>
+<img
+src="https://www.runoob.com/wp-content/uploads/2020/05/1589777036-2760-fs1oSv4dOWAwC5yW.png"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
 </figure>
 <h2 id="orm">ORM</h2>
 <p>Django对于各种数据库都有很好的支持，且提供了统一调用的api。</p>
 <p>Django 模型使用自带的 ORM。</p>
-<p>对象关系映射（Object Relational Mapping，简称 ORM ）用于实现面向对象编程语言里不同类型系统的数据之间的转换。</p>
+<p>对象关系映射（Object Relational Mapping，简称 ORM
+）用于实现面向对象编程语言里不同类型系统的数据之间的转换。</p>
 <p>ORM 在业务逻辑层和数据库层之间充当了桥梁的作用。</p>
-<p>ORM 是通过使用描述对象和数据库之间的映射的元数据，将程序中的对象自动持久化到数据库中。</p>
+<p>ORM
+是通过使用描述对象和数据库之间的映射的元数据，将程序中的对象自动持久化到数据库中。</p>
 <figure>
-<img src="https://www.runoob.com/wp-content/uploads/2020/05/django-orm1.png" alt="img" /><figcaption>img</figcaption>
+<img
+src="https://www.runoob.com/wp-content/uploads/2020/05/django-orm1.png"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
 </figure>
 <p>使用 ORM 的好处：</p>
 <ul>
@@ -379,7 +389,8 @@
 </ul>
 <p>使用 ORM 的缺点：</p>
 <ul>
-<li>ORM 代码转换为 SQL 语句时，需要花费一定的时间，执行效率会有所降低。</li>
+<li>ORM 代码转换为 SQL
+语句时，需要花费一定的时间，执行效率会有所降低。</li>
 <li>长期写 ORM 代码，会降低编写 SQL 语句的能力。</li>
 </ul>
 <p>ORM 解析过程:</p>
@@ -389,13 +400,19 @@
 <li><p>在数据库中执行 SQL 语句并将结果返回。</p></li>
 </ol>
 <figure>
-<img src="https://www.runoob.com/wp-content/uploads/2020/05/orm-object.png" alt="img" /><figcaption>img</figcaption>
+<img
+src="https://www.runoob.com/wp-content/uploads/2020/05/orm-object.png"
+alt="img" />
+<figcaption aria-hidden="true">img</figcaption>
 </figure>
 <h1 id="安装">安装</h1>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python -m pip <span class="token function">install</span> Django<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>安装完成后运行</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">django-admin --version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>如果要在生产站点上使用 Django，需要将 <span class="exturl" data-url="aHR0cHM6Ly9odHRwZC5hcGFjaGUub3JnLw==">Apache<i class="fa fa-external-link-alt"></i></span> 与 <span class="exturl" data-url="aHR0cHM6Ly9tb2R3c2dpLnJlYWR0aGVkb2NzLmlvL2VuL2RldmVsb3Av">mod_wsgi<i class="fa fa-external-link-alt"></i></span> 一起使用。Django 将在任何支持 mod_wsgi 的 Apache 版本上工作。</p>
+<p>如果要在生产站点上使用 Django，需要将 <a
+target="_blank" rel="noopener" href="https://httpd.apache.org/">Apache</a> 与 <a
+target="_blank" rel="noopener" href="https://modwsgi.readthedocs.io/en/develop/">mod_wsgi</a>
+一起使用。Django 将在任何支持 mod_wsgi 的 Apache 版本上工作。</p>
 <h1 id="第一个项目">第一个项目</h1>
 <h2 id="创建项目">创建项目</h2>
 <p>首先打开命令行，cd到一个放置代码的目录，然后运行</p>
@@ -411,18 +428,28 @@
         wsgi.py<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>mysite/ 项目的容器，名称没有影响</li>
-<li>manage.py 用各种方式管理Django项目的命令行工具 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9kamFuZ28tYWRtaW4v">django-admin 和 manage.py<i class="fa fa-external-link-alt"></i></span></li>
+<li>manage.py 用各种方式管理Django项目的命令行工具 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/django-admin/">django-admin
+和 manage.py</a></li>
 <li>里面的mysite/ 包含了项目，它是一个纯Python包</li>
 <li>__init__.py 包的标识</li>
-<li>settings.py 项目的配置文件 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9zZXR0aW5ncy8=">Django 配置<i class="fa fa-external-link-alt"></i></span></li>
-<li>urls.py URL声明，是网站的目录 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9odHRwL3VybHMv">URL调度器<i class="fa fa-external-link-alt"></i></span></li>
-<li>asgi.py 作为项目的运行在 ASGI 兼容的 Web 服务器上的入口。<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL2hvd3RvL2RlcGxveW1lbnQvYXNnaS8=">如何使用 ASGI 来部署<i class="fa fa-external-link-alt"></i></span></li>
-<li>wsgi.py 作为项目的运行在 WSGI 兼容的Web服务器上的入口。<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL2hvd3RvL2RlcGxveW1lbnQvd3NnaS8=">如何使用 WSGI 进行部署<i class="fa fa-external-link-alt"></i></span></li>
+<li>settings.py 项目的配置文件 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/settings/">Django
+配置</a></li>
+<li>urls.py URL声明，是网站的目录 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/http/urls/">URL调度器</a></li>
+<li>asgi.py 作为项目的运行在 ASGI 兼容的 Web 服务器上的入口。<a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/howto/deployment/asgi/">如何使用
+ASGI 来部署</a></li>
+<li>wsgi.py 作为项目的运行在 WSGI 兼容的Web服务器上的入口。<a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/howto/deployment/wsgi/">如何使用
+WSGI 进行部署</a></li>
 </ul>
 <h2 id="用于开发的简易服务器">用于开发的简易服务器</h2>
 <p>在cmd中运行，django就会启动自带的用于开发的简易服务器，他只是为了快速开发，但是不能够用于投入生产环境。</p>
 <pre class="line-numbers language-none"><code class="language-none">manage.py runserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>现在，服务器正在运行，浏览器访问 https://127.0.0.1:8000/。你将会看到一个“祝贺”页面，随着一只火箭发射，服务器已经运行了。</p>
+<p>现在，服务器正在运行，浏览器访问
+https://127.0.0.1:8000/。你将会看到一个“祝贺”页面，随着一只火箭发射，服务器已经运行了。</p>
 <h2 id="创建应用">创建应用</h2>
 <p>在Django中，每一个应用都是一个Python包，并且遵循相同的约定。</p>
 <blockquote>
@@ -466,27 +493,61 @@ urlpatterns <span class="token operator">=</span> <span class="token punctuation
     path<span class="token punctuation">(</span><span class="token string">'polls/'</span><span class="token punctuation">,</span> include<span class="token punctuation">(</span><span class="token string">'polls.urls'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     path<span class="token punctuation">(</span><span class="token string">'admin/'</span><span class="token punctuation">,</span> admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>urls<span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>函数 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi91cmxzLyNkamFuZ28udXJscy5pbmNsdWRl">include()<i class="fa fa-external-link-alt"></i></span> 允许引用其它 URLconfs。每当 Django 遇到 include 时，它会截断与此项匹配的 URL 的部分，并将剩余的字符串发送到 URLconf 以供进一步处理。</p>
-<p>这时再运行服务器，进入 http://localhost:8000/polls/， 就能看见我们定义的视图了。</p>
+<p>函数 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/urls/#django.urls.include">include()</a>
+允许引用其它 URLconfs。每当 Django 遇到 include 时，它会截断与此项匹配的
+URL 的部分，并将剩余的字符串发送到 URLconf 以供进一步处理。</p>
+<p>这时再运行服务器，进入 http://localhost:8000/polls/，
+就能看见我们定义的视图了。</p>
 <h3 id="path">path</h3>
-<p>函数 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi91cmxzLyNkamFuZ28udXJscy5wYXRo">path()<i class="fa fa-external-link-alt"></i></span> 具有四个参数，两个必须参数： <code>route</code> 和 <code>view</code> ，两个可选参数： <code>kwargs</code> 和 <code>name</code> 。</p>
+<p>函数 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/urls/#django.urls.path">path()</a>
+具有四个参数，两个必须参数： <code>route</code> 和 <code>view</code>
+，两个可选参数： <code>kwargs</code> 和 <code>name</code> 。</p>
 <ul>
-<li>route: 是一个匹配URL的准则（类似于正则）Django响应请求时，它会从urlpatterns第一项开始，按顺序依次匹配列表中的项。它不会匹配url中的参数</li>
-<li>view: Django找到匹配准则后就会调用这个视图函数，并传入<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9yZXF1ZXN0LXJlc3BvbnNlLyNkamFuZ28uaHR0cC5IdHRwUmVxdWVzdA==">HttpRequest<i class="fa fa-external-link-alt"></i></span> 对象作为第一个参数，被“捕获”的参数以关键字参数的形式传入。</li>
+<li>route:
+是一个匹配URL的准则（类似于正则）Django响应请求时，它会从urlpatterns第一项开始，按顺序依次匹配列表中的项。它不会匹配url中的参数</li>
+<li>view: Django找到匹配准则后就会调用这个视图函数，并传入<a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/request-response/#django.http.HttpRequest">HttpRequest</a>
+对象作为第一个参数，被“捕获”的参数以关键字参数的形式传入。</li>
 <li>kwargs: 任意关键字参数传递给目标视图函数。</li>
 <li>name: 为URl取名，能够在任意地方引用它。</li>
 </ul>
 <h2 id="settings配置">settings配置</h2>
 <p>在mysite/settings.py中进行各种配置：</p>
 <h3 id="数据库">数据库</h3>
-<p>Django使用SQLite作为默认数据库, 要使用其他数据库，需要安装合适的 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9pbnN0YWxsLyNkYXRhYmFzZS1pbnN0YWxsYXRpb24=">database bindings<i class="fa fa-external-link-alt"></i></span> ，然后改变设置文件中 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctREFUQUJBU0VT">DATABASES<i class="fa fa-external-link-alt"></i></span> <code>'default'</code> 项目中的一些键值：</p>
+<p>Django使用SQLite作为默认数据库, 要使用其他数据库，需要安装合适的 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/install/#database-installation">database
+bindings</a> ，然后改变设置文件中 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-DATABASES">DATABASES</a>
+<code>'default'</code> 项目中的一些键值：</p>
 <ul>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctREFUQUJBU0UtRU5HSU5F">ENGINE<i class="fa fa-external-link-alt"></i></span> -- 可选值有 <code>'django.db.backends.sqlite3'</code>，<code>'django.db.backends.postgresql'</code>，<code>'django.db.backends.mysql'</code>，或 <code>'django.db.backends.oracle'</code>。其它 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9kYXRhYmFzZXMvI3RoaXJkLXBhcnR5LW5vdGVz">可用后端<i class="fa fa-external-link-alt"></i></span>。</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctTkFNRQ==">NAME<i class="fa fa-external-link-alt"></i></span> -- 数据库的名称。如果你使用 SQLite，数据库将是你电脑上的一个文件，在这种情况下，<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctTkFNRQ==">NAME<i class="fa fa-external-link-alt"></i></span> 应该是此文件完整的绝对路径，包括文件名。默认值 <code>BASE_DIR / 'db.sqlite3'</code> 将把数据库文件储存在项目的根目录。</li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-DATABASE-ENGINE">ENGINE</a>
+-- 可选值有
+<code>'django.db.backends.sqlite3'</code>，<code>'django.db.backends.postgresql'</code>，<code>'django.db.backends.mysql'</code>，或
+<code>'django.db.backends.oracle'</code>。其它 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/databases/#third-party-notes">可用后端</a>。</li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-NAME">NAME</a>
+-- 数据库的名称。如果你使用
+SQLite，数据库将是你电脑上的一个文件，在这种情况下，<a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-NAME">NAME</a>
+应该是此文件完整的绝对路径，包括文件名。默认值
+<code>BASE_DIR / 'db.sqlite3'</code>
+将把数据库文件储存在项目的根目录。</li>
 </ul>
-<p>如果不使用 SQLite，则必须添加一些额外设置，比如 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctVVNFUg==">USER<i class="fa fa-external-link-alt"></i></span> 、 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctUEFTU1dPUkQ=">PASSWORD<i class="fa fa-external-link-alt"></i></span> 、 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctSE9TVA==">HOST<i class="fa fa-external-link-alt"></i></span> 等等。</p>
+<p>如果不使用 SQLite，则必须添加一些额外设置，比如 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-USER">USER</a>
+、 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-PASSWORD">PASSWORD</a>
+、 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-HOST">HOST</a>
+等等。</p>
 <blockquote>
-<p>如果使用了 SQLite 以外的数据库，请确认在使用前已经创建了数据库。可以通过在数据库交互式命令行中使用 &quot; <code>CREATE DATABASE database_name;</code> &quot; 命令来完成这件事。</p>
+<p>如果使用了 SQLite
+以外的数据库，请确认在使用前已经创建了数据库。可以通过在数据库交互式命令行中使用
+" <code>CREATE DATABASE database_name;</code> " 命令来完成这件事。</p>
 </blockquote>
 <h4 id="使用-mysql">使用 MySQL</h4>
 <ol type="1">
@@ -505,7 +566,8 @@ urlpatterns <span class="token operator">=</span> <span class="token punctuation
     <span class="token string">'PASSWORD'</span><span class="token punctuation">:</span> <span class="token string">'密码'</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ol start="3" type="1">
-<li>修改 <strong>init</strong>.py 文件 这里我们使用 pymysql， 因此需要进行初始化，即在 <strong>init</strong>.py 中：</li>
+<li>修改 <strong>init</strong>.py 文件 这里我们使用 pymysql，
+因此需要进行初始化，即在 <strong>init</strong>.py 中：</li>
 </ol>
 <pre class="line-numbers language-py" data-language="py"><code class="language-py">
 pymysql<span class="token punctuation">.</span>install_as_MySQLdb<span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -515,20 +577,38 @@ pymysql<span class="token punctuation">.</span>install_as_MySQLdb<span class="to
 </ol>
 <h3 id="基础设置">基础设置</h3>
 <ul>
-<li><p>设置 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctVElNRV9aT05F">TIME_ZONE<i class="fa fa-external-link-alt"></i></span> 为你自己时区, 如果在 Windows 上运行 Django，必须设置为与系统时区匹配。</p></li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctSU5TVEFMTEVEX0FQUFM=">INSTALLED_APPS<i class="fa fa-external-link-alt"></i></span>: 包括了会在项目中启用的所有Django应用，默认包括：</p></li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jb250cmliL2FkbWluLyNtb2R1bGUtZGphbmdvLmNvbnRyaWIuYWRtaW4=">django.contrib.admin<i class="fa fa-external-link-alt"></i></span> -- 管理员站点。</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9hdXRoLyNtb2R1bGUtZGphbmdvLmNvbnRyaWIuYXV0aA==">django.contrib.auth<i class="fa fa-external-link-alt"></i></span> -- 认证授权系统。</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jb250cmliL2NvbnRlbnR0eXBlcy8jbW9kdWxlLWRqYW5nby5jb250cmliLmNvbnRlbnR0eXBlcw==">django.contrib.contenttypes<i class="fa fa-external-link-alt"></i></span> -- 内容类型框架。</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9odHRwL3Nlc3Npb25zLyNtb2R1bGUtZGphbmdvLmNvbnRyaWIuc2Vzc2lvbnM=">django.contrib.sessions<i class="fa fa-external-link-alt"></i></span> -- 会话框架。</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jb250cmliL21lc3NhZ2VzLyNtb2R1bGUtZGphbmdvLmNvbnRyaWIubWVzc2FnZXM=">django.contrib.messages<i class="fa fa-external-link-alt"></i></span> -- 消息框架。</li>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jb250cmliL3N0YXRpY2ZpbGVzLyNtb2R1bGUtZGphbmdvLmNvbnRyaWIuc3RhdGljZmlsZXM=">django.contrib.staticfiles<i class="fa fa-external-link-alt"></i></span> -- 管理静态文件的框架。</p></li>
+<li><p>设置 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-TIME_ZONE">TIME_ZONE</a>
+为你自己时区, 如果在 Windows 上运行
+Django，必须设置为与系统时区匹配。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-INSTALLED_APPS">INSTALLED_APPS</a>:
+包括了会在项目中启用的所有Django应用，默认包括：</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/contrib/admin/#module-django.contrib.admin">django.contrib.admin</a>
+-- 管理员站点。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/auth/#module-django.contrib.auth">django.contrib.auth</a>
+-- 认证授权系统。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/contrib/contenttypes/#module-django.contrib.contenttypes">django.contrib.contenttypes</a>
+-- 内容类型框架。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/http/sessions/#module-django.contrib.sessions">django.contrib.sessions</a>
+-- 会话框架。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/contrib/messages/#module-django.contrib.messages">django.contrib.messages</a>
+-- 消息框架。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/contrib/staticfiles/#module-django.contrib.staticfiles">django.contrib.staticfiles</a>
+-- 管理静态文件的框架。</p></li>
 </ul>
 <p>默认开启的应用有一些需要至少一个数据表，因此在使用之前需要在数据库中创建：</p>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python manage.py migrate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="模型">模型</h2>
 <p>在投票应用中需要两个模型：问题 Question 和选项 Choice。</p>
-<p>Question 包括问题描述和发布时间，Choice包括选项描述和当前得票数，每个选项属于一个问题。</p>
+<p>Question
+包括问题描述和发布时间，Choice包括选项描述和当前得票数，每个选项属于一个问题。</p>
 <p>polls/models.py</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
 
@@ -540,7 +620,9 @@ pymysql<span class="token punctuation">.</span>install_as_MySQLdb<span class="to
     question <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span>Question<span class="token punctuation">,</span> on_delete<span class="token operator">=</span>models<span class="token punctuation">.</span>CASCADE<span class="token punctuation">)</span>
     choice_text <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">)</span>
     votes <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span>default<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>每个模型是 Model 类的子类，每个属性都是数据库的一个字段，这些字段都是 Field 类的实例。例如：CharField 表示 字符字段，DateTimeField 表示日期时间字段。</p>
+<p>每个模型是 Model 类的子类，每个属性都是数据库的一个字段，这些字段都是
+Field 类的实例。例如：CharField 表示 字符字段，DateTimeField
+表示日期时间字段。</p>
 <h3 id="激活模型">激活模型</h3>
 <p>在 INSTALLED_APPS 中添加</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token string">'polls.apps.PollsConfig'</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -556,14 +638,19 @@ pymysql<span class="token punctuation">.</span>install_as_MySQLdb<span class="to
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python manage.py migrate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>就会在数据库里创建新定义的模型的数据表。</p>
 <blockquote>
-<p>migrate 通过选中所有未执行过的迁移（在数据库中创建一个特殊的表跟踪）并应用在数据库上。</p>
+<p>migrate
+通过选中所有未执行过的迁移（在数据库中创建一个特殊的表跟踪）并应用在数据库上。</p>
 <p>迁移使得在开发过程中能够持续的改变数据库结构而不需要重新删除和创建表。</p>
 </blockquote>
 <p>总之，改变模型需要三步：</p>
 <ul>
 <li>编辑 <code>models.py</code> 文件，改变模型。</li>
-<li>运行 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9kamFuZ28tYWRtaW4vI2RqYW5nby1hZG1pbi1tYWtlbWlncmF0aW9ucw==">python manage.py makemigrations<i class="fa fa-external-link-alt"></i></span> 为模型的改变生成迁移文件。</li>
-<li>运行 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9kamFuZ28tYWRtaW4vI2RqYW5nby1hZG1pbi1taWdyYXRl">python manage.py migrate<i class="fa fa-external-link-alt"></i></span> 来应用数据库迁移。</li>
+<li>运行 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/django-admin/#django-admin-makemigrations">python
+manage.py makemigrations</a> 为模型的改变生成迁移文件。</li>
+<li>运行 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/django-admin/#django-admin-migrate">python
+manage.py migrate</a> 来应用数据库迁移。</li>
 </ul>
 <h2 id="api">API</h2>
 <p>Django创建了各种API</p>
@@ -602,7 +689,8 @@ datetime.datetime<span class="token punctuation">(</span><span class="token numb
 <span class="token comment"># objects.all() displays all the questions in the database.</span>
 <span class="token operator">>></span><span class="token operator">></span> Question.objects.all<span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token operator">&lt;</span>QuerySet <span class="token punctuation">[</span><span class="token operator">&lt;</span>Question: Question object <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token punctuation">]</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>此外，通过给模型增加__str__() 方法，可以更加方便，而且 Django 自动生成的管理页面中也使用这个方法表示对象。</p>
+<p>此外，通过给模型增加__str__() 方法，可以更加方便，而且 Django
+自动生成的管理页面中也使用这个方法表示对象。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> datetime
 
 <span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
@@ -702,18 +790,30 @@ True
 <span class="token comment"># Let's delete one of the choices. Use delete() for that.</span>
 <span class="token operator">>></span><span class="token operator">></span> c <span class="token operator">=</span> q.choice_set.filter<span class="token punctuation">(</span>choice_text__startswith<span class="token operator">=</span><span class="token string">'Just hacking'</span><span class="token punctuation">)</span>
 <span class="token operator">>></span><span class="token operator">></span> c.delete<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>阅读 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9tb2RlbHMvcmVsYXRpb25zLw==">访问关系对象<i class="fa fa-external-link-alt"></i></span> 文档可以获取关于数据库关系的更多内容。关于双下划线的更多用法，参见 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9kYi9xdWVyaWVzLyNmaWVsZC1sb29rdXBzLWludHJv">查找字段<i class="fa fa-external-link-alt"></i></span> 文档。数据库 API 的所有细节可以在 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9kYi9xdWVyaWVzLw==">数据库 API 参考<i class="fa fa-external-link-alt"></i></span> 文档中找到。</p>
+<p>阅读 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/models/relations/">访问关系对象</a>
+文档可以获取关于数据库关系的更多内容。关于双下划线的更多用法，参见 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/queries/#field-lookups-intro">查找字段</a>
+文档。数据库 API 的所有细节可以在 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/db/queries/">数据库
+API 参考</a> 文档中找到。</p>
 <h2 id="管理页面">管理页面</h2>
 <p>Django能够全自动地根据模型创建后台界面，这个管理界面不是为了网站的访问者而是为管理者准备的。</p>
 <h3 id="创建管理员账号">创建管理员账号</h3>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python manage.py createsuperuser<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>管理界面在启动服务器时就默认就是启动的，因此运行服务器</p>
 <pre class="line-numbers language-none"><code class="language-none">python manage.py runserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>转到本地管理员目录，&quot;http://127.0.0.1:8000/admin/&quot; ，登录后，接下来就会进入管理站点的界面。</p>
+<p>转到本地管理员目录，"http://127.0.0.1:8000/admin/"
+，登录后，接下来就会进入管理站点的界面。</p>
 <figure>
-<img src="https://docs.djangoproject.com/zh-hans/3.2/_images/admin02.png" alt="Django admin index page" /><figcaption>Django admin index page</figcaption>
+<img
+src="https://docs.djangoproject.com/zh-hans/3.2/_images/admin02.png"
+alt="Django admin index page" />
+<figcaption aria-hidden="true">Django admin index page</figcaption>
 </figure>
-<p>会发现有几个可编辑的内容：组和用户，它们是由 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9hdXRoLyNtb2R1bGUtZGphbmdvLmNvbnRyaWIuYXV0aA==">django.contrib.auth<i class="fa fa-external-link-alt"></i></span> 提供的，这是 Django 开发的认证框架。</p>
+<p>会发现有几个可编辑的内容：组和用户，它们是由 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/auth/#module-django.contrib.auth">django.contrib.auth</a>
+提供的，这是 Django 开发的认证框架。</p>
 <h3 id="添加应用">添加应用</h3>
 <p>我们需要给模型添加后台接口</p>
 <p>polls/admin.py</p>
@@ -724,7 +824,8 @@ True
 admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Question<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此时就可以通过管理页面改变Question了</p>
 <h2 id="视图">视图</h2>
-<p>Django 中视图的概念是「一类具有相同功能和模板的网页的集合」。在Django中，网页和其他内容都是由视图派生而来，每个视图表现为一个Python的函数/方法。</p>
+<p>Django
+中视图的概念是「一类具有相同功能和模板的网页的集合」。在Django中，网页和其他内容都是由视图派生而来，每个视图表现为一个Python的函数/方法。</p>
 <p>向 polls/views.py 添加</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">detail</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> question_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> HttpResponse<span class="token punctuation">(</span><span class="token string">"You're looking at question %s."</span> <span class="token operator">%</span> question_id<span class="token punctuation">)</span>
@@ -751,9 +852,23 @@ urlpatterns <span class="token operator">=</span> <span class="token punctuation
     <span class="token comment"># ex: /polls/5/vote/</span>
     path<span class="token punctuation">(</span><span class="token string">'&lt;int:question_id>/vote/'</span><span class="token punctuation">,</span> views<span class="token punctuation">.</span>vote<span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'vote'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>当某人请求你网站的某一页面时——比如说， &quot;/polls/34/&quot; ，Django 将会载入 <code>mysite.urls</code> 模块，因为这在配置项 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9zZXR0aW5ncy8jc3RkOnNldHRpbmctUk9PVF9VUkxDT05G">ROOT_URLCONF<i class="fa fa-external-link-alt"></i></span> 中设置了。然后 Django 寻找名为 <code>urlpatterns</code> 变量并且按序匹配正则表达式。在找到匹配项 <code>'polls/'</code> ，它切掉了匹配的文本（ <code>&quot;polls/&quot;</code> ），将剩余文本—— <code>&quot;34/&quot;</code> ，发送至 'polls.urls' URLconf 做进一步处理。在这里剩余文本匹配了 <code>'&lt;int:question_id&gt;/'</code> ，使得我们 Django 以如下形式调用 <code>detail()</code> :</p>
+<p>当某人请求你网站的某一页面时——比如说， "/polls/34/" ，Django 将会载入
+<code>mysite.urls</code> 模块，因为这在配置项 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-ROOT_URLCONF">ROOT_URLCONF</a>
+中设置了。然后 Django 寻找名为 <code>urlpatterns</code>
+变量并且按序匹配正则表达式。在找到匹配项 <code>'polls/'</code>
+，它切掉了匹配的文本（ <code>"polls/"</code> ），将剩余文本——
+<code>"34/"</code> ，发送至 'polls.urls' URLconf
+做进一步处理。在这里剩余文本匹配了
+<code>'&lt;int:question_id&gt;/'</code> ，使得我们 Django 以如下形式调用
+<code>detail()</code> :</p>
 <pre class="line-numbers language-none"><code class="language-none">detail(request&#x3D;&lt;HttpRequest object&gt;, question_id&#x3D;34)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><code>question_id=34</code> 由 <code>&lt;int:question_id&gt;</code> 匹配生成。使用尖括号“捕获”这部分 URL，且以关键字参数的形式发送给视图函数。上述字符串的 <code>:question_id&gt;</code> 部分定义了将被用于区分匹配模式的变量名，而 <code>int:</code> 则是一个转换器决定了应该以什么变量类型匹配这部分的 URL 路径。</p>
+<p><code>question_id=34</code> 由 <code>&lt;int:question_id&gt;</code>
+匹配生成。使用尖括号“捕获”这部分
+URL，且以关键字参数的形式发送给视图函数。上述字符串的
+<code>:question_id&gt;</code> 部分定义了将被用于区分匹配模式的变量名，而
+<code>int:</code> 则是一个转换器决定了应该以什么变量类型匹配这部分的 URL
+路径。</p>
 <h2 id="引入模板">引入模板</h2>
 <p>在 polls/views.py</p>
 <pre class="line-numbers language-none"><code class="language-none">from django.http import HttpResponse
@@ -766,8 +881,12 @@ def index(request):
     return HttpResponse(output)
 
 # Leave the rest of the views (detail, results, vote) unchanged<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>但是我们页面的设计依然只是简单的HttpResponse，我们可以使用 Django 的模板系统，只需要创建一个视图就可以将页面的设计从代码中分离出来。</p>
-<p>创建<strong>polls/templates/polls/index.html</strong>，因为 <code></code> app_directories <code></code> 模板加载器是通过上述描述的方法运行的，所以 Django 可以引用到 <code>polls/index.html</code> 这一模板了。</p>
+<p>但是我们页面的设计依然只是简单的HttpResponse，我们可以使用 Django
+的模板系统，只需要创建一个视图就可以将页面的设计从代码中分离出来。</p>
+<p>创建<strong>polls/templates/polls/index.html</strong>，因为
+<code></code> app_directories <code></code>
+模板加载器是通过上述描述的方法运行的，所以 Django 可以引用到
+<code>polls/index.html</code> 这一模板了。</p>
 <p>polls/templates/polls/index.html</p>
 <pre class="line-numbers language-django" data-language="django"><code class="language-django"><span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">if</span> <span class="token variable">latest_question_list</span> <span class="token delimiter punctuation">%&#125;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
@@ -780,7 +899,13 @@ def index(request):
 <span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">endif</span> <span class="token delimiter punctuation">%&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>模板命名空间</p>
-<p>虽然我们现在可以将模板文件直接放在 <code>polls/templates</code> 文件夹中（而不是再建立一个 <code>polls</code> 子文件夹），但是这样做不太好。Django 将会选择第一个匹配的模板文件，如果你有一个模板文件正好和另一个应用中的某个模板文件重名，Django 没有办法 <em>区分</em> 它们。我们需要帮助 Django 选择正确的模板，最好的方法就是把他们放入各自的 <em>命名空间</em> 中，也就是把这些模板放入一个和 <em>自身</em> 应用重名的子文件夹里。</p>
+<p>虽然我们现在可以将模板文件直接放在 <code>polls/templates</code>
+文件夹中（而不是再建立一个 <code>polls</code>
+子文件夹），但是这样做不太好。Django
+将会选择第一个匹配的模板文件，如果你有一个模板文件正好和另一个应用中的某个模板文件重名，Django
+没有办法 <em>区分</em> 它们。我们需要帮助 Django
+选择正确的模板，最好的方法就是把他们放入各自的 <em>命名空间</em>
+中，也就是把这些模板放入一个和 <em>自身</em> 应用重名的子文件夹里。</p>
 </blockquote>
 <p>现在更新一下 views.py:</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse
@@ -795,7 +920,9 @@ def index(request):
     <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'polls/index.html'</span><span class="token punctuation">,</span> context<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="render">render()</h3>
-<p>render() 可以方便快捷的进行「载入模板，填充上下文，再返回由它生成的 HttpResponse 对象」的操作流程，它的第一个参数是request类型，第二个是模板的地址，第三个是一个字典，提供了模板所需要的变量。</p>
+<p>render() 可以方便快捷的进行「载入模板，填充上下文，再返回由它生成的
+HttpResponse
+对象」的操作流程，它的第一个参数是request类型，第二个是模板的地址，第三个是一个字典，提供了模板所需要的变量。</p>
 <h2 id="错误">404错误</h2>
 <p>继续修改 polls/views.py</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> Http404
@@ -811,11 +938,17 @@ def index(request):
     <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'polls/detail.html'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token string">'question'</span><span class="token punctuation">:</span> question<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果问题不存在就会抛出一个404异常</p>
 <h3 id="get_object_or_404">get_object_or_404()</h3>
-<p>尝试用 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9tb2RlbHMvcXVlcnlzZXRzLyNkamFuZ28uZGIubW9kZWxzLnF1ZXJ5LlF1ZXJ5U2V0LmdldA==">get()<i class="fa fa-external-link-alt"></i></span> 函数获取一个对象，如果不存在就抛出 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9odHRwL3ZpZXdzLyNkamFuZ28uaHR0cC5IdHRwNDA0">Http404<i class="fa fa-external-link-alt"></i></span> 错误，这个快捷函数可以简化代码：</p>
+<p>尝试用 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/models/querysets/#django.db.models.query.QuerySet.get">get()</a>
+函数获取一个对象，如果不存在就抛出 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/http/views/#django.http.Http404">Http404</a>
+错误，这个快捷函数可以简化代码：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">detail</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> question_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
     question <span class="token operator">=</span> get_object_or_404<span class="token punctuation">(</span>Question<span class="token punctuation">,</span> pk<span class="token operator">=</span>question_id<span class="token punctuation">)</span>
     <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'polls/detail.html'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token string">'question'</span><span class="token punctuation">:</span> question<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>同样，也有 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9odHRwL3Nob3J0Y3V0cy8jZGphbmdvLnNob3J0Y3V0cy5nZXRfbGlzdF9vcl80MDQ=">get_list_or_404()<i class="fa fa-external-link-alt"></i></span> 函数，不过是get换成了filter</p>
+<p>同样，也有 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/http/shortcuts/#django.shortcuts.get_list_or_404">get_list_or_404()</a>
+函数，不过是get换成了filter</p>
 <p>现在创建detail的模板，</p>
 <p>polls/templates/polls/detail.html</p>
 <pre class="line-numbers language-django" data-language="django"><code class="language-django"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">&#123;&#123;</span> <span class="token variable">question</span><span class="token punctuation">.</span><span class="token variable">question_text</span> <span class="token delimiter punctuation">&#125;&#125;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
@@ -824,15 +957,30 @@ def index(request):
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">&#123;&#123;</span> <span class="token variable">choice</span><span class="token punctuation">.</span><span class="token variable">choice_text</span> <span class="token delimiter punctuation">&#125;&#125;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
 <span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">endfor</span> <span class="token delimiter punctuation">%&#125;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>模板系统统一使用点符号来访问变量的属性。在示例 <code>&#123;&#123; question.question_text &#125;&#125;</code> 中，首先 Django 尝试对 <code>question</code> 对象使用字典查找（也就是使用 obj.get(str) 操作），如果失败了就尝试属性查找（也就是 obj.str 操作），结果是成功了。如果这一操作也失败的话，将会尝试列表查找（也就是 obj[int] 操作）。</p>
-<p>在 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi90ZW1wbGF0ZXMvYnVpbHRpbnMvI3N0ZDp0ZW1wbGF0ZXRhZy1mb3I=">{ % for %}<i class="fa fa-external-link-alt"></i></span> 循环中发生的函数调用： <code>question.choice_set.all</code> 被解释为 Python 代码 <code>question.choice_set.all()</code> ，将会返回一个可迭代的 <code>Choice</code> 对象，这一对象可以在 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi90ZW1wbGF0ZXMvYnVpbHRpbnMvI3N0ZDp0ZW1wbGF0ZXRhZy1mb3I=">{ % for %}<i class="fa fa-external-link-alt"></i></span> 标签内部使用。</p>
-<p>查看 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy90ZW1wbGF0ZXMv">模板指南<i class="fa fa-external-link-alt"></i></span> 可以了解关于模板的更多信息。</p>
+<p>模板系统统一使用点符号来访问变量的属性。在示例
+<code>&#123;&#123; question.question_text &#125;&#125;</code> 中，首先 Django 尝试对
+<code>question</code> 对象使用字典查找（也就是使用 obj.get(str)
+操作），如果失败了就尝试属性查找（也就是 obj.str
+操作），结果是成功了。如果这一操作也失败的话，将会尝试列表查找（也就是
+obj[int] 操作）。</p>
+<p>在 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/templates/builtins/#std:templatetag-for">{
+% for %}</a> 循环中发生的函数调用： <code>question.choice_set.all</code>
+被解释为 Python 代码 <code>question.choice_set.all()</code>
+，将会返回一个可迭代的 <code>Choice</code> 对象，这一对象可以在 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/templates/builtins/#std:templatetag-for">{
+% for %}</a> 标签内部使用。</p>
+<p>查看 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/templates/">模板指南</a>
+可以了解关于模板的更多信息。</p>
 <h2 id="去除硬编码">去除硬编码</h2>
-<p>由于在 polls.urls 模块的URL定义中定义了name参数，因此可以使用 <code>&#123;% url %&#125;</code> 标签代替</p>
+<p>由于在 polls.urls 模块的URL定义中定义了name参数，因此可以使用
+<code>&#123;% url %&#125;</code> 标签代替</p>
 <pre class="line-numbers language-django" data-language="django"><code class="language-django"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/polls/<span class="token django language-django"><span class="token delimiter punctuation">&#123;&#123;</span> <span class="token variable">question</span><span class="token punctuation">.</span><span class="token variable">id</span> <span class="token delimiter punctuation">&#125;&#125;</span></span>/<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">&#123;&#123;</span> <span class="token variable">question</span><span class="token punctuation">.</span><span class="token variable">question_text</span> <span class="token delimiter punctuation">&#125;&#125;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token django language-django"><span class="token delimiter punctuation">&#123;%</span> <span class="token tag keyword">url</span> <span class="token string">'detail'</span> <span class="token variable">question</span><span class="token punctuation">.</span><span class="token variable">id</span> <span class="token delimiter punctuation">%&#125;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token django language-django"><span class="token delimiter punctuation">&#123;&#123;</span> <span class="token variable">question</span><span class="token punctuation">.</span><span class="token variable">question_text</span> <span class="token delimiter punctuation">&#125;&#125;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="命名空间">命名空间</h3>
-<p>由于可能有若干个应用，这些应用的url的命名可能相同，因此可以在根 URLconf 中添加命名空间。</p>
+<p>由于可能有若干个应用，这些应用的url的命名可能相同，因此可以在根
+URLconf 中添加命名空间。</p>
 <p>只需要在urls.py 中加上app_name设置命名空间：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">app_name <span class="token operator">=</span> <span class="token string">'polls'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>然后修改 index.html:</p>
@@ -853,10 +1001,26 @@ def index(request):
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>简要说明：</p>
 <ul>
-<li>上面的模板在 Question 的每个 Choice 前添加一个单选按钮。 每个单选按钮的 <code>value</code> 属性是对应的各个 Choice 的 ID。每个单选按钮的 <code>name</code> 是 <code>&quot;choice&quot;</code> 。这意味着，当有人选择一个单选按钮并提交表单提交时，它将发送一个 POST 数据 <code>choice=#</code> ，其中# 为选择的 Choice 的 ID。这是 HTML 表单的基本概念。</li>
-<li>我们设置表单的 <code>action</code> 为 <code>&#123;% url 'polls:vote' question.id %&#125;</code> ，并设置 <code>method=&quot;post&quot;</code> 。使用 <code>method=&quot;post&quot;</code> （与其相对的是 <code>method=&quot;get&quot;</code>）是非常重要的，因为这个提交表单的行为会改变服务器端的数据。 无论何时，当你需要创建一个改变服务器端数据的表单时，请使用 `<code>method=&quot;post&quot;</code> 。这不是 Django 的特定技巧；这是优秀的网站开发技巧。</li>
+<li>上面的模板在 Question 的每个 Choice 前添加一个单选按钮。
+每个单选按钮的 <code>value</code> 属性是对应的各个 Choice 的
+ID。每个单选按钮的 <code>name</code> 是 <code>"choice"</code>
+。这意味着，当有人选择一个单选按钮并提交表单提交时，它将发送一个 POST
+数据 <code>choice=#</code> ，其中# 为选择的 Choice 的 ID。这是 HTML
+表单的基本概念。</li>
+<li>我们设置表单的 <code>action</code> 为
+<code>&#123;% url 'polls:vote' question.id %&#125;</code> ，并设置 <code>method="post"</code>
+。使用 <code>method="post"</code> （与其相对的是
+<code>method="get"</code>）是非常重要的，因为这个提交表单的行为会改变服务器端的数据。
+无论何时，当你需要创建一个改变服务器端数据的表单时，请使用
+`<code>method="post"</code> 。这不是 Django
+的特定技巧；这是优秀的网站开发技巧。</li>
 <li><code>forloop.counter</code> 指示 for 标签已经循环多少次。</li>
-<li>由于我们创建一个 POST 表单（它具有修改数据的作用），所以我们需要小心跨站点请求伪造, 不过 Django 自带了一个非常有用的防御系统。 简而言之，所有针对内部 URL 的 POST 表单都应该使用 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi90ZW1wbGF0ZXMvYnVpbHRpbnMvI3N0ZDp0ZW1wbGF0ZXRhZy1jc3JmX3Rva2Vu">{ % csrf_token %}<i class="fa fa-external-link-alt"></i></span> 模板标签。</li>
+<li>由于我们创建一个 POST
+表单（它具有修改数据的作用），所以我们需要小心跨站点请求伪造, 不过
+Django 自带了一个非常有用的防御系统。 简而言之，所有针对内部 URL 的 POST
+表单都应该使用 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/templates/builtins/#std:templatetag-csrf_token">{
+% csrf_token %}</a> 模板标签。</li>
 </ul>
 <p>修改 polls/views.py</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>http <span class="token keyword">import</span> HttpResponse<span class="token punctuation">,</span> HttpResponseRedirect
@@ -883,23 +1047,57 @@ def index(request):
         <span class="token comment"># user hits the Back button.</span>
         <span class="token keyword">return</span> HttpResponseRedirect<span class="token punctuation">(</span>reverse<span class="token punctuation">(</span><span class="token string">'polls:results'</span><span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>question<span class="token punctuation">.</span><span class="token builtin">id</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><p><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9yZXF1ZXN0LXJlc3BvbnNlLyNkamFuZ28uaHR0cC5IdHRwUmVxdWVzdC4lMjBQT1NU">request. POST<i class="fa fa-external-link-alt"></i></span> 是一个类字典对象，让你可以通过关键字的名字获取提交的数据。 这个例子中， <code>request.POST['choice']</code> 以字符串形式返回选择的 Choice 的 ID。它 的值永远是字符串。</p>
-<p>注意，Django 还以同样的方式提供 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9yZXF1ZXN0LXJlc3BvbnNlLyNkamFuZ28uaHR0cC5IdHRwUmVxdWVzdC4lMjBHRVQ=">request. GET<i class="fa fa-external-link-alt"></i></span> 用于访问 GET 数据 —— 但我们在代码中显式地使用 POST ，以保证数据只能通过 POST 调用改动。</p></li>
-<li><p>如果在 <code>request.POST['choice']</code> 数据中没有提供 <code>choice</code> ， POST 将引发一个 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnB5dGhvbi5vcmcvMy9saWJyYXJ5L2V4Y2VwdGlvbnMuaHRtbCNLZXlFcnJvcg==">KeyError<i class="fa fa-external-link-alt"></i></span> 。如果没有给出 <code>choice</code> 将重新显示 Question 表单和一个错误信息。</p></li>
-<li><p>在增加 Choice 的得票数之后，代码返回一个 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9yZXF1ZXN0LXJlc3BvbnNlLyNkamFuZ28uaHR0cC5IdHRwUmVzcG9uc2VSZWRpcmVjdA==">HttpResponseRedirect<i class="fa fa-external-link-alt"></i></span> 而不是常用的 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9yZXF1ZXN0LXJlc3BvbnNlLyNkamFuZ28uaHR0cC5IdHRwUmVzcG9uc2U=">HttpResponse<i class="fa fa-external-link-alt"></i></span>. <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9yZXF1ZXN0LXJlc3BvbnNlLyNkamFuZ28uaHR0cC5IdHRwUmVzcG9uc2VSZWRpcmVjdA==">HttpResponseRedirect<i class="fa fa-external-link-alt"></i></span> 只接收一个参数：用户将要被重定向的 URL（。</p>
-<p>应当始终返回 HttpResponseRedirect 当进行 POST 的修改，这样会避免重复提交表单。</p></li>
-<li><p>在这个例子中，我们在 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9yZXF1ZXN0LXJlc3BvbnNlLyNkamFuZ28uaHR0cC5IdHRwUmVzcG9uc2VSZWRpcmVjdA==">HttpResponseRedirect<i class="fa fa-external-link-alt"></i></span> 的构造函数中使用 <code>reverse()</code> 函数。这个函数避免了我们在视图函数中硬编码 URL。它需要我们给出我们想要跳转的视图的名字和该视图所对应的 URL 模式中需要给该视图提供的参数。</p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/request-response/#django.http.HttpRequest.%20POST">request.
+POST</a> 是一个类字典对象，让你可以通过关键字的名字获取提交的数据。
+这个例子中， <code>request.POST['choice']</code> 以字符串形式返回选择的
+Choice 的 ID。它 的值永远是字符串。</p>
+<p>注意，Django 还以同样的方式提供 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/request-response/#django.http.HttpRequest.%20GET">request.
+GET</a> 用于访问 GET 数据 —— 但我们在代码中显式地使用 POST
+，以保证数据只能通过 POST 调用改动。</p></li>
+<li><p>如果在 <code>request.POST['choice']</code> 数据中没有提供
+<code>choice</code> ， POST 将引发一个 <a
+target="_blank" rel="noopener" href="https://docs.python.org/3/library/exceptions.html#KeyError">KeyError</a>
+。如果没有给出 <code>choice</code> 将重新显示 Question
+表单和一个错误信息。</p></li>
+<li><p>在增加 Choice 的得票数之后，代码返回一个 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/request-response/#django.http.HttpResponseRedirect">HttpResponseRedirect</a>
+而不是常用的 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/request-response/#django.http.HttpResponse">HttpResponse</a>.
+<a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/request-response/#django.http.HttpResponseRedirect">HttpResponseRedirect</a>
+只接收一个参数：用户将要被重定向的 URL（。</p>
+<p>应当始终返回 HttpResponseRedirect 当进行 POST
+的修改，这样会避免重复提交表单。</p></li>
+<li><p>在这个例子中，我们在 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/request-response/#django.http.HttpResponseRedirect">HttpResponseRedirect</a>
+的构造函数中使用 <code>reverse()</code>
+函数。这个函数避免了我们在视图函数中硬编码
+URL。它需要我们给出我们想要跳转的视图的名字和该视图所对应的 URL
+模式中需要给该视图提供的参数。</p></li>
 </ul>
 <p>然后再修改 results：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">results</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> question_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
     question <span class="token operator">=</span> get_object_or_404<span class="token punctuation">(</span>Question<span class="token punctuation">,</span> pk<span class="token operator">=</span>question_id<span class="token punctuation">)</span>
     <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'polls/results.html'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token string">'question'</span><span class="token punctuation">:</span> question<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <blockquote>
-<p>我们的 <code>vote()</code> 视图代码有一个小问题。代码首先从数据库中获取了 <code>selected_choice</code> 对象，接着计算 <code>vote</code> 的新值，最后把值存回数据库。如果网站有两个方可同时投票在 <em>同一时间</em> ，可能会导致问题。同样的值，42，会被 <code>votes</code> 返回。然后，对于两个用户，新值43计算完毕，并被保存，但是期望值是44。</p>
-<p>这个问题被称为 <em>竞争条件</em> 。 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9tb2RlbHMvZXhwcmVzc2lvbnMvI2F2b2lkaW5nLXJhY2UtY29uZGl0aW9ucy11c2luZy1m">使用 F() 避免竞争条件<i class="fa fa-external-link-alt"></i></span> 。</p>
+<p>我们的 <code>vote()</code>
+视图代码有一个小问题。代码首先从数据库中获取了
+<code>selected_choice</code> 对象，接着计算 <code>vote</code>
+的新值，最后把值存回数据库。如果网站有两个方可同时投票在
+<em>同一时间</em> ，可能会导致问题。同样的值，42，会被
+<code>votes</code>
+返回。然后，对于两个用户，新值43计算完毕，并被保存，但是期望值是44。</p>
+<p>这个问题被称为 <em>竞争条件</em> 。 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/models/expressions/#avoiding-race-conditions-using-f">使用
+F() 避免竞争条件</a> 。</p>
 </blockquote>
 <h2 id="通用视图">通用视图</h2>
-<p>基本的 Web 开发中的一个常见情况：根据 URL 中的参数从数据库中获取数据、载入模板文件然后返回渲染后的模板。 由于这种情况特别常见，Django 提供一种快捷方式，叫做“通用视图”系统。通用视图将常见的模式抽象化，可以使你在编写应用时甚至不需要编写Python代码。</p>
+<p>基本的 Web 开发中的一个常见情况：根据 URL
+中的参数从数据库中获取数据、载入模板文件然后返回渲染后的模板。
+由于这种情况特别常见，Django
+提供一种快捷方式，叫做“通用视图”系统。通用视图将常见的模式抽象化，可以使你在编写应用时甚至不需要编写Python代码。</p>
 <h3 id="改良-urlconf">改良 URLconf</h3>
 <p>polls/urls.py</p>
 <pre class="line-numbers language-none"><code class="language-none">from django.urls import path
@@ -940,15 +1138,30 @@ urlpatterns &#x3D; [
 
 <span class="token keyword">def</span> <span class="token function">vote</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> question_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token comment"># same as above, no changes needed.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>我们在这里使用两个通用视图： <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jbGFzcy1iYXNlZC12aWV3cy9nZW5lcmljLWRpc3BsYXkvI2RqYW5nby52aWV3cy5nZW5lcmljLmxpc3QuTGlzdFZpZXc=">ListView<i class="fa fa-external-link-alt"></i></span> 和 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jbGFzcy1iYXNlZC12aWV3cy9nZW5lcmljLWRpc3BsYXkvI2RqYW5nby52aWV3cy5nZW5lcmljLmRldGFpbC5EZXRhaWxWaWV3">DetailView<i class="fa fa-external-link-alt"></i></span> 。这两个视图分别抽象“显示一个对象列表”和“显示一个特定类型对象的详细信息页面”这两种概念。</p>
+<p>我们在这里使用两个通用视图： <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/class-based-views/generic-display/#django.views.generic.list.ListView">ListView</a>
+和 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/class-based-views/generic-display/#django.views.generic.detail.DetailView">DetailView</a>
+。这两个视图分别抽象“显示一个对象列表”和“显示一个特定类型对象的详细信息页面”这两种概念。</p>
 <ul>
-<li>每个通用视图需要知道它将作用于哪个模型。 这由 <code>model</code> 属性提供。</li>
-<li><span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jbGFzcy1iYXNlZC12aWV3cy9nZW5lcmljLWRpc3BsYXkvI2RqYW5nby52aWV3cy5nZW5lcmljLmRldGFpbC5EZXRhaWxWaWV3">DetailView<i class="fa fa-external-link-alt"></i></span> 期望从 URL 中捕获名为 <code>&quot;pk&quot;</code> 的主键值，所以我们为通用视图把 <code>question_id</code> 改成 <code>pk</code> 。</li>
+<li>每个通用视图需要知道它将作用于哪个模型。 这由 <code>model</code>
+属性提供。</li>
+<li><a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/class-based-views/generic-display/#django.views.generic.detail.DetailView">DetailView</a>
+期望从 URL 中捕获名为 <code>"pk"</code> 的主键值，所以我们为通用视图把
+<code>question_id</code> 改成 <code>pk</code> 。</li>
 </ul>
-<p>如果我们提供了template_name，那么通用视图就会使用这个模板。对于DetailView， question 变量会自动提供，因为我们使用了Django的模型，它能为context定一个合适的名字。而对于 ListView， 自动生成的变量是question_list，因此我们需要主动提供context_object_name这一属性。</p>
-<p>更多关于通用视图的详细信息，查看 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy9jbGFzcy1iYXNlZC12aWV3cy8=">通用视图的文档<i class="fa fa-external-link-alt"></i></span></p>
+<p>如果我们提供了template_name，那么通用视图就会使用这个模板。对于DetailView，
+question
+变量会自动提供，因为我们使用了Django的模型，它能为context定一个合适的名字。而对于
+ListView，
+自动生成的变量是question_list，因此我们需要主动提供context_object_name这一属性。</p>
+<p>更多关于通用视图的详细信息，查看 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/class-based-views/">通用视图的文档</a></p>
 <h2 id="测试">测试</h2>
-<p>按照惯例，Django 应用的测试应该写在应用的 <code>tests.py</code> 文件里。测试系统会自动的在所有以 <code>tests</code> 开头的文件里寻找并执行测试代码。</p>
+<p>按照惯例，Django 应用的测试应该写在应用的 <code>tests.py</code>
+文件里。测试系统会自动的在所有以 <code>tests</code>
+开头的文件里寻找并执行测试代码。</p>
 <p>polls/tests.py]</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> datetime
 
@@ -971,12 +1184,19 @@ urlpatterns &#x3D; [
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">python manage.py <span class="token builtin class-name">test</span> polls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>以下是自动化测试的运行过程：</p>
 <ul>
-<li><code>python manage.py test polls</code> 将会寻找 <code>polls</code> 应用里的测试代码</li>
-<li>它找到了 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy90ZXN0aW5nL3Rvb2xzLyNkamFuZ28udGVzdC5UZXN0Q2FzZQ==">django.test. TestCase<i class="fa fa-external-link-alt"></i></span> 的一个子类</li>
+<li><code>python manage.py test polls</code> 将会寻找 <code>polls</code>
+应用里的测试代码</li>
+<li>它找到了 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/testing/tools/#django.test.TestCase">django.test.
+TestCase</a> 的一个子类</li>
 <li>它创建一个特殊的数据库供测试使用</li>
 <li>它在类中寻找测试方法——以 <code>test</code> 开头的方法。</li>
-<li>在 <code>test_was_published_recently_with_future_question</code> 方法中，它创建了一个 <code>pub_date</code> 值为 30 天后的 <code>Question</code> 实例。</li>
-<li>接着使用 <code>assertls()</code> 方法，发现 <code>was_published_recently()</code> 返回了 <code>True</code>，而我们期望它返回 <code>False</code>。</li>
+<li>在 <code>test_was_published_recently_with_future_question</code>
+方法中，它创建了一个 <code>pub_date</code> 值为 30 天后的
+<code>Question</code> 实例。</li>
+<li>接着使用 <code>assertls()</code> 方法，发现
+<code>was_published_recently()</code> 返回了
+<code>True</code>，而我们期望它返回 <code>False</code>。</li>
 </ul>
 <p>测试系统通知我们哪些测试样例失败了，和造成测试失败的代码所在的行号。</p>
 <blockquote>
@@ -992,13 +1212,26 @@ urlpatterns &#x3D; [
 <li>给每个测试方法起个能描述其功能的名字</li>
 </ul>
 </blockquote>
-<p>文档 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3RvcGljcy90ZXN0aW5nLw==">Django 中的测试<i class="fa fa-external-link-alt"></i></span> 里有关于测试的更多信息。</p>
+<p>文档 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/topics/testing/">Django
+中的测试</a> 里有关于测试的更多信息。</p>
 <h2 id="静态文件">静态文件</h2>
-<p>除了服务端生成的 HTML 以外，网络应用通常需要一些额外的文件——比如图片，脚本和样式表——来帮助渲染网络页面。在 Django 中，我们把这些文件统称为“静态文件”。</p>
-<p>在 <code>polls</code> 目录下创建一个名为 <code>static</code> 的目录。Django 将在该目录下查找静态文件。</p>
-<p>更多关于设置和框架的资料，参考 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL2hvd3RvL3N0YXRpYy1maWxlcy8=">静态文件解惑<i class="fa fa-external-link-alt"></i></span> 和 <span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL3JlZi9jb250cmliL3N0YXRpY2ZpbGVzLw==">静态文件指南<i class="fa fa-external-link-alt"></i></span>。<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLmRqYW5nb3Byb2plY3QuY29tL3poLWhhbnMvMy4yL2hvd3RvL3N0YXRpYy1maWxlcy9kZXBsb3ltZW50Lw==">部署静态文件<i class="fa fa-external-link-alt"></i></span> 介绍了如何在真实服务器上使用静态文件。</p>
+<p>除了服务端生成的 HTML
+以外，网络应用通常需要一些额外的文件——比如图片，脚本和样式表——来帮助渲染网络页面。在
+Django 中，我们把这些文件统称为“静态文件”。</p>
+<p>在 <code>polls</code> 目录下创建一个名为 <code>static</code>
+的目录。Django 将在该目录下查找静态文件。</p>
+<p>更多关于设置和框架的资料，参考 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/howto/static-files/">静态文件解惑</a>
+和 <a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/ref/contrib/staticfiles/">静态文件指南</a>。<a
+target="_blank" rel="noopener" href="https://docs.djangoproject.com/zh-hans/3.2/howto/static-files/deployment/">部署静态文件</a>
+介绍了如何在真实服务器上使用静态文件。</p>
 <h2 id="自定义后台表单">自定义后台表单</h2>
-<p>通过 <code>admin.site.register(Question)</code> 注册 <code>Question</code> 模型，Django 能够构建一个默认的表单用于展示。通常来说，我们期望能自定义表单的外观和工作方式。可以在注册模型时将这些设置告诉 Django。</p>
+<p>通过 <code>admin.site.register(Question)</code> 注册
+<code>Question</code> 模型，Django
+能够构建一个默认的表单用于展示。通常来说，我们期望能自定义表单的外观和工作方式。可以在注册模型时将这些设置告诉
+Django。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
 
 <span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> Question
@@ -1052,14 +1285,14 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
 <div class="post-copyright">
 <ul>
   <li class="post-copyright-author">
-      <strong>本文作者： </strong>David Wang
+      <strong>مؤلف المقال:  </strong>Boyuan Wang
   </li>
   <li class="post-copyright-link">
-      <strong>本文链接：</strong>
+      <strong>رابط المقال: </strong>
       <a href="https://wby1905.github.io/post/b469/" title="Django官方教程">https://wby1905.github.io/post/b469/</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+    <strong>حقوق الملكية:  </strong>حميع المقالات في هذه المدوّنة منشورة تحت رخصة <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</span> إلا عند التنويه بخلافه.
   </li>
 </ul>
 </div>
@@ -1127,24 +1360,24 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
 
 <div class="copyright">
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">David Wang</span>
+  <span class="author" itemprop="copyrightHolder">Boyuan Wang</span>
 </div>
 <div class="wordcount">
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">131k</span>
+    <span title="مُجمل عدد الحروف">131k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:59</span>
+    <span title="مُجمل زمن القراءة">1:59</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -1152,7 +1385,7 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
-      <span class="site-uv" title="总访客量">
+      <span class="site-uv" title="إجمالي الزوار">
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
@@ -1160,12 +1393,12 @@ admin<span class="token punctuation">.</span>site<span class="token punctuation"
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
-      <span class="site-pv" title="总访问量">
+      <span class="site-pv" title="إجمالي المشاهدات">
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  <div class="powered-by">تطبيق الموقع <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
   </div>
 
     </div>
