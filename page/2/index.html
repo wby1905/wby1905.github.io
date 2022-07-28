@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN,en,default">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -25,13 +25,13 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"wby1905.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.1.0","exturl":true,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
   </script>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Boyuan Wang">
 <meta property="og:url" content="https://wby1905.github.io/page/2/index.html">
 <meta property="og:site_name" content="Boyuan Wang">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="article:author" content="Boyuan Wang">
 <meta name="twitter:card" content="summary">
 
@@ -45,7 +45,7 @@
     sidebar: "",
     isHome : true,
     isPost : false,
-    lang   : 'zh-CN'
+    lang   : 'en'
   };
 </script>
 <title>Boyuan Wang</title>
@@ -104,7 +104,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏" role="button">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -119,7 +119,6 @@
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">Wang's Blog</p>
-      <img class="custom-logo-image" src="/images/qingge.webp" alt="Boyuan Wang">
   </div>
 
   <div class="site-nav-right">
@@ -132,12 +131,12 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu">
-        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">2</span></a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">25</span></a></li>
-        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">2</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">25</span></a></li>
+        <li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a></li>
   </ul>
 </nav>
 
@@ -158,10 +157,10 @@
     <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          文章目录
+          Table of Contents
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          Overview
         </li>
       </ul>
 
@@ -184,20 +183,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">25</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
         <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">分类</span></a>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">2</span>
-        <span class="site-state-item-name">标签</span></a>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -248,7 +247,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/54f9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -271,22 +270,22 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2021-07-12 15:09:13" itemprop="dateCreated datePublished" datetime="2021-07-12T15:09:13+08:00">2021-07-12</time>
+      <time title="Created: 2021-07-12 15:09:13" itemprop="dateCreated datePublished" datetime="2021-07-12T15:09:13+08:00">2021-07-12</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
         </span>
@@ -295,19 +294,19 @@
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>1.3k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
     </span>
 </div>
 
@@ -322,7 +321,7 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/54f9/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -351,7 +350,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/b71/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -374,22 +373,22 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2021-04-28 13:36:27" itemprop="dateCreated datePublished" datetime="2021-04-28T13:36:27+08:00">2021-04-28</time>
+      <time title="Created: 2021-04-28 13:36:27" itemprop="dateCreated datePublished" datetime="2021-04-28T13:36:27+08:00">2021-04-28</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Unity/" itemprop="url" rel="index"><span itemprop="name">Unity</span></a>
         </span>
@@ -398,19 +397,19 @@
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>1.1k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
     </span>
 </div>
 
@@ -427,7 +426,7 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/b71/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -456,7 +455,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/66c8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -479,22 +478,22 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2020-12-24 22:34:37" itemprop="dateCreated datePublished" datetime="2020-12-24T22:34:37+08:00">2020-12-24</time>
+      <time title="Created: 2020-12-24 22:34:37" itemprop="dateCreated datePublished" datetime="2020-12-24T22:34:37+08:00">2020-12-24</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
         </span>
@@ -503,19 +502,19 @@
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>1.1k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
     </span>
 </div>
 
@@ -530,7 +529,7 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/66c8/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -559,7 +558,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/3131/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -582,22 +581,22 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2020-02-25 19:58:00" itemprop="dateCreated datePublished" datetime="2020-02-25T19:58:00+08:00">2020-02-25</time>
+      <time title="Created: 2020-02-25 19:58:00" itemprop="dateCreated datePublished" datetime="2020-02-25T19:58:00+08:00">2020-02-25</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
@@ -606,19 +605,19 @@
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>15k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>13 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>13 mins.</span>
     </span>
 </div>
 
@@ -636,7 +635,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/3131/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -665,7 +664,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/77c8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -688,22 +687,22 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2020-02-13 18:42:20" itemprop="dateCreated datePublished" datetime="2020-02-13T18:42:20+08:00">2020-02-13</time>
+      <time title="Created: 2020-02-13 18:42:20" itemprop="dateCreated datePublished" datetime="2020-02-13T18:42:20+08:00">2020-02-13</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
@@ -712,19 +711,19 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>9.1k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>8 mins.</span>
     </span>
 </div>
 
@@ -741,7 +740,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/77c8/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -770,7 +769,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/1c38/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -793,22 +792,22 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2020-02-07 20:54:41" itemprop="dateCreated datePublished" datetime="2020-02-07T20:54:41+08:00">2020-02-07</time>
+      <time title="Created: 2020-02-07 20:54:41" itemprop="dateCreated datePublished" datetime="2020-02-07T20:54:41+08:00">2020-02-07</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
@@ -817,19 +816,19 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>5.1k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
     </span>
 </div>
 
@@ -846,7 +845,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/1c38/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -875,7 +874,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/afc4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -898,22 +897,22 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2020-02-04 16:20:07" itemprop="dateCreated datePublished" datetime="2020-02-04T16:20:07+08:00">2020-02-04</time>
+      <time title="Created: 2020-02-04 16:20:07" itemprop="dateCreated datePublished" datetime="2020-02-04T16:20:07+08:00">2020-02-04</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
@@ -922,19 +921,19 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>5.5k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
     </span>
 </div>
 
@@ -951,7 +950,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/afc4/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -980,7 +979,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/3a16/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1003,22 +1002,22 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2020-02-03 10:25:18" itemprop="dateCreated datePublished" datetime="2020-02-03T10:25:18+08:00">2020-02-03</time>
+      <time title="Created: 2020-02-03 10:25:18" itemprop="dateCreated datePublished" datetime="2020-02-03T10:25:18+08:00">2020-02-03</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
@@ -1027,19 +1026,19 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>11k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>10 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>10 mins.</span>
     </span>
 </div>
 
@@ -1056,7 +1055,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/3a16/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -1085,7 +1084,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/7049/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1108,22 +1107,22 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2020-02-01 10:59:27" itemprop="dateCreated datePublished" datetime="2020-02-01T10:59:27+08:00">2020-02-01</time>
+      <time title="Created: 2020-02-01 10:59:27" itemprop="dateCreated datePublished" datetime="2020-02-01T10:59:27+08:00">2020-02-01</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
@@ -1132,19 +1131,19 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>5.5k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
     </span>
 </div>
 
@@ -1161,7 +1160,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/7049/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -1190,7 +1189,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN,en,default">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://wby1905.github.io/post/d8c2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1213,22 +1212,22 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
+      <span class="post-meta-item-text">Posted on</span>
 
-      <time title="创建时间：2020-01-29 00:51:18" itemprop="dateCreated datePublished" datetime="2020-01-29T00:51:18+08:00">2020-01-29</time>
+      <time title="Created: 2020-01-29 00:51:18" itemprop="dateCreated datePublished" datetime="2020-01-29T00:51:18+08:00">2020-01-29</time>
     </span>
       <span class="post-meta-item">
         <span class="post-meta-item-icon">
           <i class="far fa-calendar-check"></i>
         </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-15 16:44:39" itemprop="dateModified" datetime="2021-09-15T16:44:39+08:00">2021-09-15</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
-      <span class="post-meta-item-text">分类于</span>
+      <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
           <a href="/categories/DeepLearning/" itemprop="url" rel="index"><span itemprop="name">DeepLearning</span></a>
         </span>
@@ -1237,19 +1236,19 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
   
       </div>
       <div class="post-meta">
-    <span class="post-meta-item" title="本文字数">
+    <span class="post-meta-item" title="Symbols count in article">
       <span class="post-meta-item-icon">
         <i class="far fa-file-word"></i>
       </span>
-      <span class="post-meta-item-text">本文字数：</span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
       <span>8.4k</span>
     </span>
-    <span class="post-meta-item" title="阅读时长">
+    <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>8 mins.</span>
     </span>
 </div>
 
@@ -1266,7 +1265,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/post/d8c2/#more" rel="contents">
-                阅读全文 &raquo;
+                Read more &raquo;
               </a>
             </div>
           <!--/noindex-->
@@ -1289,7 +1288,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
 
 
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1319,24 +1318,6 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
 
   <footer class="footer">
     <div class="footer-inner">
-  <div class="languages">
-    <label class="lang-select-label">
-      <i class="fa fa-language"></i>
-      <span>简体中文</span>
-      <i class="fa fa-angle-up" aria-hidden="true"></i>
-    </label>
-    <select class="lang-select" data-canonical="">
-      
-        <option value="zh-CN" data-href="/page/2/index.html" selected="">
-          简体中文
-        </option>
-      
-        <option value="en" data-href="/en/page/2/index.html" selected="">
-          English
-        </option>
-      
-    </select>
-  </div>
 
 
 <div class="copyright">
@@ -1352,13 +1333,13 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">131k</span>
+    <span title="Symbols count total">131k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:59</span>
+    <span title="Reading time total">1:59</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -1366,7 +1347,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
       <span class="post-meta-item-icon">
         <i class="fa fa-user"></i>
       </span>
-      <span class="site-uv" title="总访客量">
+      <span class="site-uv" title="Total Visitors">
         <span id="busuanzi_value_site_uv"></span>
       </span>
     </span>
@@ -1374,12 +1355,12 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/wby1905/article/detai
       <span class="post-meta-item-icon">
         <i class="fa fa-eye"></i>
       </span>
-      <span class="site-pv" title="总访问量">
+      <span class="site-pv" title="Total Views">
         <span id="busuanzi_value_site_pv"></span>
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span> 强力驱动
+  <div class="powered-by">Powered by <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0LmpzLm9yZw==">NexT.Gemini</span>
   </div>
 
     </div>
